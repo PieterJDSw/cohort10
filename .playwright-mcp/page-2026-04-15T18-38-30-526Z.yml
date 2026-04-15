@@ -1,0 +1,69 @@
+- generic [active] [ref=e1]:
+  - generic [ref=e3]:
+    - banner [ref=e4]:
+      - generic [ref=e5]:
+        - generic [ref=e6]:
+          - paragraph [ref=e7]: Developer Assessment Platform
+          - link "MVP Assessment" [ref=e8] [cursor=pointer]:
+            - /url: /
+        - navigation [ref=e9]:
+          - link "Start" [ref=e10] [cursor=pointer]:
+            - /url: /
+          - link "Dashboard" [ref=e11] [cursor=pointer]:
+            - /url: /dashboard
+    - main [ref=e12]:
+      - generic [ref=e65]:
+        - generic [ref=e67]:
+          - generic [ref=e68]:
+            - paragraph [ref=e69]: Active session
+            - heading "Container E2E Candidate" [level=2] [ref=e70]
+            - paragraph [ref=e71]: Work through the prompt, save often, run code locally when available, and finish to kick off scoring.
+          - generic [ref=e72]:
+            - generic [ref=e73]: "status: in_progress"
+            - generic [ref=e74]: "progress: 8/10"
+        - paragraph [ref=e469]: Answer saved.
+        - generic [ref=e75]:
+          - generic [ref=e76]:
+            - generic [ref=e77]:
+              - generic [ref=e78]:
+                - generic [ref=e79]: theory
+                - generic [ref=e80]: "difficulty: easy"
+                - generic [ref=e81]: 8 / 10
+              - generic [ref=e82]:
+                - heading "Horizontal vs Vertical Scaling" [level=2] [ref=e460]
+                - paragraph [ref=e84]: Compare horizontal and vertical scaling for a backend service and explain when you would choose each option.
+              - generic [ref=e85]:
+                - generic [ref=e86]:
+                  - paragraph [ref=e87]: Rubric focus
+                  - heading "What the evaluator will look for" [level=3] [ref=e88]
+                - list [ref=e89]:
+                  - listitem [ref=e461]:
+                    - strong [ref=e462]: conceptual_correctness
+                    - text: Explains the concept accurately
+                  - listitem [ref=e463]:
+                    - strong [ref=e464]: depth
+                    - text: Covers practical details beyond a textbook definition
+                  - listitem [ref=e465]:
+                    - strong [ref=e466]: tradeoff_reasoning
+                    - text: Discusses constraints, costs, and alternatives
+                  - listitem [ref=e467]:
+                    - strong [ref=e468]: clarity
+                    - text: Keeps the explanation structured and precise
+            - generic [ref=e420]:
+              - heading "Answer" [level=3] [ref=e421]
+              - textbox "Write the candidate answer here..." [ref=e422]: "Vertical scaling means making one machine bigger: more CPU, RAM, storage, or faster hardware. Horizontal scaling means adding more machines and distributing traffic or work across them. I would choose vertical scaling first when the system is still small, I want operational simplicity, and the service can fit comfortably on a larger box. It is often the fastest way to buy headroom because you do not need to redesign session management, load balancing, or cross-node coordination. The limitation is that it has a ceiling, can become expensive at the high end, and creates a larger single point of failure if you rely on one big instance. I would choose horizontal scaling when the workload has outgrown a single machine or I need better resilience and elasticity. Multiple instances behind a load balancer let me spread traffic, replace failing nodes, and scale incrementally. It is a better long-term fit for high-traffic backend services, but it pushes complexity into the architecture: stateless app design, shared storage, distributed caches, background job coordination, and more operational tooling. So vertical scaling optimizes for simplicity and speed early on, while horizontal scaling optimizes for capacity, resilience, and long-term growth. In practice, many systems use both: scale up first to keep things simple, then scale out once the bottlenecks and availability requirements justify the extra complexity."
+            - generic [ref=e135]:
+              - button "Save answer" [ref=e136]
+              - button "Next question" [ref=e138]
+              - button "Finish session" [ref=e139]
+          - generic [ref=e140]:
+            - generic [ref=e141]:
+              - heading "AI helper" [level=3] [ref=e142]
+              - generic [ref=e143]: logged to backend
+            - paragraph [ref=e146]: Ask for a nudge, test strategy, or structure advice.
+            - generic [ref=e147]:
+              - textbox "Ask the assistant for help..." [ref=e148]
+              - button "Send" [ref=e149]
+  - generic [ref=e150]:
+    - alert
+    - alert

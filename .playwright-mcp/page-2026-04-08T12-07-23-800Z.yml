@@ -1,0 +1,116 @@
+- generic [active] [ref=e1]:
+  - generic [ref=e3]:
+    - banner [ref=e4]:
+      - generic [ref=e5]:
+        - paragraph [ref=e6]: Developer Assessment Platform
+        - link "MVP Assessment" [ref=e7] [cursor=pointer]:
+          - /url: /
+      - navigation [ref=e8]:
+        - link "Start" [ref=e9] [cursor=pointer]:
+          - /url: /
+        - link "Dashboard" [ref=e10] [cursor=pointer]:
+          - /url: /dashboard
+    - main [ref=e11]:
+      - generic [ref=e36]:
+        - generic [ref=e38]:
+          - paragraph [ref=e39]: Active session
+          - heading "test1" [level=2] [ref=e40]
+          - paragraph [ref=e41]: "Status: in_progress | Progress: 9/10"
+        - paragraph [ref=e561]: Answer saved.
+        - generic [ref=e42]:
+          - generic [ref=e43]:
+            - generic [ref=e44]:
+              - generic [ref=e45]:
+                - generic [ref=e46]: coding
+                - generic [ref=e47]: "difficulty: easy"
+                - generic [ref=e48]: 9 / 10
+              - heading "First Unique Character" [level=2] [ref=e469]
+              - paragraph [ref=e50]: "Write `first_unique_char(text)` that returns the index of the first non-repeating character, or `-1` if none exists."
+              - generic [ref=e51]:
+                - heading "Rubric focus" [level=3] [ref=e52]
+                - list [ref=e53]:
+                  - listitem [ref=e357]:
+                    - strong [ref=e358]: correctness
+                    - text: ": Returns the right result for expected and edge-case inputs"
+                  - listitem [ref=e359]:
+                    - strong [ref=e360]: code_quality
+                    - text: ": Readable, maintainable, and idiomatic Python"
+                  - listitem [ref=e361]:
+                    - strong [ref=e362]: problem_solving
+                    - text: ": Chooses an approach that fits the problem well"
+                  - listitem [ref=e363]:
+                    - strong [ref=e364]: efficiency
+                    - text: ": Uses time and space proportionally to the input"
+                  - listitem [ref=e365]:
+                    - strong [ref=e366]: testing_reasoning
+                    - text: ": Can explain edge cases and why the tests matter"
+                  - listitem [ref=e367]:
+                    - strong [ref=e368]: communication
+                    - text: ": Explains the approach clearly"
+            - generic [ref=e369]:
+              - heading "Python editor" [level=3] [ref=e370]
+              - code [ref=e374]:
+                - generic [ref=e375]:
+                  - textbox "Editor content"
+                  - textbox [ref=e376]
+                  - generic [ref=e378]:
+                    - generic [ref=e486]:
+                      - generic [ref=e488] [cursor=pointer]: 
+                      - generic [ref=e489]: "1"
+                    - generic [ref=e491]: "2"
+                    - generic [ref=e492]:
+                      - generic [ref=e493] [cursor=pointer]: 
+                      - generic [ref=e494]: "3"
+                    - generic [ref=e496]: "4"
+                    - generic [ref=e498]: "5"
+                    - generic [ref=e499]:
+                      - generic [ref=e500] [cursor=pointer]: 
+                      - generic [ref=e501]: "6"
+                    - generic [ref=e502]:
+                      - generic [ref=e503] [cursor=pointer]: 
+                      - generic [ref=e504]: "7"
+                    - generic [ref=e506]: "8"
+                    - generic [ref=e508]: "9"
+                    - generic [ref=e510]: "10"
+                  - generic [ref=e393]:
+                    - generic [ref=e535]: "def first_unique_char(text):"
+                    - generic [ref=e537]: "counts = {}"
+                    - generic [ref=e539]: "for char in text:"
+                    - generic [ref=e541]: counts[char] = counts.get(char, 0) + 1
+                    - generic [ref=e544]: "for index, char in enumerate(text):"
+                    - generic [ref=e546]: "if counts[char] == 1:"
+                    - generic [ref=e548]: return index
+                    - generic [ref=e550]: return -1
+            - generic [ref=e552]:
+              - generic [ref=e553]:
+                - heading "Run results" [level=3] [ref=e554]
+                - generic [ref=e555]: 2/2 passing
+              - list [ref=e556]:
+                - listitem [ref=e557]:
+                  - strong [ref=e558]: first_unique
+                  - text: ": pass"
+                - listitem [ref=e559]:
+                  - strong [ref=e560]: missing
+                  - text: ": pass"
+            - generic [ref=e97]:
+              - button "Save answer" [ref=e98] [cursor=pointer]
+              - button "Run code" [ref=e400] [cursor=pointer]
+              - button "Next question" [ref=e100] [cursor=pointer]
+              - button "Finish session" [ref=e101] [cursor=pointer]
+          - generic [ref=e102]:
+            - generic [ref=e103]:
+              - heading "AI helper" [level=3] [ref=e104]
+              - generic [ref=e105]: logged to backend
+            - generic [ref=e106]:
+              - article [ref=e453]:
+                - generic [ref=e454]: user
+                - paragraph [ref=e455]: I plan to normalize k with modulo and handle empty input first. What edge cases should I verify after that?
+              - article [ref=e456]:
+                - generic [ref=e457]: assistant
+                - paragraph [ref=e458]: Okay, let's see. The user is working on a Python function to rotate an array to the right by k steps. They mentioned handling empty input first, but the candidate draft answer is asking about edge cases after that. The known tests include cases where k is 2 and 4, which are wraparound. First, I need to make sure the code handles the rotation correctly. Rotating right by k steps means that each element moves to the right by k positions. But if k is larger than the array length, it wraps around. So, the first thing to check is if k is larger than the array length. If that's the case, the array should be rotated in the opposite direction, which is equivalent to rotating left by (n - k) steps. The candidate's draft answer already mentions handling empty input first. But maybe they need to verify that the input is valid. For example, if k is zero, the array should remain unchanged. Also, if the array is empty, the function should return an empty list. Another edge case is when
+            - generic [ref=e108]:
+              - textbox "Ask the assistant for help..." [ref=e109]
+              - button "Send" [ref=e110] [cursor=pointer]
+  - generic [ref=e111]:
+    - alert
+    - alert

@@ -1,0 +1,75 @@
+- generic [active] [ref=e1]:
+  - generic [ref=e3]:
+    - banner [ref=e4]:
+      - generic [ref=e5]:
+        - generic [ref=e6]:
+          - paragraph [ref=e7]: Developer Assessment Platform
+          - link "MVP Assessment" [ref=e8] [cursor=pointer]:
+            - /url: /
+        - navigation [ref=e9]:
+          - link "Start" [ref=e10] [cursor=pointer]:
+            - /url: /
+          - link "Dashboard" [ref=e11] [cursor=pointer]:
+            - /url: /dashboard
+    - main [ref=e12]:
+      - generic [ref=e65]:
+        - generic [ref=e67]:
+          - generic [ref=e68]:
+            - paragraph [ref=e69]: Active session
+            - heading "Container E2E Candidate" [level=2] [ref=e70]
+            - paragraph [ref=e71]: Work through the prompt, save often, run code locally when available, and finish to kick off scoring.
+          - generic [ref=e72]:
+            - generic [ref=e73]: "status: in_progress"
+            - generic [ref=e74]: "progress: 6/10"
+        - paragraph [ref=e457]: Answer saved.
+        - generic [ref=e75]:
+          - generic [ref=e76]:
+            - generic [ref=e77]:
+              - generic [ref=e78]:
+                - generic [ref=e79]: architecture
+                - generic [ref=e80]: "difficulty: hard"
+                - generic [ref=e81]: 6 / 10
+              - generic [ref=e82]:
+                - heading "Assessment Platform Design" [level=2] [ref=e444]
+                - paragraph [ref=e84]: Design a service that runs developer assessments, stores answers, and shows scored reports.
+              - generic [ref=e85]:
+                - generic [ref=e86]:
+                  - paragraph [ref=e87]: Rubric focus
+                  - heading "What the evaluator will look for" [level=3] [ref=e88]
+                - list [ref=e89]:
+                  - listitem [ref=e445]:
+                    - strong [ref=e446]: decomposition
+                    - text: Breaks the system into clear services
+                  - listitem [ref=e447]:
+                    - strong [ref=e448]: tradeoffs
+                    - text: Explains architecture choices
+                  - listitem [ref=e449]:
+                    - strong [ref=e450]: scalability
+                    - text: Handles growth
+                  - listitem [ref=e451]:
+                    - strong [ref=e452]: reliability
+                    - text: Considers failure paths
+                  - listitem [ref=e453]:
+                    - strong [ref=e454]: maintainability
+                    - text: Keeps the system operable
+                  - listitem [ref=e455]:
+                    - strong [ref=e456]: communication
+                    - text: Communicates clearly
+            - generic [ref=e420]:
+              - heading "Answer" [level=3] [ref=e421]
+              - textbox "Write the candidate answer here..." [ref=e422]: "I would split this into a small set of clear components around the main lifecycle: session creation, answer capture, evaluation, and reporting. At the front door I would have an API service that manages candidates, assessment sessions, question plans, answer submission, and result retrieval. It writes the core relational data to Postgres because the entities are structured and transactional: candidates, sessions, questions, submissions, evaluator runs, dimension scores, and final reports. The UI talks only to this API. For assessment content, I would keep a question bank with metadata, rubric definitions, and coding test fixtures. When a session starts, the service materializes a session-specific plan so the exact question order is auditable and stable. For evaluation, I would separate synchronous user actions from heavier scoring work. Saving an answer should be fast and durable: write the submission, return success, and optionally enqueue evaluation work. A worker process can then run deterministic code checks for coding questions, call the LLM-based evaluators, normalize the outputs, and persist evaluator runs. When the session is finished, a synthesis step aggregates dimension scores and produces the final report. That separation keeps the candidate experience responsive and makes retries operationally safer. For reliability, I would make submission writes idempotent, store raw evaluator output alongside normalized JSON, and treat the database as the source of truth. Background jobs should be retryable and safe to rerun, with per-question status so partial failures are visible. Timeouts or model failures should not lose the submission; they should produce an auditable failed evaluator run and allow reprocessing. For scalability, the API can scale horizontally behind a load balancer because session state is in Postgres. Worker capacity can scale independently based on evaluation backlog. If result browsing grows, I would add read replicas or a reporting index, but I would start simple because the write volume is probably modest in an MVP. For maintainability, I would keep the domain boundaries explicit: session management, submission ingestion, evaluation orchestration, and reporting. I would also expose an audit view so hiring teams can inspect evidence rather than only trusting a final score. The main tradeoff is complexity versus speed: a fully asynchronous architecture is more operationally involved than scoring inline, but it gives better responsiveness, retries, and room to grow once evaluation volume or model latency increases."
+            - generic [ref=e135]:
+              - button "Save answer" [ref=e136]
+              - button "Next question" [ref=e138]
+              - button "Finish session" [ref=e139]
+          - generic [ref=e140]:
+            - generic [ref=e141]:
+              - heading "AI helper" [level=3] [ref=e142]
+              - generic [ref=e143]: logged to backend
+            - paragraph [ref=e146]: Ask for a nudge, test strategy, or structure advice.
+            - generic [ref=e147]:
+              - textbox "Ask the assistant for help..." [ref=e148]
+              - button "Send" [ref=e149]
+  - generic [ref=e150]:
+    - alert
+    - alert

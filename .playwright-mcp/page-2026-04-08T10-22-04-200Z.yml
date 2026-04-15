@@ -1,0 +1,47 @@
+- generic [ref=e1]:
+  - generic [ref=e3]:
+    - banner [ref=e4]:
+      - generic [ref=e5]:
+        - paragraph [ref=e6]: Developer Assessment Platform
+        - link "MVP Assessment" [ref=e7] [cursor=pointer]:
+          - /url: /
+      - navigation [ref=e8]:
+        - link "Start" [ref=e9] [cursor=pointer]:
+          - /url: /
+        - link "Dashboard" [active] [ref=e10] [cursor=pointer]:
+          - /url: /dashboard
+    - main [ref=e11]:
+      - generic [ref=e148]:
+        - generic [ref=e150]:
+          - paragraph [ref=e151]: Dashboard
+          - heading "All assessment sessions" [level=1] [ref=e152]
+          - paragraph [ref=e153]: Open a result to inspect the final scoring breakdown.
+        - table [ref=e156]:
+          - rowgroup [ref=e157]:
+            - row "Candidate Status Recommendation Overall score Confidence" [ref=e158]:
+              - columnheader "Candidate" [ref=e159]
+              - columnheader "Status" [ref=e160]
+              - columnheader "Recommendation" [ref=e161]
+              - columnheader "Overall score" [ref=e162]
+              - columnheader "Confidence" [ref=e163]
+              - columnheader [ref=e164]
+          - rowgroup [ref=e165]:
+            - row "Playwright Smoke scored no_hire 0.0 0.00 Open result" [ref=e166]:
+              - cell "Playwright Smoke" [ref=e167]
+              - cell "scored" [ref=e168]
+              - cell "no_hire" [ref=e169]
+              - cell "0.0" [ref=e170]
+              - cell "0.00" [ref=e171]
+              - cell "Open result" [ref=e172]:
+                - button "Open result" [ref=e173] [cursor=pointer]
+            - row "Smoke Test Candidate in_progress pending -- -- Open result" [ref=e174]:
+              - cell "Smoke Test Candidate" [ref=e175]
+              - cell "in_progress" [ref=e176]
+              - cell "pending" [ref=e177]
+              - cell "--" [ref=e178]
+              - cell "--" [ref=e179]
+              - cell "Open result" [ref=e180]:
+                - button "Open result" [ref=e181] [cursor=pointer]
+  - generic [ref=e111]:
+    - alert
+    - alert

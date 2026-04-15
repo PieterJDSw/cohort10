@@ -1,0 +1,29 @@
+@import "tailwindcss";
+
+@theme {
+  --font-display:
+    "Iowan Old Style", "Palatino Linotype", "Book Antiqua", "Baskerville Old Face",
+    Georgia, serif;
+  --font-sans:
+    "Avenir Next", "Segoe UI", Inter, ui-sans-serif, system-ui, sans-serif;
+  --font-mono:
+    "Cascadia Code", "SFMono-Regular", "Roboto Mono", ui-monospace, monospace;
+}
+
+@layer base {
+  html {
+    @apply bg-stone-100;
+  }
+
+  body {
+    @apply min-h-screen bg-[radial-gradient(circle_at_top_left,_rgba(251,191,36,0.18),_transparent_28%),linear-gradient(180deg,_#fcfaf7_0%,_#f1ece3_100%)] font-sans text-slate-900 antialiased;
+  }
+
+  #root {
+    @apply min-h-screen;
+  }
+
+  ::selection {
+    @apply bg-amber-200 text-slate-950;
+  }
+}

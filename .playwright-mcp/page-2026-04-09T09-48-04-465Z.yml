@@ -1,0 +1,60 @@
+- generic [ref=e3]:
+  - banner [ref=e4]:
+    - generic [ref=e5]:
+      - generic [ref=e6]:
+        - paragraph [ref=e7]: Developer Assessment Platform
+        - link "MVP Assessment" [ref=e8] [cursor=pointer]:
+          - /url: /
+      - navigation [ref=e9]:
+        - link "Start" [ref=e10] [cursor=pointer]:
+          - /url: /
+        - link "Dashboard" [ref=e11] [cursor=pointer]:
+          - /url: /dashboard
+  - main [ref=e12]:
+    - generic [ref=e13]:
+      - generic [ref=e14]:
+        - generic [ref=e15]:
+          - generic [ref=e16]:
+            - paragraph [ref=e17]: Candidate Launch
+            - heading "Run a developer assessment without hand-wiring the workflow." [level=1] [ref=e18]
+            - paragraph [ref=e19]: Launch a polished session workspace, collect theory and coding responses, audit helper usage, and finish with a structured scorecard that hiring teams can actually inspect.
+          - generic [ref=e20]:
+            - article [ref=e21]:
+              - paragraph [ref=e22]: 10 questions
+              - paragraph [ref=e23]: Balanced across coding, architecture, culture, and AI usage.
+            - article [ref=e24]:
+              - paragraph [ref=e25]: Live code runs
+              - paragraph [ref=e26]: Execute candidate Python against local deterministic test cases.
+            - article [ref=e27]:
+              - paragraph [ref=e28]: Full audit trail
+              - paragraph [ref=e29]: Inspect submissions, evaluator JSON, and final synthesis output.
+        - generic [ref=e30]:
+          - generic [ref=e31]:
+            - paragraph [ref=e32]: Start New Session
+            - heading "Candidate Details" [level=2] [ref=e33]
+            - paragraph [ref=e34]: Use a real candidate or reviewer name. A fresh question plan is generated automatically.
+          - generic [ref=e35]:
+            - generic [ref=e36]:
+              - generic [ref=e37]: Candidate full name
+              - textbox "Candidate full name" [ref=e38]:
+                - /placeholder: Jane Doe
+            - button "Start test" [ref=e39]
+      - generic [ref=e40]:
+        - article [ref=e41]:
+          - heading "What the MVP covers" [level=2] [ref=e42]
+          - list [ref=e43]:
+            - listitem [ref=e44]:
+              - generic [ref=e46]: FastAPI backend with Postgres persistence
+            - listitem [ref=e47]:
+              - generic [ref=e49]: React assessment workspace with Monaco editor
+            - listitem [ref=e50]:
+              - generic [ref=e52]: Deterministic scoring and radar chart results
+        - article [ref=e53]:
+          - heading "What starts automatically" [level=2] [ref=e54]
+          - list [ref=e55]:
+            - listitem [ref=e56]:
+              - generic [ref=e58]: Database migrations on backend boot
+            - listitem [ref=e59]:
+              - generic [ref=e61]: Question seeding when the DB is empty
+            - listitem [ref=e62]:
+              - generic [ref=e64]: Docker services for frontend, backend, and Postgres

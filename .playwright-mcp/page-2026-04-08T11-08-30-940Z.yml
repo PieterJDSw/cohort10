@@ -1,0 +1,279 @@
+- generic [ref=e1]:
+  - generic [ref=e3]:
+    - banner [ref=e4]:
+      - generic [ref=e5]:
+        - paragraph [ref=e6]: Developer Assessment Platform
+        - link "MVP Assessment" [ref=e7] [cursor=pointer]:
+          - /url: /
+      - navigation [ref=e8]:
+        - link "Start" [ref=e9] [cursor=pointer]:
+          - /url: /
+        - link "Dashboard" [active] [ref=e10] [cursor=pointer]:
+          - /url: /dashboard
+    - main [ref=e11]:
+      - generic [ref=e177]:
+        - generic [ref=e179]:
+          - paragraph [ref=e180]: Dashboard
+          - heading "All assessment sessions" [level=1] [ref=e181]
+          - paragraph [ref=e182]: Open a result to inspect the final scoring breakdown.
+        - table [ref=e185]:
+          - rowgroup [ref=e186]:
+            - row "Candidate Status Recommendation Overall score Confidence" [ref=e187]:
+              - columnheader "Candidate" [ref=e188]
+              - columnheader "Status" [ref=e189]
+              - columnheader "Recommendation" [ref=e190]
+              - columnheader "Overall score" [ref=e191]
+              - columnheader "Confidence" [ref=e192]
+              - columnheader [ref=e193]
+          - rowgroup [ref=e194]:
+            - row "demo scored mixed 63.4 0.61 Open result" [ref=e195]:
+              - cell "demo" [ref=e196]
+              - cell "scored" [ref=e197]
+              - cell "mixed" [ref=e198]
+              - cell "63.4" [ref=e199]
+              - cell "0.61" [ref=e200]
+              - cell "Open result" [ref=e201]:
+                - button "Open result" [ref=e202] [cursor=pointer]
+            - row "Axis Verify scored no_hire 14.0 0.30 Open result" [ref=e203]:
+              - cell "Axis Verify" [ref=e204]
+              - cell "scored" [ref=e205]
+              - cell "no_hire" [ref=e206]
+              - cell "14.0" [ref=e207]
+              - cell "0.30" [ref=e208]
+              - cell "Open result" [ref=e209]:
+                - button "Open result" [ref=e210] [cursor=pointer]
+            - row "Helper Verify 5 in_progress pending -- -- Open result" [ref=e211]:
+              - cell "Helper Verify 5" [ref=e212]
+              - cell "in_progress" [ref=e213]
+              - cell "pending" [ref=e214]
+              - cell "--" [ref=e215]
+              - cell "--" [ref=e216]
+              - cell "Open result" [ref=e217]:
+                - button "Open result" [ref=e218] [cursor=pointer]
+            - row "Helper Verify 4 in_progress pending -- -- Open result" [ref=e219]:
+              - cell "Helper Verify 4" [ref=e220]
+              - cell "in_progress" [ref=e221]
+              - cell "pending" [ref=e222]
+              - cell "--" [ref=e223]
+              - cell "--" [ref=e224]
+              - cell "Open result" [ref=e225]:
+                - button "Open result" [ref=e226] [cursor=pointer]
+            - row "Helper Verify 3 in_progress pending -- -- Open result" [ref=e227]:
+              - cell "Helper Verify 3" [ref=e228]
+              - cell "in_progress" [ref=e229]
+              - cell "pending" [ref=e230]
+              - cell "--" [ref=e231]
+              - cell "--" [ref=e232]
+              - cell "Open result" [ref=e233]:
+                - button "Open result" [ref=e234] [cursor=pointer]
+            - row "Helper Verify 2 in_progress pending -- -- Open result" [ref=e235]:
+              - cell "Helper Verify 2" [ref=e236]
+              - cell "in_progress" [ref=e237]
+              - cell "pending" [ref=e238]
+              - cell "--" [ref=e239]
+              - cell "--" [ref=e240]
+              - cell "Open result" [ref=e241]:
+                - button "Open result" [ref=e242] [cursor=pointer]
+            - row "Helper Verify 1 in_progress pending -- -- Open result" [ref=e243]:
+              - cell "Helper Verify 1" [ref=e244]
+              - cell "in_progress" [ref=e245]
+              - cell "pending" [ref=e246]
+              - cell "--" [ref=e247]
+              - cell "--" [ref=e248]
+              - cell "Open result" [ref=e249]:
+                - button "Open result" [ref=e250] [cursor=pointer]
+            - row "Helper Probe 1 in_progress pending -- -- Open result" [ref=e251]:
+              - cell "Helper Probe 1" [ref=e252]
+              - cell "in_progress" [ref=e253]
+              - cell "pending" [ref=e254]
+              - cell "--" [ref=e255]
+              - cell "--" [ref=e256]
+              - cell "Open result" [ref=e257]:
+                - button "Open result" [ref=e258] [cursor=pointer]
+            - row "Helper Probe 2 in_progress pending -- -- Open result" [ref=e259]:
+              - cell "Helper Probe 2" [ref=e260]
+              - cell "in_progress" [ref=e261]
+              - cell "pending" [ref=e262]
+              - cell "--" [ref=e263]
+              - cell "--" [ref=e264]
+              - cell "Open result" [ref=e265]:
+                - button "Open result" [ref=e266] [cursor=pointer]
+            - row "Helper Probe in_progress pending -- -- Open result" [ref=e267]:
+              - cell "Helper Probe" [ref=e268]
+              - cell "in_progress" [ref=e269]
+              - cell "pending" [ref=e270]
+              - cell "--" [ref=e271]
+              - cell "--" [ref=e272]
+              - cell "Open result" [ref=e273]:
+                - button "Open result" [ref=e274] [cursor=pointer]
+            - row "Helper Check 10 in_progress pending -- -- Open result" [ref=e275]:
+              - cell "Helper Check 10" [ref=e276]
+              - cell "in_progress" [ref=e277]
+              - cell "pending" [ref=e278]
+              - cell "--" [ref=e279]
+              - cell "--" [ref=e280]
+              - cell "Open result" [ref=e281]:
+                - button "Open result" [ref=e282] [cursor=pointer]
+            - row "Helper Check 9 in_progress pending -- -- Open result" [ref=e283]:
+              - cell "Helper Check 9" [ref=e284]
+              - cell "in_progress" [ref=e285]
+              - cell "pending" [ref=e286]
+              - cell "--" [ref=e287]
+              - cell "--" [ref=e288]
+              - cell "Open result" [ref=e289]:
+                - button "Open result" [ref=e290] [cursor=pointer]
+            - row "Helper Check 8 in_progress pending -- -- Open result" [ref=e291]:
+              - cell "Helper Check 8" [ref=e292]
+              - cell "in_progress" [ref=e293]
+              - cell "pending" [ref=e294]
+              - cell "--" [ref=e295]
+              - cell "--" [ref=e296]
+              - cell "Open result" [ref=e297]:
+                - button "Open result" [ref=e298] [cursor=pointer]
+            - row "Helper Check 7 in_progress pending -- -- Open result" [ref=e299]:
+              - cell "Helper Check 7" [ref=e300]
+              - cell "in_progress" [ref=e301]
+              - cell "pending" [ref=e302]
+              - cell "--" [ref=e303]
+              - cell "--" [ref=e304]
+              - cell "Open result" [ref=e305]:
+                - button "Open result" [ref=e306] [cursor=pointer]
+            - row "Helper Check 6 in_progress pending -- -- Open result" [ref=e307]:
+              - cell "Helper Check 6" [ref=e308]
+              - cell "in_progress" [ref=e309]
+              - cell "pending" [ref=e310]
+              - cell "--" [ref=e311]
+              - cell "--" [ref=e312]
+              - cell "Open result" [ref=e313]:
+                - button "Open result" [ref=e314] [cursor=pointer]
+            - row "Helper Check 5 in_progress pending -- -- Open result" [ref=e315]:
+              - cell "Helper Check 5" [ref=e316]
+              - cell "in_progress" [ref=e317]
+              - cell "pending" [ref=e318]
+              - cell "--" [ref=e319]
+              - cell "--" [ref=e320]
+              - cell "Open result" [ref=e321]:
+                - button "Open result" [ref=e322] [cursor=pointer]
+            - row "Helper Check 4 in_progress pending -- -- Open result" [ref=e323]:
+              - cell "Helper Check 4" [ref=e324]
+              - cell "in_progress" [ref=e325]
+              - cell "pending" [ref=e326]
+              - cell "--" [ref=e327]
+              - cell "--" [ref=e328]
+              - cell "Open result" [ref=e329]:
+                - button "Open result" [ref=e330] [cursor=pointer]
+            - row "Helper Check 3 in_progress pending -- -- Open result" [ref=e331]:
+              - cell "Helper Check 3" [ref=e332]
+              - cell "in_progress" [ref=e333]
+              - cell "pending" [ref=e334]
+              - cell "--" [ref=e335]
+              - cell "--" [ref=e336]
+              - cell "Open result" [ref=e337]:
+                - button "Open result" [ref=e338] [cursor=pointer]
+            - row "Helper Check 2 in_progress pending -- -- Open result" [ref=e339]:
+              - cell "Helper Check 2" [ref=e340]
+              - cell "in_progress" [ref=e341]
+              - cell "pending" [ref=e342]
+              - cell "--" [ref=e343]
+              - cell "--" [ref=e344]
+              - cell "Open result" [ref=e345]:
+                - button "Open result" [ref=e346] [cursor=pointer]
+            - row "Helper Check 1 in_progress pending -- -- Open result" [ref=e347]:
+              - cell "Helper Check 1" [ref=e348]
+              - cell "in_progress" [ref=e349]
+              - cell "pending" [ref=e350]
+              - cell "--" [ref=e351]
+              - cell "--" [ref=e352]
+              - cell "Open result" [ref=e353]:
+                - button "Open result" [ref=e354] [cursor=pointer]
+            - row "Random Check 3 in_progress pending -- -- Open result" [ref=e355]:
+              - cell "Random Check 3" [ref=e356]
+              - cell "in_progress" [ref=e357]
+              - cell "pending" [ref=e358]
+              - cell "--" [ref=e359]
+              - cell "--" [ref=e360]
+              - cell "Open result" [ref=e361]:
+                - button "Open result" [ref=e362] [cursor=pointer]
+            - row "Random Check 2 in_progress pending -- -- Open result" [ref=e363]:
+              - cell "Random Check 2" [ref=e364]
+              - cell "in_progress" [ref=e365]
+              - cell "pending" [ref=e366]
+              - cell "--" [ref=e367]
+              - cell "--" [ref=e368]
+              - cell "Open result" [ref=e369]:
+                - button "Open result" [ref=e370] [cursor=pointer]
+            - row "Random Check 1 in_progress pending -- -- Open result" [ref=e371]:
+              - cell "Random Check 1" [ref=e372]
+              - cell "in_progress" [ref=e373]
+              - cell "pending" [ref=e374]
+              - cell "--" [ref=e375]
+              - cell "--" [ref=e376]
+              - cell "Open result" [ref=e377]:
+                - button "Open result" [ref=e378] [cursor=pointer]
+            - row "AI Helper Check 2 in_progress pending -- -- Open result" [ref=e379]:
+              - cell "AI Helper Check 2" [ref=e380]
+              - cell "in_progress" [ref=e381]
+              - cell "pending" [ref=e382]
+              - cell "--" [ref=e383]
+              - cell "--" [ref=e384]
+              - cell "Open result" [ref=e385]:
+                - button "Open result" [ref=e386] [cursor=pointer]
+            - row "AI Helper Check in_progress pending -- -- Open result" [ref=e387]:
+              - cell "AI Helper Check" [ref=e388]
+              - cell "in_progress" [ref=e389]
+              - cell "pending" [ref=e390]
+              - cell "--" [ref=e391]
+              - cell "--" [ref=e392]
+              - cell "Open result" [ref=e393]:
+                - button "Open result" [ref=e394] [cursor=pointer]
+            - row "dfg in_progress pending -- -- Open result" [ref=e395]:
+              - cell "dfg" [ref=e396]
+              - cell "in_progress" [ref=e397]
+              - cell "pending" [ref=e398]
+              - cell "--" [ref=e399]
+              - cell "--" [ref=e400]
+              - cell "Open result" [ref=e401]:
+                - button "Open result" [ref=e402] [cursor=pointer]
+            - row "pido scored no_hire 32.0 0.57 Open result" [ref=e403]:
+              - cell "pido" [ref=e404]
+              - cell "scored" [ref=e405]
+              - cell "no_hire" [ref=e406]
+              - cell "32.0" [ref=e407]
+              - cell "0.57" [ref=e408]
+              - cell "Open result" [ref=e409]:
+                - button "Open result" [ref=e410] [cursor=pointer]
+            - row "pieter scored mixed 58.7 0.66 Open result" [ref=e411]:
+              - cell "pieter" [ref=e412]
+              - cell "scored" [ref=e413]
+              - cell "mixed" [ref=e414]
+              - cell "58.7" [ref=e415]
+              - cell "0.66" [ref=e416]
+              - cell "Open result" [ref=e417]:
+                - button "Open result" [ref=e418] [cursor=pointer]
+            - row "Playwright Answer Path scored hire 74.5 0.73 Open result" [ref=e419]:
+              - cell "Playwright Answer Path" [ref=e420]
+              - cell "scored" [ref=e421]
+              - cell "hire" [ref=e422]
+              - cell "74.5" [ref=e423]
+              - cell "0.73" [ref=e424]
+              - cell "Open result" [ref=e425]:
+                - button "Open result" [ref=e426] [cursor=pointer]
+            - row "Playwright Smoke scored no_hire 0.0 0.00 Open result" [ref=e427]:
+              - cell "Playwright Smoke" [ref=e428]
+              - cell "scored" [ref=e429]
+              - cell "no_hire" [ref=e430]
+              - cell "0.0" [ref=e431]
+              - cell "0.00" [ref=e432]
+              - cell "Open result" [ref=e433]:
+                - button "Open result" [ref=e434] [cursor=pointer]
+            - row "Smoke Test Candidate in_progress pending -- -- Open result" [ref=e435]:
+              - cell "Smoke Test Candidate" [ref=e436]
+              - cell "in_progress" [ref=e437]
+              - cell "pending" [ref=e438]
+              - cell "--" [ref=e439]
+              - cell "--" [ref=e440]
+              - cell "Open result" [ref=e441]:
+                - button "Open result" [ref=e442] [cursor=pointer]
+  - generic [ref=e111]:
+    - alert
+    - alert

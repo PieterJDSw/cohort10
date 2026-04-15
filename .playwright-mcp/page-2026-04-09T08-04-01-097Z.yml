@@ -1,0 +1,56 @@
+- generic [ref=e3]:
+  - banner [ref=e4]:
+    - generic [ref=e5]:
+      - paragraph [ref=e6]: Developer Assessment Platform
+      - link "MVP Assessment" [ref=e7] [cursor=pointer]:
+        - /url: /
+    - navigation [ref=e8]:
+      - link "Start" [ref=e9] [cursor=pointer]:
+        - /url: /
+      - link "Dashboard" [ref=e10] [cursor=pointer]:
+        - /url: /dashboard
+  - main [ref=e11]:
+    - generic [ref=e36]:
+      - generic [ref=e38]:
+        - paragraph [ref=e39]: Active session
+        - heading "Playwright Smoke" [level=2] [ref=e40]
+        - paragraph [ref=e41]: "Status: in_progress | Progress: 1/10"
+      - generic [ref=e42]:
+        - generic [ref=e43]:
+          - generic [ref=e44]:
+            - generic [ref=e45]:
+              - generic [ref=e46]: theory
+              - generic [ref=e47]: "difficulty: medium"
+              - generic [ref=e48]: 1 / 10
+            - heading "REST vs RPC" [level=2] [ref=e49]
+            - paragraph [ref=e50]: Compare REST and RPC APIs for an internal service ecosystem.
+            - generic [ref=e51]:
+              - heading "Rubric focus" [level=3] [ref=e52]
+              - list [ref=e53]:
+                - listitem [ref=e54]:
+                  - strong [ref=e55]: conceptual_correctness
+                  - text: ": Correctly defines both styles"
+                - listitem [ref=e56]:
+                  - strong [ref=e57]: depth
+                  - text: ": Explains practical differences"
+                - listitem [ref=e58]:
+                  - strong [ref=e59]: tradeoff_reasoning
+                  - text: ": Matches choices to context"
+                - listitem [ref=e60]:
+                  - strong [ref=e61]: clarity
+                  - text: ": Clear structure and language"
+          - generic [ref=e62]:
+            - heading "Answer" [level=3] [ref=e63]
+            - textbox "Write the candidate answer here..." [ref=e64]
+          - generic [ref=e65]:
+            - button "Save answer" [ref=e66] [cursor=pointer]
+            - button "Next question" [ref=e67] [cursor=pointer]
+            - button "Finish session" [ref=e68] [cursor=pointer]
+        - generic [ref=e69]:
+          - generic [ref=e70]:
+            - heading "AI helper" [level=3] [ref=e71]
+            - generic [ref=e72]: logged to backend
+          - paragraph [ref=e74]: Ask for a nudge, test strategy, or structure advice.
+          - generic [ref=e75]:
+            - textbox "Ask the assistant for help..." [ref=e76]
+            - button "Send" [ref=e77] [cursor=pointer]

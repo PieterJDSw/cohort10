@@ -1,0 +1,182 @@
+<mxGraphModel dx="1600" dy="900" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="1700" pageHeight="1200" math="0" shadow="0" adaptiveColors="auto">
+  <root>
+    <mxCell id="0"/>
+    <mxCell id="1" parent="0"/>
+    <mxCell id="2" value="Candidate enters name&#xa;LandingPage -> startCandidate()" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#dae8fc;strokeColor=#6c8ebf;" vertex="1" parent="1">
+      <mxGeometry x="60" y="80" width="220" height="70" as="geometry"/>
+    </mxCell>
+    <mxCell id="3" value="POST /api/candidates/start" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#d5e8d4;strokeColor=#82b366;" vertex="1" parent="1">
+      <mxGeometry x="350" y="80" width="200" height="50" as="geometry"/>
+    </mxCell>
+    <mxCell id="4" value="SessionService&#xa;create_candidate_and_session()&#xa;build_default_question_plan()" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#fff2cc;strokeColor=#d6b656;" vertex="1" parent="1">
+      <mxGeometry x="620" y="65" width="240" height="80" as="geometry"/>
+    </mxCell>
+    <mxCell id="5" value="Persist candidate + session + session_questions" style="shape=cylinder3;whiteSpace=wrap;html=1;boundedLbl=1;fillColor=#f8cecc;strokeColor=#b85450;" vertex="1" parent="1">
+      <mxGeometry x="930" y="70" width="210" height="70" as="geometry"/>
+    </mxCell>
+    <mxCell id="6" value="Navigate to /test/:sessionId" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#dae8fc;strokeColor=#6c8ebf;" vertex="1" parent="1">
+      <mxGeometry x="1200" y="80" width="180" height="50" as="geometry"/>
+    </mxCell>
+    <mxCell id="7" value="TestPage load&#xa;getSession() + getCurrentQuestion()" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#dae8fc;strokeColor=#6c8ebf;" vertex="1" parent="1">
+      <mxGeometry x="60" y="220" width="220" height="70" as="geometry"/>
+    </mxCell>
+    <mxCell id="8" value="GET /api/sessions/{id}&#xa;GET /api/sessions/{id}/current-question" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#d5e8d4;strokeColor=#82b366;" vertex="1" parent="1">
+      <mxGeometry x="350" y="220" width="200" height="70" as="geometry"/>
+    </mxCell>
+    <mxCell id="9" value="Session summary + current question payload" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#fff2cc;strokeColor=#d6b656;" vertex="1" parent="1">
+      <mxGeometry x="620" y="220" width="240" height="70" as="geometry"/>
+    </mxCell>
+    <mxCell id="10" value="Candidate answers question" style="rhombus;whiteSpace=wrap;html=1;fillColor=#fff2cc;strokeColor=#d6b656;" vertex="1" parent="1">
+      <mxGeometry x="80" y="360" width="180" height="90" as="geometry"/>
+    </mxCell>
+    <mxCell id="11" value="Text / theory / architecture / culture / AI fluency answer" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#dae8fc;strokeColor=#6c8ebf;" vertex="1" parent="1">
+      <mxGeometry x="40" y="500" width="250" height="70" as="geometry"/>
+    </mxCell>
+    <mxCell id="12" value="Coding answer in Monaco editor" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#dae8fc;strokeColor=#6c8ebf;" vertex="1" parent="1">
+      <mxGeometry x="40" y="610" width="250" height="70" as="geometry"/>
+    </mxCell>
+    <mxCell id="13" value="POST /answers/text" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#d5e8d4;strokeColor=#82b366;" vertex="1" parent="1">
+      <mxGeometry x="350" y="510" width="200" height="50" as="geometry"/>
+    </mxCell>
+    <mxCell id="14" value="POST /answers/code" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#d5e8d4;strokeColor=#82b366;" vertex="1" parent="1">
+      <mxGeometry x="350" y="620" width="200" height="50" as="geometry"/>
+    </mxCell>
+    <mxCell id="15" value="SubmissionService saves submission&#xa;marks session_question as answered" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#fff2cc;strokeColor=#d6b656;" vertex="1" parent="1">
+      <mxGeometry x="620" y="500" width="240" height="80" as="geometry"/>
+    </mxCell>
+    <mxCell id="16" value="POST /code/run&#xa;Python only" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#d5e8d4;strokeColor=#82b366;" vertex="1" parent="1">
+      <mxGeometry x="350" y="710" width="200" height="50" as="geometry"/>
+    </mxCell>
+    <mxCell id="17" value="run_python_tests(code, metadata.tests)" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#fff2cc;strokeColor=#d6b656;" vertex="1" parent="1">
+      <mxGeometry x="620" y="700" width="240" height="70" as="geometry"/>
+    </mxCell>
+    <mxCell id="18" value="POST /ai/chat" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#d5e8d4;strokeColor=#82b366;" vertex="1" parent="1">
+      <mxGeometry x="350" y="800" width="200" height="50" as="geometry"/>
+    </mxCell>
+    <mxCell id="19" value="SubmissionService&#xa;generate AI hint&#xa;save AIInteraction" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#fff2cc;strokeColor=#d6b656;" vertex="1" parent="1">
+      <mxGeometry x="620" y="790" width="240" height="70" as="geometry"/>
+    </mxCell>
+    <mxCell id="20" value="Local vLLM or fallback hint logic" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#e1d5e7;strokeColor=#9673a6;" vertex="1" parent="1">
+      <mxGeometry x="930" y="790" width="210" height="70" as="geometry"/>
+    </mxCell>
+    <mxCell id="21" value="POST /next" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#d5e8d4;strokeColor=#82b366;" vertex="1" parent="1">
+      <mxGeometry x="350" y="910" width="200" height="50" as="geometry"/>
+    </mxCell>
+    <mxCell id="22" value="advance_session()&#xa;current -> completed&#xa;next pending -> active" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#fff2cc;strokeColor=#d6b656;" vertex="1" parent="1">
+      <mxGeometry x="620" y="900" width="240" height="70" as="geometry"/>
+    </mxCell>
+    <mxCell id="23" value="More questions?" style="rhombus;whiteSpace=wrap;html=1;fillColor=#fff2cc;strokeColor=#d6b656;" vertex="1" parent="1">
+      <mxGeometry x="930" y="900" width="140" height="80" as="geometry"/>
+    </mxCell>
+    <mxCell id="24" value="Reload next current question" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#dae8fc;strokeColor=#6c8ebf;" vertex="1" parent="1">
+      <mxGeometry x="1140" y="900" width="190" height="60" as="geometry"/>
+    </mxCell>
+    <mxCell id="25" value="POST /finish" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#d5e8d4;strokeColor=#82b366;" vertex="1" parent="1">
+      <mxGeometry x="350" y="1030" width="200" height="50" as="geometry"/>
+    </mxCell>
+    <mxCell id="26" value="SessionService.finish_session()&#xa;set submitted&#xa;call finalize_session()" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#fff2cc;strokeColor=#d6b656;" vertex="1" parent="1">
+      <mxGeometry x="620" y="1010" width="240" height="80" as="geometry"/>
+    </mxCell>
+    <mxCell id="27" value="Evaluate each question&#xa;aggregate dimension scores&#xa;synthesize final report" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#ffe6cc;strokeColor=#d79b00;" vertex="1" parent="1">
+      <mxGeometry x="930" y="1010" width="210" height="80" as="geometry"/>
+    </mxCell>
+    <mxCell id="28" value="Save dimension_scores + final_report" style="shape=cylinder3;whiteSpace=wrap;html=1;boundedLbl=1;fillColor=#f8cecc;strokeColor=#b85450;" vertex="1" parent="1">
+      <mxGeometry x="1200" y="1015" width="210" height="70" as="geometry"/>
+    </mxCell>
+    <mxCell id="29" value="Navigate to /result/:sessionId&#xa;optionally to /audit/:sessionId" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#dae8fc;strokeColor=#6c8ebf;" vertex="1" parent="1">
+      <mxGeometry x="1200" y="1120" width="210" height="70" as="geometry"/>
+    </mxCell>
+    <mxCell id="30" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=1;jettySize=auto;" edge="1" parent="1" source="2" target="3">
+      <mxGeometry relative="1" as="geometry"/>
+    </mxCell>
+    <mxCell id="31" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=1;jettySize=auto;" edge="1" parent="1" source="3" target="4">
+      <mxGeometry relative="1" as="geometry"/>
+    </mxCell>
+    <mxCell id="32" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=1;jettySize=auto;" edge="1" parent="1" source="4" target="5">
+      <mxGeometry relative="1" as="geometry"/>
+    </mxCell>
+    <mxCell id="33" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=1;jettySize=auto;" edge="1" parent="1" source="5" target="6">
+      <mxGeometry relative="1" as="geometry"/>
+    </mxCell>
+    <mxCell id="34" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=1;jettySize=auto;" edge="1" parent="1" source="6" target="7">
+      <mxGeometry relative="1" as="geometry"/>
+    </mxCell>
+    <mxCell id="35" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=1;jettySize=auto;" edge="1" parent="1" source="7" target="8">
+      <mxGeometry relative="1" as="geometry"/>
+    </mxCell>
+    <mxCell id="36" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=1;jettySize=auto;" edge="1" parent="1" source="8" target="9">
+      <mxGeometry relative="1" as="geometry"/>
+    </mxCell>
+    <mxCell id="37" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=1;jettySize=auto;" edge="1" parent="1" source="9" target="10">
+      <mxGeometry relative="1" as="geometry"/>
+    </mxCell>
+    <mxCell id="38" value="text path" style="edgeStyle=orthogonalEdgeStyle;rounded=1;jettySize=auto;" edge="1" parent="1" source="10" target="11">
+      <mxGeometry relative="1" as="geometry"/>
+    </mxCell>
+    <mxCell id="39" value="coding path" style="edgeStyle=orthogonalEdgeStyle;rounded=1;jettySize=auto;" edge="1" parent="1" source="10" target="12">
+      <mxGeometry relative="1" as="geometry"/>
+    </mxCell>
+    <mxCell id="40" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=1;jettySize=auto;" edge="1" parent="1" source="11" target="13">
+      <mxGeometry relative="1" as="geometry"/>
+    </mxCell>
+    <mxCell id="41" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=1;jettySize=auto;" edge="1" parent="1" source="12" target="14">
+      <mxGeometry relative="1" as="geometry"/>
+    </mxCell>
+    <mxCell id="42" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=1;jettySize=auto;" edge="1" parent="1" source="13" target="15">
+      <mxGeometry relative="1" as="geometry"/>
+    </mxCell>
+    <mxCell id="43" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=1;jettySize=auto;" edge="1" parent="1" source="14" target="15">
+      <mxGeometry relative="1" as="geometry"/>
+    </mxCell>
+    <mxCell id="44" value="optional run before save / after edit" style="edgeStyle=orthogonalEdgeStyle;rounded=1;jettySize=auto;" edge="1" parent="1" source="12" target="16">
+      <mxGeometry relative="1" as="geometry"/>
+    </mxCell>
+    <mxCell id="45" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=1;jettySize=auto;" edge="1" parent="1" source="16" target="17">
+      <mxGeometry relative="1" as="geometry"/>
+    </mxCell>
+    <mxCell id="46" value="AI helper side loop" style="edgeStyle=orthogonalEdgeStyle;rounded=1;jettySize=auto;" edge="1" parent="1" source="10" target="18">
+      <mxGeometry relative="1" as="geometry"/>
+    </mxCell>
+    <mxCell id="47" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=1;jettySize=auto;" edge="1" parent="1" source="18" target="19">
+      <mxGeometry relative="1" as="geometry"/>
+    </mxCell>
+    <mxCell id="48" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=1;jettySize=auto;" edge="1" parent="1" source="19" target="20">
+      <mxGeometry relative="1" as="geometry"/>
+    </mxCell>
+    <mxCell id="49" value="candidate clicks Next" style="edgeStyle=orthogonalEdgeStyle;rounded=1;jettySize=auto;" edge="1" parent="1" source="10" target="21">
+      <mxGeometry relative="1" as="geometry"/>
+    </mxCell>
+    <mxCell id="50" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=1;jettySize=auto;" edge="1" parent="1" source="21" target="22">
+      <mxGeometry relative="1" as="geometry"/>
+    </mxCell>
+    <mxCell id="51" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=1;jettySize=auto;" edge="1" parent="1" source="22" target="23">
+      <mxGeometry relative="1" as="geometry"/>
+    </mxCell>
+    <mxCell id="52" value="yes" style="edgeStyle=orthogonalEdgeStyle;rounded=1;jettySize=auto;" edge="1" parent="1" source="23" target="24">
+      <mxGeometry relative="1" as="geometry"/>
+    </mxCell>
+    <mxCell id="53" value="loops back" style="edgeStyle=orthogonalEdgeStyle;rounded=1;jettySize=auto;" edge="1" parent="1" source="24" target="7">
+      <mxGeometry relative="1" as="geometry">
+        <Array as="points">
+          <mxPoint x="1430" y="930"/>
+          <mxPoint x="1430" y="255"/>
+        </Array>
+      </mxGeometry>
+    </mxCell>
+    <mxCell id="54" value="no, finish" style="edgeStyle=orthogonalEdgeStyle;rounded=1;jettySize=auto;" edge="1" parent="1" source="23" target="25">
+      <mxGeometry relative="1" as="geometry"/>
+    </mxCell>
+    <mxCell id="55" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=1;jettySize=auto;" edge="1" parent="1" source="25" target="26">
+      <mxGeometry relative="1" as="geometry"/>
+    </mxCell>
+    <mxCell id="56" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=1;jettySize=auto;" edge="1" parent="1" source="26" target="27">
+      <mxGeometry relative="1" as="geometry"/>
+    </mxCell>
+    <mxCell id="57" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=1;jettySize=auto;" edge="1" parent="1" source="27" target="28">
+      <mxGeometry relative="1" as="geometry"/>
+    </mxCell>
+    <mxCell id="58" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=1;jettySize=auto;" edge="1" parent="1" source="28" target="29">
+      <mxGeometry relative="1" as="geometry"/>
+    </mxCell>
+  </root>
+</mxGraphModel>

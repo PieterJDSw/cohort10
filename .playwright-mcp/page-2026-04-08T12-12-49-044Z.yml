@@ -1,0 +1,93 @@
+- generic [active] [ref=e1]:
+  - generic [ref=e3]:
+    - banner [ref=e4]:
+      - generic [ref=e5]:
+        - paragraph [ref=e6]: Developer Assessment Platform
+        - link "MVP Assessment" [ref=e7] [cursor=pointer]:
+          - /url: /
+      - navigation [ref=e8]:
+        - link "Start" [ref=e9] [cursor=pointer]:
+          - /url: /
+        - link "Dashboard" [ref=e10] [cursor=pointer]:
+          - /url: /dashboard
+    - main [ref=e11]:
+      - generic [ref=e659]:
+        - generic [ref=e661]:
+          - paragraph [ref=e662]: Active session
+          - heading "test1" [level=2] [ref=e663]
+          - paragraph [ref=e664]: "Status: in_progress | Progress: 10/10"
+        - paragraph [ref=e882]: Answer saved.
+        - generic [ref=e665]:
+          - generic [ref=e666]:
+            - generic [ref=e667]:
+              - generic [ref=e668]:
+                - generic [ref=e669]: coding
+                - generic [ref=e670]: "difficulty: easy"
+                - generic [ref=e671]: 10 / 10
+              - heading "Palindrome Check" [level=2] [ref=e839]
+              - paragraph [ref=e673]: "Write a Python function `is_palindrome(text)` that ignores spaces and casing."
+              - generic [ref=e674]:
+                - heading "Rubric focus" [level=3] [ref=e675]
+                - list [ref=e676]:
+                  - listitem [ref=e840]:
+                    - strong [ref=e841]: correctness
+                    - text: ": Handles normalization correctly"
+                  - listitem [ref=e842]:
+                    - strong [ref=e843]: code_quality
+                    - text: ": Clear implementation"
+                  - listitem [ref=e844]:
+                    - strong [ref=e845]: problem_solving
+                    - text: ": Uses a sensible approach"
+                  - listitem [ref=e846]:
+                    - strong [ref=e847]: efficiency
+                    - text: ": Reasonable runtime"
+                  - listitem [ref=e848]:
+                    - strong [ref=e849]: testing_reasoning
+                    - text: ": Mentions edge cases"
+                  - listitem [ref=e769]:
+                    - strong [ref=e770]: communication
+                    - text: ": Explains tradeoffs"
+            - generic [ref=e850]:
+              - heading "Python editor" [level=3] [ref=e851]
+              - code [ref=e855]:
+                - generic [ref=e856]:
+                  - textbox "Editor content"
+                  - textbox [ref=e857]
+                  - generic [ref=e859]:
+                    - generic [ref=e883]:
+                      - generic [ref=e885] [cursor=pointer]: 
+                      - generic [ref=e886]: "1"
+                    - generic [ref=e888]: "2"
+                    - generic [ref=e890]: "3"
+                    - generic [ref=e892]: "4"
+                  - generic [ref=e874]:
+                    - generic [ref=e901]: "def is_palindrome(text):"
+                    - generic [ref=e903]: normalized = ''.join(char.lower() for char in text if char != ' ')
+                    - generic [ref=e905]: return normalized == normalized[::-1]
+            - generic [ref=e907]:
+              - generic [ref=e908]:
+                - heading "Run results" [level=3] [ref=e909]
+                - generic [ref=e910]: 2/2 passing
+              - list [ref=e911]:
+                - listitem [ref=e912]:
+                  - strong [ref=e913]: phrase
+                  - text: ": pass"
+                - listitem [ref=e914]:
+                  - strong [ref=e915]: negative
+                  - text: ": pass"
+            - generic [ref=e692]:
+              - button "Save answer" [disabled] [ref=e693]
+              - button "Run code" [disabled] [ref=e881]
+              - button "Next question" [disabled] [ref=e694]
+              - button "Finish session" [disabled] [ref=e695]
+          - generic [ref=e696]:
+            - generic [ref=e697]:
+              - heading "AI helper" [level=3] [ref=e698]
+              - generic [ref=e699]: logged to backend
+            - paragraph [ref=e701]: Ask for a nudge, test strategy, or structure advice.
+            - generic [ref=e702]:
+              - textbox "Ask the assistant for help..." [ref=e703]
+              - button "Sending..." [disabled] [ref=e916]
+  - generic [ref=e111]:
+    - alert
+    - alert

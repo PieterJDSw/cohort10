@@ -1,0 +1,144 @@
+- generic [active] [ref=e1]:
+  - generic [ref=e3]:
+    - banner [ref=e4]:
+      - generic [ref=e5]:
+        - paragraph [ref=e6]: Developer Assessment Platform
+        - link "MVP Assessment" [ref=e7] [cursor=pointer]:
+          - /url: /
+      - navigation [ref=e8]:
+        - link "Start" [ref=e9] [cursor=pointer]:
+          - /url: /
+        - link "Dashboard" [ref=e10] [cursor=pointer]:
+          - /url: /dashboard
+    - main [ref=e11]:
+      - generic [ref=e36]:
+        - generic [ref=e38]:
+          - paragraph [ref=e39]: Active session
+          - heading "test1" [level=2] [ref=e40]
+          - paragraph [ref=e41]: "Status: in_progress | Progress: 1/10"
+        - paragraph [ref=e258]: Code executed against the local MVP tests.
+        - generic [ref=e42]:
+          - generic [ref=e43]:
+            - generic [ref=e44]:
+              - generic [ref=e45]:
+                - generic [ref=e46]: coding
+                - generic [ref=e47]: "difficulty: medium"
+                - generic [ref=e48]: 1 / 10
+              - heading "Roman Numeral Parser" [level=2] [ref=e49]
+              - paragraph [ref=e50]: "Write `roman_to_int(text)` that converts a Roman numeral string into an integer."
+              - generic [ref=e51]:
+                - heading "Rubric focus" [level=3] [ref=e52]
+                - list [ref=e53]:
+                  - listitem [ref=e54]:
+                    - strong [ref=e55]: correctness
+                    - text: ": Returns the right result for expected and edge-case inputs"
+                  - listitem [ref=e56]:
+                    - strong [ref=e57]: code_quality
+                    - text: ": Readable, maintainable, and idiomatic Python"
+                  - listitem [ref=e58]:
+                    - strong [ref=e59]: problem_solving
+                    - text: ": Chooses an approach that fits the problem well"
+                  - listitem [ref=e60]:
+                    - strong [ref=e61]: efficiency
+                    - text: ": Uses time and space proportionally to the input"
+                  - listitem [ref=e62]:
+                    - strong [ref=e63]: testing_reasoning
+                    - text: ": Can explain edge cases and why the tests matter"
+                  - listitem [ref=e64]:
+                    - strong [ref=e65]: communication
+                    - text: ": Explains the approach clearly"
+            - generic [ref=e66]:
+              - heading "Python editor" [level=3] [ref=e67]
+              - code [ref=e71]:
+                - generic [ref=e72]:
+                  - textbox "Editor content" [ref=e259]
+                  - textbox [ref=e73]
+                  - generic [ref=e75]:
+                    - generic [ref=e120]:
+                      - generic [ref=e121] [cursor=pointer]: 
+                      - generic [ref=e122]: "2"
+                    - generic [ref=e124]: "3"
+                    - generic [ref=e126]: "4"
+                    - generic [ref=e128]: "5"
+                    - generic [ref=e130]: "6"
+                    - generic [ref=e132]: "7"
+                    - generic [ref=e134]: "8"
+                    - generic [ref=e136]: "9"
+                    - generic [ref=e138]: "10"
+                    - generic [ref=e140]: "11"
+                    - generic [ref=e142]: "12"
+                    - generic [ref=e143]:
+                      - generic [ref=e144] [cursor=pointer]: 
+                      - generic [ref=e145]: "13"
+                    - generic [ref=e147]: "14"
+                    - generic [ref=e148]:
+                      - generic [ref=e149] [cursor=pointer]: 
+                      - generic [ref=e150]: "15"
+                    - generic [ref=e152]: "16"
+                    - generic [ref=e153]:
+                      - generic [ref=e154] [cursor=pointer]: 
+                      - generic [ref=e155]: "17"
+                    - generic [ref=e157]: "18"
+                    - generic [ref=e159]: "19"
+                    - generic [ref=e161]: "20"
+                    - generic [ref=e261]: "21"
+                  - generic [ref=e90]:
+                    - generic [ref=e221]: "values = {"
+                    - generic [ref=e223]: "'I': 1,"
+                    - generic [ref=e225]: "'V': 5,"
+                    - generic [ref=e227]: "'X': 10,"
+                    - generic [ref=e229]: "'L': 50,"
+                    - generic [ref=e231]: "'C': 100,"
+                    - generic [ref=e233]: "'D': 500,"
+                    - generic [ref=e235]: "'M': 1000,"
+                    - generic [ref=e237]: "}"
+                    - generic [ref=e239]: total = 0
+                    - generic [ref=e241]: prev = 0
+                    - generic [ref=e243]: "for char in reversed(text):"
+                    - generic [ref=e245]: value = values[char]
+                    - generic [ref=e247]: "if value < prev:"
+                    - generic [ref=e249]: total -= value
+                    - generic [ref=e251]: "else:"
+                    - generic [ref=e253]: total += value
+                    - generic [ref=e255]: prev = value
+                    - generic [ref=e257]: return total
+                  - generic [ref=e265]:
+                    - generic [ref=e266]:
+                      - generic [ref=e267]: "1"
+                      - generic [ref=e268]: 
+                    - generic [ref=e269]:
+                      - generic [ref=e270]: "2"
+                      - generic [ref=e271]: 
+                    - generic [ref=e272]:
+                      - list:
+                        - listitem [ref=e273]:
+                          - generic [ref=e274]: "def roman_to_int(text):"
+                        - listitem [ref=e275]:
+                          - generic [ref=e276]: "values = {"
+            - generic [ref=e277]:
+              - generic [ref=e278]:
+                - heading "Run results" [level=3] [ref=e279]
+                - generic [ref=e280]: 2/2 passing
+              - list [ref=e281]:
+                - listitem [ref=e282]:
+                  - strong [ref=e283]: simple
+                  - text: ": pass"
+                - listitem [ref=e284]:
+                  - strong [ref=e285]: subtractive
+                  - text: ": pass"
+            - generic [ref=e97]:
+              - button "Save answer" [ref=e98] [cursor=pointer]
+              - button "Run code" [ref=e99] [cursor=pointer]
+              - button "Next question" [ref=e100] [cursor=pointer]
+              - button "Finish session" [ref=e101] [cursor=pointer]
+          - generic [ref=e102]:
+            - generic [ref=e103]:
+              - heading "AI helper" [level=3] [ref=e104]
+              - generic [ref=e105]: logged to backend
+            - paragraph [ref=e107]: Ask for a nudge, test strategy, or structure advice.
+            - generic [ref=e108]:
+              - textbox "Ask the assistant for help..." [ref=e109]
+              - button "Send" [ref=e110] [cursor=pointer]
+  - generic [ref=e111]:
+    - alert
+    - alert

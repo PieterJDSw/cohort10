@@ -1,0 +1,441 @@
+- generic [ref=e1]:
+  - generic [ref=e3]:
+    - banner [ref=e4]:
+      - generic [ref=e5]:
+        - paragraph [ref=e6]: Developer Assessment Platform
+        - link "MVP Assessment" [ref=e7] [cursor=pointer]:
+          - /url: /
+      - navigation [ref=e8]:
+        - link "Start" [ref=e9] [cursor=pointer]:
+          - /url: /
+        - link "Dashboard" [active] [ref=e10] [cursor=pointer]:
+          - /url: /dashboard
+    - main [ref=e11]:
+      - generic [ref=e997]:
+        - generic [ref=e999]:
+          - paragraph [ref=e1000]: Dashboard
+          - heading "All assessment sessions" [level=1] [ref=e1001]
+          - paragraph [ref=e1002]: Open a result to inspect the final scoring breakdown.
+        - table [ref=e1005]:
+          - rowgroup [ref=e1006]:
+            - row "Candidate Status Recommendation Overall score Confidence" [ref=e1007]:
+              - columnheader "Candidate" [ref=e1008]
+              - columnheader "Status" [ref=e1009]
+              - columnheader "Recommendation" [ref=e1010]
+              - columnheader "Overall score" [ref=e1011]
+              - columnheader "Confidence" [ref=e1012]
+              - columnheader [ref=e1013]
+          - rowgroup [ref=e1014]:
+            - row "test1 scored mixed 59.4 42.55 Open result Open audit" [ref=e1015]:
+              - cell "test1" [ref=e1016]
+              - cell "scored" [ref=e1017]
+              - cell "mixed" [ref=e1018]
+              - cell "59.4" [ref=e1019]
+              - cell "42.55" [ref=e1020]
+              - cell "Open result Open audit" [ref=e1021]:
+                - generic [ref=e1022]:
+                  - button "Open result" [ref=e1023] [cursor=pointer]
+                  - button "Open audit" [ref=e1024] [cursor=pointer]
+            - row "test1 scored mixed 21.9 19.30 Open result Open audit" [ref=e1025]:
+              - cell "test1" [ref=e1026]
+              - cell "scored" [ref=e1027]
+              - cell "mixed" [ref=e1028]
+              - cell "21.9" [ref=e1029]
+              - cell "19.30" [ref=e1030]
+              - cell "Open result Open audit" [ref=e1031]:
+                - generic [ref=e1032]:
+                  - button "Open result" [ref=e1033] [cursor=pointer]
+                  - button "Open audit" [ref=e1034] [cursor=pointer]
+            - row "audit-raw-check-2 scored mixed 32.2 20.69 Open result Open audit" [ref=e1035]:
+              - cell "audit-raw-check-2" [ref=e1036]
+              - cell "scored" [ref=e1037]
+              - cell "mixed" [ref=e1038]
+              - cell "32.2" [ref=e1039]
+              - cell "20.69" [ref=e1040]
+              - cell "Open result Open audit" [ref=e1041]:
+                - generic [ref=e1042]:
+                  - button "Open result" [ref=e1043] [cursor=pointer]
+                  - button "Open audit" [ref=e1044] [cursor=pointer]
+            - row "audit-raw-debug in_progress pending -- -- Open result Open audit" [ref=e1045]:
+              - cell "audit-raw-debug" [ref=e1046]
+              - cell "in_progress" [ref=e1047]
+              - cell "pending" [ref=e1048]
+              - cell "--" [ref=e1049]
+              - cell "--" [ref=e1050]
+              - cell "Open result Open audit" [ref=e1051]:
+                - generic [ref=e1052]:
+                  - button "Open result" [ref=e1053] [cursor=pointer]
+                  - button "Open audit" [ref=e1054] [cursor=pointer]
+            - row "audit-raw-check in_progress pending -- -- Open result Open audit" [ref=e1055]:
+              - cell "audit-raw-check" [ref=e1056]
+              - cell "in_progress" [ref=e1057]
+              - cell "pending" [ref=e1058]
+              - cell "--" [ref=e1059]
+              - cell "--" [ref=e1060]
+              - cell "Open result Open audit" [ref=e1061]:
+                - generic [ref=e1062]:
+                  - button "Open result" [ref=e1063] [cursor=pointer]
+                  - button "Open audit" [ref=e1064] [cursor=pointer]
+            - row "audit-raw-check in_progress pending -- -- Open result Open audit" [ref=e1065]:
+              - cell "audit-raw-check" [ref=e1066]
+              - cell "in_progress" [ref=e1067]
+              - cell "pending" [ref=e1068]
+              - cell "--" [ref=e1069]
+              - cell "--" [ref=e1070]
+              - cell "Open result Open audit" [ref=e1071]:
+                - generic [ref=e1072]:
+                  - button "Open result" [ref=e1073] [cursor=pointer]
+                  - button "Open audit" [ref=e1074] [cursor=pointer]
+            - row "audit-raw-check in_progress pending -- -- Open result Open audit" [ref=e1075]:
+              - cell "audit-raw-check" [ref=e1076]
+              - cell "in_progress" [ref=e1077]
+              - cell "pending" [ref=e1078]
+              - cell "--" [ref=e1079]
+              - cell "--" [ref=e1080]
+              - cell "Open result Open audit" [ref=e1081]:
+                - generic [ref=e1082]:
+                  - button "Open result" [ref=e1083] [cursor=pointer]
+                  - button "Open audit" [ref=e1084] [cursor=pointer]
+            - row "Audit Raw Verify 2 in_progress pending -- -- Open result Open audit" [ref=e1085]:
+              - cell "Audit Raw Verify 2" [ref=e1086]
+              - cell "in_progress" [ref=e1087]
+              - cell "pending" [ref=e1088]
+              - cell "--" [ref=e1089]
+              - cell "--" [ref=e1090]
+              - cell "Open result Open audit" [ref=e1091]:
+                - generic [ref=e1092]:
+                  - button "Open result" [ref=e1093] [cursor=pointer]
+                  - button "Open audit" [ref=e1094] [cursor=pointer]
+            - row "Audit Raw Verify scored mixed 57.9 0.58 Open result Open audit" [ref=e1095]:
+              - cell "Audit Raw Verify" [ref=e1096]
+              - cell "scored" [ref=e1097]
+              - cell "mixed" [ref=e1098]
+              - cell "57.9" [ref=e1099]
+              - cell "0.58" [ref=e1100]
+              - cell "Open result Open audit" [ref=e1101]:
+                - generic [ref=e1102]:
+                  - button "Open result" [ref=e1103] [cursor=pointer]
+                  - button "Open audit" [ref=e1104] [cursor=pointer]
+            - row "demo scored mixed 63.5 0.61 Open result Open audit" [ref=e1105]:
+              - cell "demo" [ref=e1106]
+              - cell "scored" [ref=e1107]
+              - cell "mixed" [ref=e1108]
+              - cell "63.5" [ref=e1109]
+              - cell "0.61" [ref=e1110]
+              - cell "Open result Open audit" [ref=e1111]:
+                - generic [ref=e1112]:
+                  - button "Open result" [ref=e1113] [cursor=pointer]
+                  - button "Open audit" [ref=e1114] [cursor=pointer]
+            - row "demo scored mixed 63.4 0.61 Open result Open audit" [ref=e1115]:
+              - cell "demo" [ref=e1116]
+              - cell "scored" [ref=e1117]
+              - cell "mixed" [ref=e1118]
+              - cell "63.4" [ref=e1119]
+              - cell "0.61" [ref=e1120]
+              - cell "Open result Open audit" [ref=e1121]:
+                - generic [ref=e1122]:
+                  - button "Open result" [ref=e1123] [cursor=pointer]
+                  - button "Open audit" [ref=e1124] [cursor=pointer]
+            - row "Axis Verify scored no_hire 14.0 0.30 Open result Open audit" [ref=e1125]:
+              - cell "Axis Verify" [ref=e1126]
+              - cell "scored" [ref=e1127]
+              - cell "no_hire" [ref=e1128]
+              - cell "14.0" [ref=e1129]
+              - cell "0.30" [ref=e1130]
+              - cell "Open result Open audit" [ref=e1131]:
+                - generic [ref=e1132]:
+                  - button "Open result" [ref=e1133] [cursor=pointer]
+                  - button "Open audit" [ref=e1134] [cursor=pointer]
+            - row "Helper Verify 5 in_progress pending -- -- Open result Open audit" [ref=e1135]:
+              - cell "Helper Verify 5" [ref=e1136]
+              - cell "in_progress" [ref=e1137]
+              - cell "pending" [ref=e1138]
+              - cell "--" [ref=e1139]
+              - cell "--" [ref=e1140]
+              - cell "Open result Open audit" [ref=e1141]:
+                - generic [ref=e1142]:
+                  - button "Open result" [ref=e1143] [cursor=pointer]
+                  - button "Open audit" [ref=e1144] [cursor=pointer]
+            - row "Helper Verify 4 in_progress pending -- -- Open result Open audit" [ref=e1145]:
+              - cell "Helper Verify 4" [ref=e1146]
+              - cell "in_progress" [ref=e1147]
+              - cell "pending" [ref=e1148]
+              - cell "--" [ref=e1149]
+              - cell "--" [ref=e1150]
+              - cell "Open result Open audit" [ref=e1151]:
+                - generic [ref=e1152]:
+                  - button "Open result" [ref=e1153] [cursor=pointer]
+                  - button "Open audit" [ref=e1154] [cursor=pointer]
+            - row "Helper Verify 3 in_progress pending -- -- Open result Open audit" [ref=e1155]:
+              - cell "Helper Verify 3" [ref=e1156]
+              - cell "in_progress" [ref=e1157]
+              - cell "pending" [ref=e1158]
+              - cell "--" [ref=e1159]
+              - cell "--" [ref=e1160]
+              - cell "Open result Open audit" [ref=e1161]:
+                - generic [ref=e1162]:
+                  - button "Open result" [ref=e1163] [cursor=pointer]
+                  - button "Open audit" [ref=e1164] [cursor=pointer]
+            - row "Helper Verify 2 in_progress pending -- -- Open result Open audit" [ref=e1165]:
+              - cell "Helper Verify 2" [ref=e1166]
+              - cell "in_progress" [ref=e1167]
+              - cell "pending" [ref=e1168]
+              - cell "--" [ref=e1169]
+              - cell "--" [ref=e1170]
+              - cell "Open result Open audit" [ref=e1171]:
+                - generic [ref=e1172]:
+                  - button "Open result" [ref=e1173] [cursor=pointer]
+                  - button "Open audit" [ref=e1174] [cursor=pointer]
+            - row "Helper Verify 1 in_progress pending -- -- Open result Open audit" [ref=e1175]:
+              - cell "Helper Verify 1" [ref=e1176]
+              - cell "in_progress" [ref=e1177]
+              - cell "pending" [ref=e1178]
+              - cell "--" [ref=e1179]
+              - cell "--" [ref=e1180]
+              - cell "Open result Open audit" [ref=e1181]:
+                - generic [ref=e1182]:
+                  - button "Open result" [ref=e1183] [cursor=pointer]
+                  - button "Open audit" [ref=e1184] [cursor=pointer]
+            - row "Helper Probe 1 in_progress pending -- -- Open result Open audit" [ref=e1185]:
+              - cell "Helper Probe 1" [ref=e1186]
+              - cell "in_progress" [ref=e1187]
+              - cell "pending" [ref=e1188]
+              - cell "--" [ref=e1189]
+              - cell "--" [ref=e1190]
+              - cell "Open result Open audit" [ref=e1191]:
+                - generic [ref=e1192]:
+                  - button "Open result" [ref=e1193] [cursor=pointer]
+                  - button "Open audit" [ref=e1194] [cursor=pointer]
+            - row "Helper Probe 2 in_progress pending -- -- Open result Open audit" [ref=e1195]:
+              - cell "Helper Probe 2" [ref=e1196]
+              - cell "in_progress" [ref=e1197]
+              - cell "pending" [ref=e1198]
+              - cell "--" [ref=e1199]
+              - cell "--" [ref=e1200]
+              - cell "Open result Open audit" [ref=e1201]:
+                - generic [ref=e1202]:
+                  - button "Open result" [ref=e1203] [cursor=pointer]
+                  - button "Open audit" [ref=e1204] [cursor=pointer]
+            - row "Helper Probe in_progress pending -- -- Open result Open audit" [ref=e1205]:
+              - cell "Helper Probe" [ref=e1206]
+              - cell "in_progress" [ref=e1207]
+              - cell "pending" [ref=e1208]
+              - cell "--" [ref=e1209]
+              - cell "--" [ref=e1210]
+              - cell "Open result Open audit" [ref=e1211]:
+                - generic [ref=e1212]:
+                  - button "Open result" [ref=e1213] [cursor=pointer]
+                  - button "Open audit" [ref=e1214] [cursor=pointer]
+            - row "Helper Check 10 in_progress pending -- -- Open result Open audit" [ref=e1215]:
+              - cell "Helper Check 10" [ref=e1216]
+              - cell "in_progress" [ref=e1217]
+              - cell "pending" [ref=e1218]
+              - cell "--" [ref=e1219]
+              - cell "--" [ref=e1220]
+              - cell "Open result Open audit" [ref=e1221]:
+                - generic [ref=e1222]:
+                  - button "Open result" [ref=e1223] [cursor=pointer]
+                  - button "Open audit" [ref=e1224] [cursor=pointer]
+            - row "Helper Check 9 in_progress pending -- -- Open result Open audit" [ref=e1225]:
+              - cell "Helper Check 9" [ref=e1226]
+              - cell "in_progress" [ref=e1227]
+              - cell "pending" [ref=e1228]
+              - cell "--" [ref=e1229]
+              - cell "--" [ref=e1230]
+              - cell "Open result Open audit" [ref=e1231]:
+                - generic [ref=e1232]:
+                  - button "Open result" [ref=e1233] [cursor=pointer]
+                  - button "Open audit" [ref=e1234] [cursor=pointer]
+            - row "Helper Check 8 in_progress pending -- -- Open result Open audit" [ref=e1235]:
+              - cell "Helper Check 8" [ref=e1236]
+              - cell "in_progress" [ref=e1237]
+              - cell "pending" [ref=e1238]
+              - cell "--" [ref=e1239]
+              - cell "--" [ref=e1240]
+              - cell "Open result Open audit" [ref=e1241]:
+                - generic [ref=e1242]:
+                  - button "Open result" [ref=e1243] [cursor=pointer]
+                  - button "Open audit" [ref=e1244] [cursor=pointer]
+            - row "Helper Check 7 in_progress pending -- -- Open result Open audit" [ref=e1245]:
+              - cell "Helper Check 7" [ref=e1246]
+              - cell "in_progress" [ref=e1247]
+              - cell "pending" [ref=e1248]
+              - cell "--" [ref=e1249]
+              - cell "--" [ref=e1250]
+              - cell "Open result Open audit" [ref=e1251]:
+                - generic [ref=e1252]:
+                  - button "Open result" [ref=e1253] [cursor=pointer]
+                  - button "Open audit" [ref=e1254] [cursor=pointer]
+            - row "Helper Check 6 in_progress pending -- -- Open result Open audit" [ref=e1255]:
+              - cell "Helper Check 6" [ref=e1256]
+              - cell "in_progress" [ref=e1257]
+              - cell "pending" [ref=e1258]
+              - cell "--" [ref=e1259]
+              - cell "--" [ref=e1260]
+              - cell "Open result Open audit" [ref=e1261]:
+                - generic [ref=e1262]:
+                  - button "Open result" [ref=e1263] [cursor=pointer]
+                  - button "Open audit" [ref=e1264] [cursor=pointer]
+            - row "Helper Check 5 in_progress pending -- -- Open result Open audit" [ref=e1265]:
+              - cell "Helper Check 5" [ref=e1266]
+              - cell "in_progress" [ref=e1267]
+              - cell "pending" [ref=e1268]
+              - cell "--" [ref=e1269]
+              - cell "--" [ref=e1270]
+              - cell "Open result Open audit" [ref=e1271]:
+                - generic [ref=e1272]:
+                  - button "Open result" [ref=e1273] [cursor=pointer]
+                  - button "Open audit" [ref=e1274] [cursor=pointer]
+            - row "Helper Check 4 in_progress pending -- -- Open result Open audit" [ref=e1275]:
+              - cell "Helper Check 4" [ref=e1276]
+              - cell "in_progress" [ref=e1277]
+              - cell "pending" [ref=e1278]
+              - cell "--" [ref=e1279]
+              - cell "--" [ref=e1280]
+              - cell "Open result Open audit" [ref=e1281]:
+                - generic [ref=e1282]:
+                  - button "Open result" [ref=e1283] [cursor=pointer]
+                  - button "Open audit" [ref=e1284] [cursor=pointer]
+            - row "Helper Check 3 in_progress pending -- -- Open result Open audit" [ref=e1285]:
+              - cell "Helper Check 3" [ref=e1286]
+              - cell "in_progress" [ref=e1287]
+              - cell "pending" [ref=e1288]
+              - cell "--" [ref=e1289]
+              - cell "--" [ref=e1290]
+              - cell "Open result Open audit" [ref=e1291]:
+                - generic [ref=e1292]:
+                  - button "Open result" [ref=e1293] [cursor=pointer]
+                  - button "Open audit" [ref=e1294] [cursor=pointer]
+            - row "Helper Check 2 in_progress pending -- -- Open result Open audit" [ref=e1295]:
+              - cell "Helper Check 2" [ref=e1296]
+              - cell "in_progress" [ref=e1297]
+              - cell "pending" [ref=e1298]
+              - cell "--" [ref=e1299]
+              - cell "--" [ref=e1300]
+              - cell "Open result Open audit" [ref=e1301]:
+                - generic [ref=e1302]:
+                  - button "Open result" [ref=e1303] [cursor=pointer]
+                  - button "Open audit" [ref=e1304] [cursor=pointer]
+            - row "Helper Check 1 in_progress pending -- -- Open result Open audit" [ref=e1305]:
+              - cell "Helper Check 1" [ref=e1306]
+              - cell "in_progress" [ref=e1307]
+              - cell "pending" [ref=e1308]
+              - cell "--" [ref=e1309]
+              - cell "--" [ref=e1310]
+              - cell "Open result Open audit" [ref=e1311]:
+                - generic [ref=e1312]:
+                  - button "Open result" [ref=e1313] [cursor=pointer]
+                  - button "Open audit" [ref=e1314] [cursor=pointer]
+            - row "Random Check 3 in_progress pending -- -- Open result Open audit" [ref=e1315]:
+              - cell "Random Check 3" [ref=e1316]
+              - cell "in_progress" [ref=e1317]
+              - cell "pending" [ref=e1318]
+              - cell "--" [ref=e1319]
+              - cell "--" [ref=e1320]
+              - cell "Open result Open audit" [ref=e1321]:
+                - generic [ref=e1322]:
+                  - button "Open result" [ref=e1323] [cursor=pointer]
+                  - button "Open audit" [ref=e1324] [cursor=pointer]
+            - row "Random Check 2 in_progress pending -- -- Open result Open audit" [ref=e1325]:
+              - cell "Random Check 2" [ref=e1326]
+              - cell "in_progress" [ref=e1327]
+              - cell "pending" [ref=e1328]
+              - cell "--" [ref=e1329]
+              - cell "--" [ref=e1330]
+              - cell "Open result Open audit" [ref=e1331]:
+                - generic [ref=e1332]:
+                  - button "Open result" [ref=e1333] [cursor=pointer]
+                  - button "Open audit" [ref=e1334] [cursor=pointer]
+            - row "Random Check 1 in_progress pending -- -- Open result Open audit" [ref=e1335]:
+              - cell "Random Check 1" [ref=e1336]
+              - cell "in_progress" [ref=e1337]
+              - cell "pending" [ref=e1338]
+              - cell "--" [ref=e1339]
+              - cell "--" [ref=e1340]
+              - cell "Open result Open audit" [ref=e1341]:
+                - generic [ref=e1342]:
+                  - button "Open result" [ref=e1343] [cursor=pointer]
+                  - button "Open audit" [ref=e1344] [cursor=pointer]
+            - row "AI Helper Check 2 in_progress pending -- -- Open result Open audit" [ref=e1345]:
+              - cell "AI Helper Check 2" [ref=e1346]
+              - cell "in_progress" [ref=e1347]
+              - cell "pending" [ref=e1348]
+              - cell "--" [ref=e1349]
+              - cell "--" [ref=e1350]
+              - cell "Open result Open audit" [ref=e1351]:
+                - generic [ref=e1352]:
+                  - button "Open result" [ref=e1353] [cursor=pointer]
+                  - button "Open audit" [ref=e1354] [cursor=pointer]
+            - row "AI Helper Check in_progress pending -- -- Open result Open audit" [ref=e1355]:
+              - cell "AI Helper Check" [ref=e1356]
+              - cell "in_progress" [ref=e1357]
+              - cell "pending" [ref=e1358]
+              - cell "--" [ref=e1359]
+              - cell "--" [ref=e1360]
+              - cell "Open result Open audit" [ref=e1361]:
+                - generic [ref=e1362]:
+                  - button "Open result" [ref=e1363] [cursor=pointer]
+                  - button "Open audit" [ref=e1364] [cursor=pointer]
+            - row "dfg in_progress pending -- -- Open result Open audit" [ref=e1365]:
+              - cell "dfg" [ref=e1366]
+              - cell "in_progress" [ref=e1367]
+              - cell "pending" [ref=e1368]
+              - cell "--" [ref=e1369]
+              - cell "--" [ref=e1370]
+              - cell "Open result Open audit" [ref=e1371]:
+                - generic [ref=e1372]:
+                  - button "Open result" [ref=e1373] [cursor=pointer]
+                  - button "Open audit" [ref=e1374] [cursor=pointer]
+            - row "pido scored no_hire 32.0 0.57 Open result Open audit" [ref=e1375]:
+              - cell "pido" [ref=e1376]
+              - cell "scored" [ref=e1377]
+              - cell "no_hire" [ref=e1378]
+              - cell "32.0" [ref=e1379]
+              - cell "0.57" [ref=e1380]
+              - cell "Open result Open audit" [ref=e1381]:
+                - generic [ref=e1382]:
+                  - button "Open result" [ref=e1383] [cursor=pointer]
+                  - button "Open audit" [ref=e1384] [cursor=pointer]
+            - row "pieter scored mixed 58.7 0.66 Open result Open audit" [ref=e1385]:
+              - cell "pieter" [ref=e1386]
+              - cell "scored" [ref=e1387]
+              - cell "mixed" [ref=e1388]
+              - cell "58.7" [ref=e1389]
+              - cell "0.66" [ref=e1390]
+              - cell "Open result Open audit" [ref=e1391]:
+                - generic [ref=e1392]:
+                  - button "Open result" [ref=e1393] [cursor=pointer]
+                  - button "Open audit" [ref=e1394] [cursor=pointer]
+            - row "Playwright Answer Path scored hire 74.5 0.73 Open result Open audit" [ref=e1395]:
+              - cell "Playwright Answer Path" [ref=e1396]
+              - cell "scored" [ref=e1397]
+              - cell "hire" [ref=e1398]
+              - cell "74.5" [ref=e1399]
+              - cell "0.73" [ref=e1400]
+              - cell "Open result Open audit" [ref=e1401]:
+                - generic [ref=e1402]:
+                  - button "Open result" [ref=e1403] [cursor=pointer]
+                  - button "Open audit" [ref=e1404] [cursor=pointer]
+            - row "Playwright Smoke scored no_hire 0.0 0.00 Open result Open audit" [ref=e1405]:
+              - cell "Playwright Smoke" [ref=e1406]
+              - cell "scored" [ref=e1407]
+              - cell "no_hire" [ref=e1408]
+              - cell "0.0" [ref=e1409]
+              - cell "0.00" [ref=e1410]
+              - cell "Open result Open audit" [ref=e1411]:
+                - generic [ref=e1412]:
+                  - button "Open result" [ref=e1413] [cursor=pointer]
+                  - button "Open audit" [ref=e1414] [cursor=pointer]
+            - row "Smoke Test Candidate in_progress pending -- -- Open result Open audit" [ref=e1415]:
+              - cell "Smoke Test Candidate" [ref=e1416]
+              - cell "in_progress" [ref=e1417]
+              - cell "pending" [ref=e1418]
+              - cell "--" [ref=e1419]
+              - cell "--" [ref=e1420]
+              - cell "Open result Open audit" [ref=e1421]:
+                - generic [ref=e1422]:
+                  - button "Open result" [ref=e1423] [cursor=pointer]
+                  - button "Open audit" [ref=e1424] [cursor=pointer]
+  - generic [ref=e111]:
+    - alert
+    - alert

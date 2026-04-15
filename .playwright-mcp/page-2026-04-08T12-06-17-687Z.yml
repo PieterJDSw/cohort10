@@ -1,0 +1,80 @@
+- generic [active] [ref=e1]:
+  - generic [ref=e3]:
+    - banner [ref=e4]:
+      - generic [ref=e5]:
+        - paragraph [ref=e6]: Developer Assessment Platform
+        - link "MVP Assessment" [ref=e7] [cursor=pointer]:
+          - /url: /
+      - navigation [ref=e8]:
+        - link "Start" [ref=e9] [cursor=pointer]:
+          - /url: /
+        - link "Dashboard" [ref=e10] [cursor=pointer]:
+          - /url: /dashboard
+    - main [ref=e11]:
+      - generic [ref=e36]:
+        - generic [ref=e38]:
+          - paragraph [ref=e39]: Active session
+          - heading "test1" [level=2] [ref=e40]
+          - paragraph [ref=e41]: "Status: in_progress | Progress: 8/10"
+        - paragraph [ref=e355]: Moved to the next question.
+        - generic [ref=e42]:
+          - generic [ref=e43]:
+            - generic [ref=e44]:
+              - generic [ref=e45]:
+                - generic [ref=e46]: coding
+                - generic [ref=e47]: "difficulty: medium"
+                - generic [ref=e48]: 8 / 10
+              - heading "Rotate Array" [level=2] [ref=e356]
+              - paragraph [ref=e50]: "Write `rotate_right(nums, k)` that returns a new list rotated right by `k` steps."
+              - generic [ref=e51]:
+                - heading "Rubric focus" [level=3] [ref=e52]
+                - list [ref=e53]:
+                  - listitem [ref=e357]:
+                    - strong [ref=e358]: correctness
+                    - text: ": Returns the right result for expected and edge-case inputs"
+                  - listitem [ref=e359]:
+                    - strong [ref=e360]: code_quality
+                    - text: ": Readable, maintainable, and idiomatic Python"
+                  - listitem [ref=e361]:
+                    - strong [ref=e362]: problem_solving
+                    - text: ": Chooses an approach that fits the problem well"
+                  - listitem [ref=e363]:
+                    - strong [ref=e364]: efficiency
+                    - text: ": Uses time and space proportionally to the input"
+                  - listitem [ref=e365]:
+                    - strong [ref=e366]: testing_reasoning
+                    - text: ": Can explain edge cases and why the tests matter"
+                  - listitem [ref=e367]:
+                    - strong [ref=e368]: communication
+                    - text: ": Explains the approach clearly"
+            - generic [ref=e369]:
+              - heading "Python editor" [level=3] [ref=e370]
+              - code [ref=e374]:
+                - generic [ref=e375]:
+                  - textbox "Editor content"
+                  - textbox [ref=e376]
+                  - generic [ref=e378]:
+                    - generic [ref=e379]:
+                      - generic [ref=e381] [cursor=pointer]: 
+                      - generic [ref=e382]: "1"
+                    - generic [ref=e384]: "2"
+                    - generic [ref=e386]: "3"
+                  - generic [ref=e393]:
+                    - generic [ref=e395]: "def rotate_right(arg1, arg2):"
+                    - generic [ref=e397]: pass
+            - generic [ref=e97]:
+              - button "Save answer" [ref=e98] [cursor=pointer]
+              - button "Run code" [ref=e400] [cursor=pointer]
+              - button "Next question" [ref=e100] [cursor=pointer]
+              - button "Finish session" [ref=e101] [cursor=pointer]
+          - generic [ref=e102]:
+            - generic [ref=e103]:
+              - heading "AI helper" [level=3] [ref=e104]
+              - generic [ref=e105]: logged to backend
+            - paragraph [ref=e107]: Ask for a nudge, test strategy, or structure advice.
+            - generic [ref=e108]:
+              - textbox "Ask the assistant for help..." [ref=e109]
+              - button "Send" [ref=e110] [cursor=pointer]
+  - generic [ref=e111]:
+    - alert
+    - alert

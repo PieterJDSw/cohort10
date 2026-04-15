@@ -1,0 +1,109 @@
+- generic [active] [ref=e1]:
+  - generic [ref=e3]:
+    - banner [ref=e4]:
+      - generic [ref=e5]:
+        - generic [ref=e6]:
+          - paragraph [ref=e7]: Developer Assessment Platform
+          - link "MVP Assessment" [ref=e8] [cursor=pointer]:
+            - /url: /
+        - navigation [ref=e9]:
+          - link "Start" [ref=e10] [cursor=pointer]:
+            - /url: /
+          - link "Dashboard" [ref=e11] [cursor=pointer]:
+            - /url: /dashboard
+    - main [ref=e12]:
+      - generic [ref=e13]:
+        - generic [ref=e15]:
+          - generic [ref=e16]:
+            - paragraph [ref=e17]: Active session
+            - heading "playwright-real-e2e-1775730121980" [level=2] [ref=e18]
+            - paragraph [ref=e19]: Work through the prompt, save often, run code locally when available, and finish to kick off scoring.
+          - generic [ref=e20]:
+            - generic [ref=e21]: "status: in_progress"
+            - generic [ref=e22]: "progress: 10/10"
+        - paragraph [ref=e63]: Answer saved.
+        - generic [ref=e23]:
+          - generic [ref=e24]:
+            - generic [ref=e25]:
+              - generic [ref=e26]:
+                - generic [ref=e27]: coding
+                - generic [ref=e28]: "difficulty: medium"
+                - generic [ref=e29]: 10 / 10
+              - generic [ref=e30]:
+                - heading "Rotate Array" [level=2] [ref=e64]
+                - paragraph [ref=e32]: "Write `rotate_right(nums, k)` that returns a new list rotated right by `k` steps."
+              - generic [ref=e33]:
+                - generic [ref=e34]:
+                  - paragraph [ref=e35]: Rubric focus
+                  - heading "What the evaluator will look for" [level=3] [ref=e36]
+                - list [ref=e37]:
+                  - listitem [ref=e65]:
+                    - strong [ref=e66]: correctness
+                    - text: Returns the right result for expected and edge-case inputs
+                  - listitem [ref=e67]:
+                    - strong [ref=e68]: code_quality
+                    - text: Readable, maintainable, and idiomatic Python
+                  - listitem [ref=e69]:
+                    - strong [ref=e70]: problem_solving
+                    - text: Chooses an approach that fits the problem well
+                  - listitem [ref=e71]:
+                    - strong [ref=e72]: efficiency
+                    - text: Uses time and space proportionally to the input
+                  - listitem [ref=e73]:
+                    - strong [ref=e74]: testing_reasoning
+                    - text: Can explain edge cases and why the tests matter
+                  - listitem [ref=e75]:
+                    - strong [ref=e76]: communication
+                    - text: Explains the approach clearly
+            - generic [ref=e77]:
+              - generic [ref=e78]:
+                - heading "Python editor" [level=3] [ref=e79]
+                - paragraph [ref=e80]: Monaco editor with local test execution.
+              - code [ref=e84]:
+                - generic [ref=e85]:
+                  - textbox "Editor content"
+                  - textbox [ref=e86]
+                  - generic [ref=e88]:
+                    - generic [ref=e89]:
+                      - generic [ref=e91] [cursor=pointer]: 
+                      - generic [ref=e92]: "1"
+                    - generic [ref=e93]:
+                      - generic [ref=e94] [cursor=pointer]: 
+                      - generic [ref=e95]: "2"
+                    - generic [ref=e97]: "3"
+                    - generic [ref=e99]: "4"
+                    - generic [ref=e101]: "5"
+                    - generic [ref=e103]: "6"
+                  - generic [ref=e117]:
+                    - generic [ref=e119]: "def rotate_right(nums, k):"
+                    - generic [ref=e121]: "if not nums:"
+                    - generic [ref=e123]: return []
+                    - generic [ref=e125]: k %= len(nums)
+                    - generic [ref=e127]: return nums[-k:] + nums[:-k] if k else nums[:]
+            - generic [ref=e130]:
+              - generic [ref=e131]:
+                - heading "Run results" [level=3] [ref=e132]
+                - generic [ref=e133]: 2/2 passing
+              - list [ref=e134]:
+                - listitem [ref=e135]:
+                  - strong [ref=e136]: basic
+                  - text: :pass
+                - listitem [ref=e137]:
+                  - strong [ref=e138]: wraparound
+                  - text: :pass
+            - generic [ref=e49]:
+              - button "Save answer" [disabled] [ref=e50]
+              - button "Run code" [disabled] [ref=e139]
+              - button "Next question" [disabled] [ref=e51]
+              - button "Finish session" [disabled] [ref=e52]
+          - generic [ref=e53]:
+            - generic [ref=e54]:
+              - heading "AI helper" [level=3] [ref=e55]
+              - generic [ref=e56]: logged to backend
+            - paragraph [ref=e59]: Ask for a nudge, test strategy, or structure advice.
+            - generic [ref=e60]:
+              - textbox "Ask the assistant for help..." [ref=e61]
+              - button "Sending..." [disabled] [ref=e140]
+  - generic [ref=e141]:
+    - alert
+    - alert

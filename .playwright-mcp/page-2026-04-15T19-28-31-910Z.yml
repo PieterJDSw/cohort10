@@ -1,0 +1,74 @@
+- generic [ref=e3]:
+  - banner [ref=e4]:
+    - generic [ref=e5]:
+      - generic [ref=e6]:
+        - paragraph [ref=e7]: Developer Assessment Platform
+        - link "MVP Assessment" [ref=e8] [cursor=pointer]:
+          - /url: /
+      - navigation [ref=e9]:
+        - link "Start" [ref=e10] [cursor=pointer]:
+          - /url: /
+        - link "Dashboard" [ref=e11] [cursor=pointer]:
+          - /url: /dashboard
+  - main [ref=e12]:
+    - generic [ref=e65]:
+      - generic [ref=e67]:
+        - generic [ref=e68]:
+          - paragraph [ref=e69]: Active session
+          - heading "Tool Calling Final E2E" [level=2] [ref=e70]
+          - paragraph [ref=e71]: Work through the prompt, save often, run code locally when available, and finish to kick off scoring.
+        - generic [ref=e72]:
+          - generic [ref=e73]: "status: in_progress"
+          - generic [ref=e74]: "progress: 1/10"
+      - paragraph [ref=e117]: Answer saved.
+      - generic [ref=e75]:
+        - generic [ref=e76]:
+          - generic [ref=e77]:
+            - generic [ref=e78]:
+              - generic [ref=e79]: ai_fluency
+              - generic [ref=e80]: "difficulty: medium"
+              - generic [ref=e81]: 1 / 10
+            - generic [ref=e82]:
+              - heading "Verifying Generated SQL" [level=2] [ref=e83]
+              - paragraph [ref=e84]: An AI assistant proposes a migration and a complex SQL query. Explain how you would validate both before shipping them.
+            - generic [ref=e85]:
+              - generic [ref=e86]:
+                - paragraph [ref=e87]: Rubric focus
+                - heading "What the evaluator will look for" [level=3] [ref=e88]
+              - list [ref=e89]:
+                - listitem [ref=e90]:
+                  - strong [ref=e91]: prompt_quality
+                  - text: Uses prompts that are precise and task-oriented
+                - listitem [ref=e92]:
+                  - strong [ref=e93]: context_provided
+                  - text: Provides the model enough relevant context
+                - listitem [ref=e94]:
+                  - strong [ref=e95]: verification_behavior
+                  - text: Checks the output before trusting it
+                - listitem [ref=e96]:
+                  - strong [ref=e97]: correction_of_ai_errors
+                  - text: Finds and corrects model mistakes
+                - listitem [ref=e98]:
+                  - strong [ref=e99]: effective_use
+                  - text: Uses AI where it increases speed without lowering quality
+          - generic [ref=e100]:
+            - heading "Answer" [level=3] [ref=e101]
+            - textbox "Write the candidate answer here..." [ref=e102]: "I would treat both the migration and the SQL as untrusted drafts until they pass targeted checks. The first step is giving the AI enough context up front: current schema, data volume, rollback requirements, performance expectations, and what the query is supposed to return. That reduces the chance of the model inventing columns, using the wrong join path, or choosing a migration pattern that is unsafe for our environment. For the migration, I would read it manually for destructive or locking operations, check whether it is backwards compatible, and confirm whether it can run safely against production-sized data. I would run it in a staging or disposable database cloned from realistic schema state, verify the resulting schema, and test the rollback path if one exists. If the migration adds indexes, constraints, or column rewrites, I would check how long those operations take and whether they cause unacceptable locks. For the SQL query, I would validate correctness and performance separately. Correctness means checking the joins, predicates, grouping, null handling, and edge cases against known sample data and expected outputs. Performance means using explain plans, checking index usage, and testing against realistic cardinalities so a query that looks fine on tiny data does not become dangerous in production. I would also compare the generated SQL to the original business requirement, not just whether it runs. AI-generated queries often look plausible while quietly changing semantics, for example by turning an outer join into an inner join, duplicating rows because of join multiplicity, or filtering too early. If I find issues, I would either correct them directly or reprompt with a tighter constraint and revalidate. So the workflow is: provide precise context, run the migration and query in a safe environment, inspect behavior and plans, test edge cases and rollback, and only ship once both the semantics and operational safety are clear."
+          - generic [ref=e103]:
+            - button "Save answer" [ref=e104]
+            - button "Next question" [ref=e105]
+            - button "Finish session" [ref=e106]
+        - generic [ref=e107]:
+          - generic [ref=e108]:
+            - heading "AI helper" [level=3] [ref=e109]
+            - generic [ref=e110]: logged to backend
+          - generic [ref=e111]:
+            - article [ref=e118]:
+              - generic [ref=e119]: user
+              - paragraph [ref=e120]: Give me a compact checklist for validating an AI-generated migration and SQL query safely.
+            - article [ref=e121]:
+              - generic [ref=e122]: assistant
+              - paragraph [ref=e123]: "* **Test with Edge Cases:** Create specific, boundary-condition data sets to test the SQL query's logic (e.g., nulls, empty sets, maximum/minimum values). * **Schema Integrity Check:** Verify that the migration correctly handles all constraints, data types, and foreign key relationships in the target schema. * **Performance Profiling:** Run the query against a representative data volume and measure execution time to ensure it meets performance SLAs. * **Unit Test Coverage:** Develop specific input/output pairs for the query and write automated tests to confirm the expected results are always met."
+          - generic [ref=e114]:
+            - textbox "Ask the assistant for help..." [ref=e115]
+            - button "Send" [ref=e116]

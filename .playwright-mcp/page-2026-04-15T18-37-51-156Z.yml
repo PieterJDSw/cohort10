@@ -1,0 +1,75 @@
+- generic [active] [ref=e1]:
+  - generic [ref=e3]:
+    - banner [ref=e4]:
+      - generic [ref=e5]:
+        - generic [ref=e6]:
+          - paragraph [ref=e7]: Developer Assessment Platform
+          - link "MVP Assessment" [ref=e8] [cursor=pointer]:
+            - /url: /
+        - navigation [ref=e9]:
+          - link "Start" [ref=e10] [cursor=pointer]:
+            - /url: /
+          - link "Dashboard" [ref=e11] [cursor=pointer]:
+            - /url: /dashboard
+    - main [ref=e12]:
+      - generic [ref=e65]:
+        - generic [ref=e67]:
+          - generic [ref=e68]:
+            - paragraph [ref=e69]: Active session
+            - heading "Container E2E Candidate" [level=2] [ref=e70]
+            - paragraph [ref=e71]: Work through the prompt, save often, run code locally when available, and finish to kick off scoring.
+          - generic [ref=e72]:
+            - generic [ref=e73]: "status: in_progress"
+            - generic [ref=e74]: "progress: 7/10"
+        - paragraph [ref=e459]: Answer saved.
+        - generic [ref=e75]:
+          - generic [ref=e76]:
+            - generic [ref=e77]:
+              - generic [ref=e78]:
+                - generic [ref=e79]: architecture
+                - generic [ref=e80]: "difficulty: hard"
+                - generic [ref=e81]: 7 / 10
+              - generic [ref=e82]:
+                - heading "Rate-Limited AI Integration" [level=2] [ref=e458]
+                - paragraph [ref=e84]: Design how you would integrate with an external LLM provider that enforces strict rate limits and sometimes returns slow or failed responses.
+              - generic [ref=e85]:
+                - generic [ref=e86]:
+                  - paragraph [ref=e87]: Rubric focus
+                  - heading "What the evaluator will look for" [level=3] [ref=e88]
+                - list [ref=e89]:
+                  - listitem [ref=e445]:
+                    - strong [ref=e446]: decomposition
+                    - text: Breaks the system into sensible components and boundaries
+                  - listitem [ref=e447]:
+                    - strong [ref=e448]: tradeoffs
+                    - text: Explains why key choices were made
+                  - listitem [ref=e449]:
+                    - strong [ref=e450]: scalability
+                    - text: Handles growth in load, data, or team complexity
+                  - listitem [ref=e451]:
+                    - strong [ref=e452]: reliability
+                    - text: Considers failure handling and operational safety
+                  - listitem [ref=e453]:
+                    - strong [ref=e454]: maintainability
+                    - text: Keeps the system understandable and operable
+                  - listitem [ref=e455]:
+                    - strong [ref=e456]: communication
+                    - text: Communicates the design clearly
+            - generic [ref=e420]:
+              - heading "Answer" [level=3] [ref=e421]
+              - textbox "Write the candidate answer here..." [ref=e422]: I would put a provider gateway in front of the external LLM rather than letting product code call the vendor directly. That gateway owns authentication, request shaping, retries, rate-limit handling, observability, and model failover rules. Requests from the app would be classified by priority and latency sensitivity. Interactive user flows would go through a bounded synchronous path with strict timeouts and graceful degradation. Heavy or non-urgent work, such as batch scoring or document analysis, would be queued and processed asynchronously by workers. That prevents slow provider responses from tying up the request path. To handle rate limits, I would use a combination of token buckets and queues. Before sending traffic to the provider, the gateway checks available request and token budget. If capacity exists, it forwards immediately. If not, low-priority work is queued and retried later with backoff and jitter. For interactive flows, I would fail fast once the latency budget is exceeded and return a clear fallback state to the product instead of letting requests hang. Because the provider can be slow or flaky, I would make every request idempotent from our side, attach correlation IDs, and record raw request and response metadata for debugging. Retries should only happen for safe classes of failure, like transient network errors or explicit rate-limit responses. I would cap retries and surface final failure clearly so the system does not amplify vendor incidents. For reliability, I would persist queued work durably, track job state, and support dead-letter handling for repeated failures. If the vendor is degraded, workers can pause or shed low-priority traffic rather than continuously hammering the API. I would also maintain circuit breakers so a failing provider does not cascade timeouts through the rest of the system. For scalability and maintainability, the gateway gives us one place to add caching, prompt templates, usage accounting, and multi-provider routing later. The tradeoff is another operational component, but it is worth it because rate limits and unreliable latency are cross-cutting concerns that should not be reimplemented in every feature.
+            - generic [ref=e135]:
+              - button "Save answer" [ref=e136]
+              - button "Next question" [ref=e138]
+              - button "Finish session" [ref=e139]
+          - generic [ref=e140]:
+            - generic [ref=e141]:
+              - heading "AI helper" [level=3] [ref=e142]
+              - generic [ref=e143]: logged to backend
+            - paragraph [ref=e146]: Ask for a nudge, test strategy, or structure advice.
+            - generic [ref=e147]:
+              - textbox "Ask the assistant for help..." [ref=e148]
+              - button "Send" [ref=e149]
+  - generic [ref=e150]:
+    - alert
+    - alert

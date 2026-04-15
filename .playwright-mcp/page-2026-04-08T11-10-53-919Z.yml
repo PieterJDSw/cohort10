@@ -1,0 +1,37 @@
+- generic [ref=e3]:
+  - banner [ref=e4]:
+    - generic [ref=e5]:
+      - paragraph [ref=e6]: Developer Assessment Platform
+      - link "MVP Assessment" [ref=e7] [cursor=pointer]:
+        - /url: /
+    - navigation [ref=e8]:
+      - link "Start" [ref=e9] [cursor=pointer]:
+        - /url: /
+      - link "Dashboard" [ref=e10] [cursor=pointer]:
+        - /url: /dashboard
+  - main [ref=e11]:
+    - generic [ref=e12]:
+      - generic [ref=e13]:
+        - generic [ref=e14]:
+          - paragraph [ref=e15]: Candidate Launch
+          - heading "Run a developer assessment without hand-wiring the workflow." [level=1] [ref=e16]
+          - paragraph [ref=e17]: Start a candidate session, answer theory and coding prompts, use the AI helper, and review a deterministic scorecard at the end.
+        - generic [ref=e18]:
+          - generic [ref=e19]:
+            - generic [ref=e20]: Candidate full name
+            - textbox "Candidate full name" [ref=e21]:
+              - /placeholder: Jane Doe
+          - button "Start test" [ref=e22] [cursor=pointer]
+      - generic [ref=e23]:
+        - article [ref=e24]:
+          - heading "What the MVP covers" [level=2] [ref=e25]
+          - list [ref=e26]:
+            - listitem [ref=e27]: FastAPI backend with Postgres persistence
+            - listitem [ref=e28]: React assessment workspace with Monaco editor
+            - listitem [ref=e29]: Deterministic scoring and radar chart results
+        - article [ref=e30]:
+          - heading "What starts automatically" [level=2] [ref=e31]
+          - list [ref=e32]:
+            - listitem [ref=e33]: Database migrations on backend boot
+            - listitem [ref=e34]: Question seeding when the DB is empty
+            - listitem [ref=e35]: Docker services for frontend, backend, and Postgres

@@ -1,0 +1,80 @@
+- generic [active] [ref=e1]:
+  - generic [ref=e3]:
+    - banner [ref=e4]:
+      - generic [ref=e5]:
+        - paragraph [ref=e6]: Developer Assessment Platform
+        - link "MVP Assessment" [ref=e7] [cursor=pointer]:
+          - /url: /
+      - navigation [ref=e8]:
+        - link "Start" [ref=e9] [cursor=pointer]:
+          - /url: /
+        - link "Dashboard" [ref=e10] [cursor=pointer]:
+          - /url: /dashboard
+    - main [ref=e11]:
+      - generic [ref=e206]:
+        - generic [ref=e208]:
+          - paragraph [ref=e209]: Active session
+          - heading "Playwright Answer Path" [level=2] [ref=e210]
+          - paragraph [ref=e211]: "Status: in_progress | Progress: 2/10"
+        - paragraph [ref=e285]: Moved to the next question.
+        - generic [ref=e212]:
+          - generic [ref=e213]:
+            - generic [ref=e214]:
+              - generic [ref=e215]:
+                - generic [ref=e216]: coding
+                - generic [ref=e217]: "difficulty: easy"
+                - generic [ref=e218]: 2 / 10
+              - heading "Palindrome Check" [level=2] [ref=e286]
+              - paragraph [ref=e220]: "Write a Python function `is_palindrome(text)` that ignores spaces and casing."
+              - generic [ref=e221]:
+                - heading "Rubric focus" [level=3] [ref=e222]
+                - list [ref=e223]:
+                  - listitem [ref=e224]:
+                    - strong [ref=e225]: correctness
+                    - text: ": Handles normalization correctly"
+                  - listitem [ref=e226]:
+                    - strong [ref=e227]: code_quality
+                    - text: ": Clear implementation"
+                  - listitem [ref=e228]:
+                    - strong [ref=e229]: problem_solving
+                    - text: ": Uses a sensible approach"
+                  - listitem [ref=e230]:
+                    - strong [ref=e231]: efficiency
+                    - text: ": Reasonable runtime"
+                  - listitem [ref=e232]:
+                    - strong [ref=e233]: testing_reasoning
+                    - text: ": Mentions edge cases"
+                  - listitem [ref=e234]:
+                    - strong [ref=e235]: communication
+                    - text: ": Explains tradeoffs"
+            - generic [ref=e236]:
+              - heading "Python editor" [level=3] [ref=e237]
+              - code [ref=e241]:
+                - generic [ref=e242]:
+                  - textbox "Editor content"
+                  - textbox [ref=e243]
+                  - generic [ref=e245]:
+                    - generic [ref=e246]:
+                      - generic [ref=e248] [cursor=pointer]: 
+                      - generic [ref=e249]: "1"
+                    - generic [ref=e251]: "2"
+                    - generic [ref=e253]: "3"
+                  - generic [ref=e260]:
+                    - generic [ref=e282]: "def pair_sum(nums, target):"
+                    - generic [ref=e284]: return []
+            - generic [ref=e267]:
+              - button "Save answer" [ref=e268] [cursor=pointer]
+              - button "Run code" [ref=e269] [cursor=pointer]
+              - button "Next question" [ref=e270] [cursor=pointer]
+              - button "Finish session" [ref=e271] [cursor=pointer]
+          - generic [ref=e272]:
+            - generic [ref=e273]:
+              - heading "AI helper" [level=3] [ref=e274]
+              - generic [ref=e275]: logged to backend
+            - paragraph [ref=e277]: Ask for a nudge, test strategy, or structure advice.
+            - generic [ref=e278]:
+              - textbox "Ask the assistant for help..." [ref=e279]
+              - button "Send" [ref=e280] [cursor=pointer]
+  - generic [ref=e111]:
+    - alert
+    - alert

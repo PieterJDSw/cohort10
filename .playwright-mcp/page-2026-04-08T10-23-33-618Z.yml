@@ -1,0 +1,55 @@
+- generic [ref=e1]:
+  - generic [ref=e3]:
+    - banner [ref=e4]:
+      - generic [ref=e5]:
+        - paragraph [ref=e6]: Developer Assessment Platform
+        - link "MVP Assessment" [ref=e7] [cursor=pointer]:
+          - /url: /
+      - navigation [ref=e8]:
+        - link "Start" [ref=e9] [cursor=pointer]:
+          - /url: /
+        - link "Dashboard" [active] [ref=e10] [cursor=pointer]:
+          - /url: /dashboard
+    - main [ref=e11]:
+      - generic [ref=e339]:
+        - generic [ref=e341]:
+          - paragraph [ref=e342]: Dashboard
+          - heading "All assessment sessions" [level=1] [ref=e343]
+          - paragraph [ref=e344]: Open a result to inspect the final scoring breakdown.
+        - table [ref=e347]:
+          - rowgroup [ref=e348]:
+            - row "Candidate Status Recommendation Overall score Confidence" [ref=e349]:
+              - columnheader "Candidate" [ref=e350]
+              - columnheader "Status" [ref=e351]
+              - columnheader "Recommendation" [ref=e352]
+              - columnheader "Overall score" [ref=e353]
+              - columnheader "Confidence" [ref=e354]
+              - columnheader [ref=e355]
+          - rowgroup [ref=e356]:
+            - row "Playwright Answer Path scored hire 74.5 0.73 Open result" [ref=e357]:
+              - cell "Playwright Answer Path" [ref=e358]
+              - cell "scored" [ref=e359]
+              - cell "hire" [ref=e360]
+              - cell "74.5" [ref=e361]
+              - cell "0.73" [ref=e362]
+              - cell "Open result" [ref=e363]:
+                - button "Open result" [ref=e364] [cursor=pointer]
+            - row "Playwright Smoke scored no_hire 0.0 0.00 Open result" [ref=e365]:
+              - cell "Playwright Smoke" [ref=e366]
+              - cell "scored" [ref=e367]
+              - cell "no_hire" [ref=e368]
+              - cell "0.0" [ref=e369]
+              - cell "0.00" [ref=e370]
+              - cell "Open result" [ref=e371]:
+                - button "Open result" [ref=e372] [cursor=pointer]
+            - row "Smoke Test Candidate in_progress pending -- -- Open result" [ref=e373]:
+              - cell "Smoke Test Candidate" [ref=e374]
+              - cell "in_progress" [ref=e375]
+              - cell "pending" [ref=e376]
+              - cell "--" [ref=e377]
+              - cell "--" [ref=e378]
+              - cell "Open result" [ref=e379]:
+                - button "Open result" [ref=e380] [cursor=pointer]
+  - generic [ref=e111]:
+    - alert
+    - alert

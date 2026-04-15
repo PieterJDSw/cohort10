@@ -1,0 +1,61 @@
+- generic [active] [ref=e1]:
+  - generic [ref=e3]:
+    - banner [ref=e4]:
+      - generic [ref=e5]:
+        - paragraph [ref=e6]: Developer Assessment Platform
+        - link "MVP Assessment" [ref=e7] [cursor=pointer]:
+          - /url: /
+      - navigation [ref=e8]:
+        - link "Start" [ref=e9] [cursor=pointer]:
+          - /url: /
+        - link "Dashboard" [ref=e10] [cursor=pointer]:
+          - /url: /dashboard
+    - main [ref=e11]:
+      - generic [ref=e36]:
+        - generic [ref=e38]:
+          - paragraph [ref=e39]: Active session
+          - heading "test1" [level=2] [ref=e40]
+          - paragraph [ref=e41]: "Status: in_progress | Progress: 6/10"
+        - paragraph [ref=e341]: Unable to save the answer.
+        - generic [ref=e42]:
+          - generic [ref=e43]:
+            - generic [ref=e44]:
+              - generic [ref=e45]:
+                - generic [ref=e46]: culture
+                - generic [ref=e47]: "difficulty: medium"
+                - generic [ref=e48]: 6 / 10
+              - heading "Production Incident" [level=2] [ref=e340]
+              - paragraph [ref=e50]: A release breaks candidate session creation in production. How do you respond in the first hour?
+              - generic [ref=e51]:
+                - heading "Rubric focus" [level=3] [ref=e52]
+                - list [ref=e53]:
+                  - listitem [ref=e330]:
+                    - strong [ref=e331]: ownership
+                    - text: ": Takes responsibility"
+                  - listitem [ref=e332]:
+                    - strong [ref=e333]: collaboration
+                    - text: ": Coordinates with others effectively"
+                  - listitem [ref=e334]:
+                    - strong [ref=e335]: prioritization
+                    - text: ": Focuses on the most important actions first"
+                  - listitem [ref=e336]:
+                    - strong [ref=e337]: communication_clarity
+                    - text: ": Communicates clearly under pressure"
+            - generic [ref=e306]:
+              - heading "Answer" [level=3] [ref=e307]
+              - textbox "Write the candidate answer here..." [ref=e308]
+            - generic [ref=e97]:
+              - button "Save answer" [ref=e98] [cursor=pointer]
+              - button "Next question" [ref=e100] [cursor=pointer]
+              - button "Finish session" [ref=e101] [cursor=pointer]
+          - generic [ref=e102]:
+            - generic [ref=e103]:
+              - heading "AI helper" [level=3] [ref=e104]
+              - generic [ref=e105]: logged to backend
+            - paragraph [ref=e107]: Ask for a nudge, test strategy, or structure advice.
+            - generic [ref=e108]:
+              - textbox "Ask the assistant for help..." [ref=e109]
+              - button "Send" [ref=e110] [cursor=pointer]
+  - generic [ref=e111]:
+    - alert
+    - alert

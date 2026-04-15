@@ -1,0 +1,79 @@
+- generic [active] [ref=e1]:
+  - generic [ref=e3]:
+    - banner [ref=e4]:
+      - generic [ref=e5]:
+        - paragraph [ref=e6]: Developer Assessment Platform
+        - link "MVP Assessment" [ref=e7] [cursor=pointer]:
+          - /url: /
+      - navigation [ref=e8]:
+        - link "Start" [ref=e9] [cursor=pointer]:
+          - /url: /
+        - link "Dashboard" [ref=e10] [cursor=pointer]:
+          - /url: /dashboard
+    - main [ref=e11]:
+      - generic [ref=e36]:
+        - generic [ref=e38]:
+          - paragraph [ref=e39]: Active session
+          - heading "demo" [level=2] [ref=e40]
+          - paragraph [ref=e41]: "Status: in_progress | Progress: 1/10"
+        - generic [ref=e42]:
+          - generic [ref=e43]:
+            - generic [ref=e44]:
+              - generic [ref=e45]:
+                - generic [ref=e46]: coding
+                - generic [ref=e47]: "difficulty: medium"
+                - generic [ref=e48]: 1 / 10
+              - heading "Group Anagrams" [level=2] [ref=e49]
+              - paragraph [ref=e50]: "Write `group_anagrams(words)` that groups words that are anagrams. Return the groups sorted internally and sorted by the first word in each group."
+              - generic [ref=e51]:
+                - heading "Rubric focus" [level=3] [ref=e52]
+                - list [ref=e53]:
+                  - listitem [ref=e54]:
+                    - strong [ref=e55]: correctness
+                    - text: ": Returns the right result for expected and edge-case inputs"
+                  - listitem [ref=e56]:
+                    - strong [ref=e57]: code_quality
+                    - text: ": Readable, maintainable, and idiomatic Python"
+                  - listitem [ref=e58]:
+                    - strong [ref=e59]: problem_solving
+                    - text: ": Chooses an approach that fits the problem well"
+                  - listitem [ref=e60]:
+                    - strong [ref=e61]: efficiency
+                    - text: ": Uses time and space proportionally to the input"
+                  - listitem [ref=e62]:
+                    - strong [ref=e63]: testing_reasoning
+                    - text: ": Can explain edge cases and why the tests matter"
+                  - listitem [ref=e64]:
+                    - strong [ref=e65]: communication
+                    - text: ": Explains the approach clearly"
+            - generic [ref=e66]:
+              - heading "Python editor" [level=3] [ref=e67]
+              - code [ref=e71]:
+                - generic [ref=e72]:
+                  - textbox "Editor content"
+                  - textbox [ref=e73]
+                  - generic [ref=e75]:
+                    - generic [ref=e76]:
+                      - generic [ref=e78] [cursor=pointer]: 
+                      - generic [ref=e79]: "1"
+                    - generic [ref=e81]: "2"
+                    - generic [ref=e83]: "3"
+                  - generic [ref=e90]:
+                    - generic [ref=e92]: "def pair_sum(nums, target):"
+                    - generic [ref=e94]: return []
+            - generic [ref=e97]:
+              - button "Save answer" [ref=e98] [cursor=pointer]
+              - button "Run code" [ref=e99] [cursor=pointer]
+              - button "Next question" [ref=e100] [cursor=pointer]
+              - button "Finish session" [ref=e101] [cursor=pointer]
+          - generic [ref=e102]:
+            - generic [ref=e103]:
+              - heading "AI helper" [level=3] [ref=e104]
+              - generic [ref=e105]: logged to backend
+            - paragraph [ref=e107]: Ask for a nudge, test strategy, or structure advice.
+            - generic [ref=e108]:
+              - textbox "Ask the assistant for help..." [ref=e109]
+              - button "Send" [ref=e110] [cursor=pointer]
+  - generic [ref=e111]:
+    - alert
+    - alert

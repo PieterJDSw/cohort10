@@ -1,0 +1,55 @@
+- generic [active] [ref=e1]:
+  - generic [ref=e3]:
+    - banner [ref=e4]:
+      - generic [ref=e5]:
+        - paragraph [ref=e6]: Developer Assessment Platform
+        - link "MVP Assessment" [ref=e7] [cursor=pointer]:
+          - /url: /
+      - navigation [ref=e8]:
+        - link "Start" [ref=e9] [cursor=pointer]:
+          - /url: /
+        - link "Dashboard" [ref=e10] [cursor=pointer]:
+          - /url: /dashboard
+    - main [ref=e11]:
+      - generic [ref=e300]:
+        - generic [ref=e301]:
+          - generic [ref=e302]:
+            - paragraph [ref=e303]: Final recommendation
+            - heading "hire" [level=1] [ref=e304]
+            - paragraph [ref=e305]: The candidate scored 74.45 overall across 2 dimensions.
+          - generic [ref=e306]:
+            - paragraph [ref=e307]:
+              - strong [ref=e308]: "Overall score:"
+              - text: "74.5"
+            - paragraph [ref=e309]:
+              - strong [ref=e310]: "Confidence:"
+              - text: "0.73"
+        - generic [ref=e311]:
+          - generic [ref=e312]:
+            - heading "Dimension radar" [level=3] [ref=e314]
+            - img [ref=e316]
+          - generic [ref=e317]:
+            - heading "Breakdown" [level=3] [ref=e318]
+            - generic [ref=e319]:
+              - article [ref=e320]:
+                - paragraph [ref=e321]: communication
+                - strong [ref=e322]: "74.5"
+                - generic [ref=e323]: confidence 0.73
+              - article [ref=e324]:
+                - paragraph [ref=e325]: core_understanding
+                - strong [ref=e326]: "74.5"
+                - generic [ref=e327]: confidence 0.73
+            - generic [ref=e328]:
+              - article [ref=e329]:
+                - heading "Strengths" [level=4] [ref=e330]
+                - list [ref=e331]:
+                  - listitem [ref=e332]: conceptual_correctness
+                  - listitem [ref=e333]: depth
+              - article [ref=e334]:
+                - heading "Weaknesses" [level=4] [ref=e335]
+                - list [ref=e336]:
+                  - listitem [ref=e337]: tradeoff_reasoning
+                  - listitem [ref=e338]: clarity
+  - generic [ref=e111]:
+    - alert
+    - alert

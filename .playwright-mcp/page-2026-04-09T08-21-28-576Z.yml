@@ -1,0 +1,13 @@
+- generic [ref=e3]:
+  - banner [ref=e4]:
+    - generic [ref=e5]:
+      - paragraph [ref=e6]: Developer Assessment Platform
+      - link "MVP Assessment" [ref=e7] [cursor=pointer]:
+        - /url: /
+    - navigation [ref=e8]:
+      - link "Start" [ref=e9] [cursor=pointer]:
+        - /url: /
+      - link "Dashboard" [ref=e10] [cursor=pointer]:
+        - /url: /dashboard
+  - main [ref=e11]:
+    - paragraph [ref=e12]: Loading result...

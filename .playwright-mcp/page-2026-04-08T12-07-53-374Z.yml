@@ -1,0 +1,67 @@
+- generic [active] [ref=e1]:
+  - generic [ref=e3]:
+    - banner [ref=e4]:
+      - generic [ref=e5]:
+        - paragraph [ref=e6]: Developer Assessment Platform
+        - link "MVP Assessment" [ref=e7] [cursor=pointer]:
+          - /url: /
+      - navigation [ref=e8]:
+        - link "Start" [ref=e9] [cursor=pointer]:
+          - /url: /
+        - link "Dashboard" [ref=e10] [cursor=pointer]:
+          - /url: /dashboard
+    - main [ref=e11]:
+      - generic [ref=e36]:
+        - generic [ref=e38]:
+          - paragraph [ref=e39]: Active session
+          - heading "test1" [level=2] [ref=e40]
+          - paragraph [ref=e41]: "Status: in_progress | Progress: 10/10"
+        - paragraph [ref=e574]: Unable to save the answer.
+        - generic [ref=e42]:
+          - generic [ref=e43]:
+            - generic [ref=e44]:
+              - generic [ref=e45]:
+                - generic [ref=e46]: theory
+                - generic [ref=e47]: "difficulty: medium"
+                - generic [ref=e48]: 10 / 10
+              - heading "Feature Flags" [level=2] [ref=e562]
+              - paragraph [ref=e50]: Explain what feature flags are, what problems they solve, and the operational risks they introduce.
+              - generic [ref=e51]:
+                - heading "Rubric focus" [level=3] [ref=e52]
+                - list [ref=e53]:
+                  - listitem [ref=e563]:
+                    - strong [ref=e564]: conceptual_correctness
+                    - text: ": Explains the concept accurately"
+                  - listitem [ref=e565]:
+                    - strong [ref=e566]: depth
+                    - text: ": Covers practical details beyond a textbook definition"
+                  - listitem [ref=e567]:
+                    - strong [ref=e568]: tradeoff_reasoning
+                    - text: ": Discusses constraints, costs, and alternatives"
+                  - listitem [ref=e569]:
+                    - strong [ref=e570]: clarity
+                    - text: ": Keeps the explanation structured and precise"
+            - generic [ref=e571]:
+              - heading "Answer" [level=3] [ref=e572]
+              - textbox "Write the candidate answer here..." [ref=e573]
+            - generic [ref=e97]:
+              - button "Save answer" [ref=e98] [cursor=pointer]
+              - button "Next question" [ref=e100] [cursor=pointer]
+              - button "Finish session" [ref=e101] [cursor=pointer]
+          - generic [ref=e102]:
+            - generic [ref=e103]:
+              - heading "AI helper" [level=3] [ref=e104]
+              - generic [ref=e105]: logged to backend
+            - generic [ref=e106]:
+              - article [ref=e453]:
+                - generic [ref=e454]: user
+                - paragraph [ref=e455]: I plan to normalize k with modulo and handle empty input first. What edge cases should I verify after that?
+              - article [ref=e456]:
+                - generic [ref=e457]: assistant
+                - paragraph [ref=e458]: Okay, let's see. The user is working on a Python function to rotate an array to the right by k steps. They mentioned handling empty input first, but the candidate draft answer is asking about edge cases after that. The known tests include cases where k is 2 and 4, which are wraparound. First, I need to make sure the code handles the rotation correctly. Rotating right by k steps means that each element moves to the right by k positions. But if k is larger than the array length, it wraps around. So, the first thing to check is if k is larger than the array length. If that's the case, the array should be rotated in the opposite direction, which is equivalent to rotating left by (n - k) steps. The candidate's draft answer already mentions handling empty input first. But maybe they need to verify that the input is valid. For example, if k is zero, the array should remain unchanged. Also, if the array is empty, the function should return an empty list. Another edge case is when
+            - generic [ref=e108]:
+              - textbox "Ask the assistant for help..." [ref=e109]
+              - button "Send" [ref=e110] [cursor=pointer]
+  - generic [ref=e111]:
+    - alert
+    - alert

@@ -1,0 +1,56 @@
+- generic [ref=e3]:
+  - banner [ref=e4]:
+    - generic [ref=e5]:
+      - paragraph [ref=e6]: Developer Assessment Platform
+      - link "MVP Assessment" [ref=e7] [cursor=pointer]:
+        - /url: /
+    - navigation [ref=e8]:
+      - link "Start" [ref=e9] [cursor=pointer]:
+        - /url: /
+      - link "Dashboard" [ref=e10] [cursor=pointer]:
+        - /url: /dashboard
+  - main [ref=e11]:
+    - generic [ref=e36]:
+      - generic [ref=e38]:
+        - paragraph [ref=e39]: Active session
+        - heading "Playwright High Score" [level=2] [ref=e40]
+        - paragraph [ref=e41]: "Status: in_progress | Progress: 1/10"
+      - generic [ref=e42]:
+        - generic [ref=e43]:
+          - generic [ref=e44]:
+            - generic [ref=e45]:
+              - generic [ref=e46]: culture
+              - generic [ref=e47]: "difficulty: easy"
+              - generic [ref=e48]: 1 / 10
+            - heading "Ambiguous Requirements" [level=2] [ref=e49]
+            - paragraph [ref=e50]: You start implementing a feature and realize the requirements are too ambiguous to proceed safely. What do you do?
+            - generic [ref=e51]:
+              - heading "Rubric focus" [level=3] [ref=e52]
+              - list [ref=e53]:
+                - listitem [ref=e54]:
+                  - strong [ref=e55]: ownership
+                  - text: ": Takes responsibility for outcomes and follow-through"
+                - listitem [ref=e56]:
+                  - strong [ref=e57]: collaboration
+                  - text: ": Works effectively with the people involved"
+                - listitem [ref=e58]:
+                  - strong [ref=e59]: prioritization
+                  - text: ": Focuses on the most important action first"
+                - listitem [ref=e60]:
+                  - strong [ref=e61]: communication_clarity
+                  - text: ": Communicates decisions and tradeoffs clearly"
+          - generic [ref=e62]:
+            - heading "Answer" [level=3] [ref=e63]
+            - textbox "Write the candidate answer here..." [ref=e64]
+          - generic [ref=e65]:
+            - button "Save answer" [ref=e66] [cursor=pointer]
+            - button "Next question" [ref=e67] [cursor=pointer]
+            - button "Finish session" [ref=e68] [cursor=pointer]
+        - generic [ref=e69]:
+          - generic [ref=e70]:
+            - heading "AI helper" [level=3] [ref=e71]
+            - generic [ref=e72]: logged to backend
+          - paragraph [ref=e74]: Ask for a nudge, test strategy, or structure advice.
+          - generic [ref=e75]:
+            - textbox "Ask the assistant for help..." [ref=e76]
+            - button "Send" [ref=e77] [cursor=pointer]

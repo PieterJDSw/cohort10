@@ -1,0 +1,80 @@
+- generic [active] [ref=e1]:
+  - generic [ref=e3]:
+    - banner [ref=e4]:
+      - generic [ref=e5]:
+        - paragraph [ref=e6]: Developer Assessment Platform
+        - link "MVP Assessment" [ref=e7] [cursor=pointer]:
+          - /url: /
+      - navigation [ref=e8]:
+        - link "Start" [ref=e9] [cursor=pointer]:
+          - /url: /
+        - link "Dashboard" [ref=e10] [cursor=pointer]:
+          - /url: /dashboard
+    - main [ref=e11]:
+      - generic [ref=e112]:
+        - generic [ref=e113]:
+          - generic [ref=e114]:
+            - paragraph [ref=e115]: Final recommendation
+            - heading "strong hire" [level=1] [ref=e116]
+            - paragraph [ref=e117]: The candidate demonstrates strong technical skills and problem-solving abilities, with high confidence in their coding and architecture expertise. They effectively validate migration and query requirements, manage ambiguity, and prioritize safety and reliability.
+            - link "Open audit" [ref=e119] [cursor=pointer]:
+              - /url: /audit/e4049e1c-2d7e-4409-a43b-2818600c7b6a
+          - generic [ref=e120]:
+            - paragraph [ref=e121]:
+              - strong [ref=e122]: "Overall score:"
+              - text: "93.5"
+            - paragraph [ref=e123]:
+              - strong [ref=e124]: "Confidence:"
+              - text: "62.63"
+        - generic [ref=e125]:
+          - generic [ref=e126]:
+            - heading "Dimension radar" [level=3] [ref=e128]
+            - img [ref=e130]
+          - generic [ref=e131]:
+            - heading "Breakdown" [level=3] [ref=e132]
+            - generic [ref=e133]:
+              - article [ref=e134]:
+                - paragraph [ref=e135]: AI Fluency
+                - strong [ref=e136]: "91.4"
+                - generic [ref=e137]: confidence 0.95
+              - article [ref=e138]:
+                - paragraph [ref=e139]: Architecture
+                - strong [ref=e140]: "92.0"
+                - generic [ref=e141]: confidence 100.00
+              - article [ref=e142]:
+                - paragraph [ref=e143]: Coding Skill
+                - strong [ref=e144]: "96.9"
+                - generic [ref=e145]: confidence 67.00
+              - article [ref=e146]:
+                - paragraph [ref=e147]: Communication
+                - strong [ref=e148]: "93.7"
+                - generic [ref=e149]: confidence 78.00
+              - article [ref=e150]:
+                - paragraph [ref=e151]: Core Understanding
+                - strong [ref=e152]: "90.8"
+                - generic [ref=e153]: confidence 62.87
+              - article [ref=e154]:
+                - paragraph [ref=e155]: Ownership Judgment
+                - strong [ref=e156]: "96.0"
+                - generic [ref=e157]: confidence 66.98
+            - generic [ref=e158]:
+              - article [ref=e159]:
+                - heading "Strengths" [level=4] [ref=e160]
+                - list [ref=e161]:
+                  - listitem [ref=e162]: The code correctly computes the expected results for the given tests.
+                  - listitem [ref=e163]: The code is well-structured and uses efficient sliding window logic.
+                  - listitem [ref=e164]: It handles edge cases effectively (all-negative input returns -6).
+                  - listitem [ref=e165]: Constructively addresses outcome, time, and risk tradeoffs.
+                  - listitem [ref=e166]: Clears communication by framing the decision.
+                  - listitem [ref=e167]: Prioritizes protecting core user needs and documenting scope changes.
+              - article [ref=e168]:
+                - heading "Weaknesses" [level=4] [ref=e169]
+                - list [ref=e170]:
+                  - listitem [ref=e171]: Lacks specific examples of scope changes or risk documentation.
+                  - listitem [ref=e172]: Mistakes in prioritization.
+                  - listitem [ref=e173]: Missing confidence scores for verification behavior.
+                  - listitem [ref=e174]: Code result is null but no metric provided.
+                  - listitem [ref=e175]: Lacks specific examples of criteria or impact.
+  - generic [ref=e111]:
+    - alert
+    - alert

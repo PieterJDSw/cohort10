@@ -1,0 +1,128 @@
+- generic [active] [ref=e1]:
+  - generic [ref=e3]:
+    - banner [ref=e4]:
+      - generic [ref=e5]:
+        - generic [ref=e6]:
+          - paragraph [ref=e7]: Developer Assessment Platform
+          - link "MVP Assessment" [ref=e8] [cursor=pointer]:
+            - /url: /
+        - navigation [ref=e9]:
+          - link "Start" [ref=e10] [cursor=pointer]:
+            - /url: /
+          - link "Dashboard" [ref=e11] [cursor=pointer]:
+            - /url: /dashboard
+    - main [ref=e12]:
+      - generic [ref=e65]:
+        - generic [ref=e67]:
+          - generic [ref=e68]:
+            - paragraph [ref=e69]: Active session
+            - heading "Tool Calling E2E Candidate" [level=2] [ref=e70]
+            - paragraph [ref=e71]: Work through the prompt, save often, run code locally when available, and finish to kick off scoring.
+          - generic [ref=e72]:
+            - generic [ref=e73]: "status: in_progress"
+            - generic [ref=e74]: "progress: 2/10"
+        - paragraph [ref=e234]: Code executed against the local MVP tests.
+        - generic [ref=e75]:
+          - generic [ref=e76]:
+            - generic [ref=e77]:
+              - generic [ref=e78]:
+                - generic [ref=e79]: coding
+                - generic [ref=e80]: "difficulty: medium"
+                - generic [ref=e81]: 2 / 10
+              - generic [ref=e82]:
+                - heading "Rotate Array" [level=2] [ref=e122]
+                - paragraph [ref=e84]: "Write `rotate_right(nums, k)` that returns a new list rotated right by `k` steps."
+              - generic [ref=e85]:
+                - generic [ref=e86]:
+                  - paragraph [ref=e87]: Rubric focus
+                  - heading "What the evaluator will look for" [level=3] [ref=e88]
+                - list [ref=e89]:
+                  - listitem [ref=e123]:
+                    - strong [ref=e124]: correctness
+                    - text: Returns the right result for expected and edge-case inputs
+                  - listitem [ref=e125]:
+                    - strong [ref=e126]: code_quality
+                    - text: Readable, maintainable, and idiomatic Python
+                  - listitem [ref=e127]:
+                    - strong [ref=e128]: problem_solving
+                    - text: Chooses an approach that fits the problem well
+                  - listitem [ref=e129]:
+                    - strong [ref=e130]: efficiency
+                    - text: Uses time and space proportionally to the input
+                  - listitem [ref=e131]:
+                    - strong [ref=e132]: testing_reasoning
+                    - text: Can explain edge cases and why the tests matter
+                  - listitem [ref=e133]:
+                    - strong [ref=e134]: communication
+                    - text: Explains the approach clearly
+            - generic [ref=e135]:
+              - generic [ref=e136]:
+                - heading "Python editor" [level=3] [ref=e137]
+                - paragraph [ref=e138]: Monaco editor with local test execution.
+              - code [ref=e142]:
+                - generic [ref=e143]:
+                  - textbox "Editor content"
+                  - textbox [ref=e144]
+                  - generic [ref=e146]:
+                    - generic [ref=e176]:
+                      - generic [ref=e178] [cursor=pointer]: 
+                      - generic [ref=e179]: "1"
+                    - generic [ref=e180]:
+                      - generic [ref=e181] [cursor=pointer]: 
+                      - generic [ref=e182]: "2"
+                    - generic [ref=e184]: "3"
+                    - generic [ref=e186]: "4"
+                    - generic [ref=e188]: "5"
+                    - generic [ref=e189]:
+                      - generic [ref=e190] [cursor=pointer]: 
+                      - generic [ref=e191]: "6"
+                    - generic [ref=e193]: "7"
+                    - generic [ref=e195]: "8"
+                    - generic [ref=e197]: "9"
+                  - generic [ref=e161]:
+                    - generic [ref=e219]: "def rotate_right(nums, k):"
+                    - generic [ref=e221]: "if not nums:"
+                    - generic [ref=e223]: return []
+                    - generic [ref=e226]: steps = k % len(nums)
+                    - generic [ref=e228]: "if steps == 0:"
+                    - generic [ref=e230]: return nums[:]
+                    - generic [ref=e233]: return nums[-steps:] + nums[:-steps]
+            - generic [ref=e235]:
+              - generic [ref=e236]:
+                - heading "Run results" [level=3] [ref=e237]
+                - generic [ref=e238]: 2/2 passing
+              - list [ref=e239]:
+                - listitem [ref=e240]:
+                  - strong [ref=e241]: basic
+                  - text: :pass
+                - listitem [ref=e242]:
+                  - strong [ref=e243]: wraparound
+                  - text: :pass
+            - generic [ref=e101]:
+              - button "Save answer" [ref=e102]
+              - button "Run code" [ref=e168]
+              - button "Next question" [ref=e103]
+              - button "Finish session" [ref=e104]
+          - generic [ref=e105]:
+            - generic [ref=e106]:
+              - heading "AI helper" [level=3] [ref=e107]
+              - generic [ref=e108]: logged to backend
+            - generic [ref=e109]:
+              - article [ref=e115]:
+                - generic [ref=e116]: user
+                - paragraph [ref=e117]: Give me a concise structure for a strong answer that balances code quality, tests, and teammate collaboration.
+              - article [ref=e118]:
+                - generic [ref=e119]: assistant
+                - paragraph [ref=e120]: "* Suggest refactoring the code into smaller, more cohesive functions or classes. * Request the teammate to write unit tests covering edge cases and boundary conditions. * Propose a specific, small refactoring task to start the conversation. * Frame feedback around maintainability and future-proofing the codebase."
+              - article [ref=e170]:
+                - generic [ref=e171]: user
+                - paragraph [ref=e172]: What edge cases should I handle for rotate_right(nums, k) without overcomplicating the solution?
+              - article [ref=e173]:
+                - generic [ref=e174]: assistant
+                - paragraph [ref=e175]: "* Handle the case where $k$ is larger than the length of `nums` by using $k \\pmod{n}$. * Consider using list slicing or the three-reversal technique for rotation. * Verify the handling of $k=0$ (no rotation) and empty input lists."
+            - generic [ref=e112]:
+              - textbox "Ask the assistant for help..." [ref=e113]
+              - button "Send" [ref=e114]
+  - generic [ref=e169]:
+    - alert
+    - alert

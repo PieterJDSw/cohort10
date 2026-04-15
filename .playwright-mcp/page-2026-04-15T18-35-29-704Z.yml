@@ -1,0 +1,128 @@
+- generic [active] [ref=e1]:
+  - generic [ref=e3]:
+    - banner [ref=e4]:
+      - generic [ref=e5]:
+        - generic [ref=e6]:
+          - paragraph [ref=e7]: Developer Assessment Platform
+          - link "MVP Assessment" [ref=e8] [cursor=pointer]:
+            - /url: /
+        - navigation [ref=e9]:
+          - link "Start" [ref=e10] [cursor=pointer]:
+            - /url: /
+          - link "Dashboard" [ref=e11] [cursor=pointer]:
+            - /url: /dashboard
+    - main [ref=e12]:
+      - generic [ref=e65]:
+        - generic [ref=e67]:
+          - generic [ref=e68]:
+            - paragraph [ref=e69]: Active session
+            - heading "Container E2E Candidate" [level=2] [ref=e70]
+            - paragraph [ref=e71]: Work through the prompt, save often, run code locally when available, and finish to kick off scoring.
+          - generic [ref=e72]:
+            - generic [ref=e73]: "status: in_progress"
+            - generic [ref=e74]: "progress: 2/10"
+        - paragraph [ref=e399]: Answer saved.
+        - generic [ref=e75]:
+          - generic [ref=e76]:
+            - generic [ref=e77]:
+              - generic [ref=e78]:
+                - generic [ref=e79]: coding
+                - generic [ref=e80]: "difficulty: medium"
+                - generic [ref=e81]: 2 / 10
+              - generic [ref=e82]:
+                - heading "Meeting Rooms Needed" [level=2] [ref=e250]
+                - paragraph [ref=e84]: "Write `min_meeting_rooms(intervals)` that returns the minimum number of meeting rooms required so all meetings can happen without overlap."
+              - generic [ref=e85]:
+                - generic [ref=e86]:
+                  - paragraph [ref=e87]: Rubric focus
+                  - heading "What the evaluator will look for" [level=3] [ref=e88]
+                - list [ref=e89]:
+                  - listitem [ref=e90]:
+                    - strong [ref=e91]: correctness
+                    - text: Returns the right result for expected and edge-case inputs
+                  - listitem [ref=e92]:
+                    - strong [ref=e93]: code_quality
+                    - text: Readable, maintainable, and idiomatic Python
+                  - listitem [ref=e94]:
+                    - strong [ref=e95]: problem_solving
+                    - text: Chooses an approach that fits the problem well
+                  - listitem [ref=e96]:
+                    - strong [ref=e97]: efficiency
+                    - text: Uses time and space proportionally to the input
+                  - listitem [ref=e98]:
+                    - strong [ref=e99]: testing_reasoning
+                    - text: Can explain edge cases and why the tests matter
+                  - listitem [ref=e100]:
+                    - strong [ref=e101]: communication
+                    - text: Explains the approach clearly
+            - generic [ref=e102]:
+              - generic [ref=e103]:
+                - heading "Python editor" [level=3] [ref=e104]
+                - paragraph [ref=e105]: Monaco editor with local test execution.
+              - code [ref=e109]:
+                - generic [ref=e110]:
+                  - textbox "Editor content"
+                  - textbox [ref=e111]
+                  - generic [ref=e113]:
+                    - generic [ref=e267]:
+                      - generic [ref=e269] [cursor=pointer]: 
+                      - generic [ref=e270]: "1"
+                    - generic [ref=e271]:
+                      - generic [ref=e272] [cursor=pointer]: 
+                      - generic [ref=e273]: "2"
+                    - generic [ref=e275]: "3"
+                    - generic [ref=e277]: "4"
+                    - generic [ref=e279]: "5"
+                    - generic [ref=e281]: "6"
+                    - generic [ref=e283]: "7"
+                    - generic [ref=e285]: "8"
+                    - generic [ref=e287]: "9"
+                    - generic [ref=e289]: "10"
+                    - generic [ref=e291]: "11"
+                    - generic [ref=e292]:
+                      - generic [ref=e293] [cursor=pointer]: 
+                      - generic [ref=e294]: "12"
+                    - generic [ref=e295]:
+                      - generic [ref=e296] [cursor=pointer]: 
+                      - generic [ref=e297]: "13"
+                    - generic [ref=e299]: "14"
+                    - generic [ref=e301]: "15"
+                    - generic [ref=e303]: "16"
+                    - generic [ref=e305]: "17"
+                    - generic [ref=e306]:
+                      - generic [ref=e307] [cursor=pointer]: 
+                      - generic [ref=e308]: "18"
+                    - generic [ref=e310]: "19"
+                    - generic [ref=e312]: "20"
+                  - generic [ref=e128]:
+                    - generic [ref=e365]: "def min_meeting_rooms(intervals):"
+                    - generic [ref=e367]: "if not intervals:"
+                    - generic [ref=e369]: return 0
+                    - generic [ref=e372]: starts = sorted(interval[0] for interval in intervals)
+                    - generic [ref=e374]: ends = sorted(interval[1] for interval in intervals)
+                    - generic [ref=e377]: rooms_in_use = 0
+                    - generic [ref=e379]: max_rooms = 0
+                    - generic [ref=e381]: end_index = 0
+                    - generic [ref=e384]: "for start in starts:"
+                    - generic [ref=e386]: "while end_index < len(ends) and start >= ends[end_index]:"
+                    - generic [ref=e388]: rooms_in_use -= 1
+                    - generic [ref=e390]: end_index += 1
+                    - generic [ref=e393]: rooms_in_use += 1
+                    - generic [ref=e395]: "if rooms_in_use > max_rooms:"
+                    - generic [ref=e397]: max_rooms = rooms_in_use
+            - generic [ref=e135]:
+              - button "Save answer" [ref=e136]
+              - button "Run code" [ref=e137]
+              - button "Next question" [ref=e138]
+              - button "Finish session" [ref=e139]
+          - generic [ref=e140]:
+            - generic [ref=e141]:
+              - heading "AI helper" [level=3] [ref=e142]
+              - generic [ref=e143]: logged to backend
+            - paragraph [ref=e146]: Ask for a nudge, test strategy, or structure advice.
+            - generic [ref=e147]:
+              - textbox "Ask the assistant for help..." [ref=e148]
+              - button "Send" [ref=e149]
+  - generic [ref=e150]:
+    - alert
+    - alert

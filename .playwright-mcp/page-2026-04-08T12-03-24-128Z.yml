@@ -1,0 +1,61 @@
+- generic [active] [ref=e1]:
+  - generic [ref=e3]:
+    - banner [ref=e4]:
+      - generic [ref=e5]:
+        - paragraph [ref=e6]: Developer Assessment Platform
+        - link "MVP Assessment" [ref=e7] [cursor=pointer]:
+          - /url: /
+      - navigation [ref=e8]:
+        - link "Start" [ref=e9] [cursor=pointer]:
+          - /url: /
+        - link "Dashboard" [ref=e10] [cursor=pointer]:
+          - /url: /dashboard
+    - main [ref=e11]:
+      - generic [ref=e36]:
+        - generic [ref=e38]:
+          - paragraph [ref=e39]: Active session
+          - heading "test1" [level=2] [ref=e40]
+          - paragraph [ref=e41]: "Status: in_progress | Progress: 2/10"
+        - paragraph [ref=e296]: Moved to the next question.
+        - generic [ref=e42]:
+          - generic [ref=e43]:
+            - generic [ref=e44]:
+              - generic [ref=e45]:
+                - generic [ref=e46]: theory
+                - generic [ref=e47]: "difficulty: medium"
+                - generic [ref=e48]: 2 / 10
+              - heading "Database Indexes" [level=2] [ref=e297]
+              - paragraph [ref=e50]: Explain when you would add an index to a relational database table and what tradeoffs come with it.
+              - generic [ref=e51]:
+                - heading "Rubric focus" [level=3] [ref=e52]
+                - list [ref=e53]:
+                  - listitem [ref=e298]:
+                    - strong [ref=e299]: conceptual_correctness
+                    - text: ": Explains what indexes do"
+                  - listitem [ref=e300]:
+                    - strong [ref=e301]: depth
+                    - text: ": Covers read/write tradeoffs"
+                  - listitem [ref=e302]:
+                    - strong [ref=e303]: tradeoff_reasoning
+                    - text: ": Discusses cost and selectivity"
+                  - listitem [ref=e304]:
+                    - strong [ref=e305]: clarity
+                    - text: ": Organized explanation"
+            - generic [ref=e306]:
+              - heading "Answer" [level=3] [ref=e307]
+              - textbox "Write the candidate answer here..." [ref=e308]
+            - generic [ref=e97]:
+              - button "Save answer" [ref=e98] [cursor=pointer]
+              - button "Next question" [ref=e100] [cursor=pointer]
+              - button "Finish session" [ref=e101] [cursor=pointer]
+          - generic [ref=e102]:
+            - generic [ref=e103]:
+              - heading "AI helper" [level=3] [ref=e104]
+              - generic [ref=e105]: logged to backend
+            - paragraph [ref=e107]: Ask for a nudge, test strategy, or structure advice.
+            - generic [ref=e108]:
+              - textbox "Ask the assistant for help..." [ref=e109]
+              - button "Send" [ref=e110] [cursor=pointer]
+  - generic [ref=e111]:
+    - alert
+    - alert

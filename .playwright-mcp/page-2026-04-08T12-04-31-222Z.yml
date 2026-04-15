@@ -1,0 +1,67 @@
+- generic [active] [ref=e1]:
+  - generic [ref=e3]:
+    - banner [ref=e4]:
+      - generic [ref=e5]:
+        - paragraph [ref=e6]: Developer Assessment Platform
+        - link "MVP Assessment" [ref=e7] [cursor=pointer]:
+          - /url: /
+      - navigation [ref=e8]:
+        - link "Start" [ref=e9] [cursor=pointer]:
+          - /url: /
+        - link "Dashboard" [ref=e10] [cursor=pointer]:
+          - /url: /dashboard
+    - main [ref=e11]:
+      - generic [ref=e36]:
+        - generic [ref=e38]:
+          - paragraph [ref=e39]: Active session
+          - heading "test1" [level=2] [ref=e40]
+          - paragraph [ref=e41]: "Status: in_progress | Progress: 4/10"
+        - paragraph [ref=e325]: Moved to the next question.
+        - generic [ref=e42]:
+          - generic [ref=e43]:
+            - generic [ref=e44]:
+              - generic [ref=e45]:
+                - generic [ref=e46]: architecture
+                - generic [ref=e47]: "difficulty: hard"
+                - generic [ref=e48]: 4 / 10
+              - heading "Background Processing" [level=2] [ref=e326]
+              - paragraph [ref=e50]: How would you separate synchronous user actions from asynchronous evaluation work in this MVP?
+              - generic [ref=e51]:
+                - heading "Rubric focus" [level=3] [ref=e52]
+                - list [ref=e53]:
+                  - listitem [ref=e312]:
+                    - strong [ref=e313]: decomposition
+                    - text: ": Separates responsibilities well"
+                  - listitem [ref=e314]:
+                    - strong [ref=e315]: tradeoffs
+                    - text: ": Discusses queueing and cost"
+                  - listitem [ref=e316]:
+                    - strong [ref=e317]: scalability
+                    - text: ": Can scale workers"
+                  - listitem [ref=e318]:
+                    - strong [ref=e319]: reliability
+                    - text: ": Handles retries and idempotency"
+                  - listitem [ref=e320]:
+                    - strong [ref=e321]: maintainability
+                    - text: ": Easy to operate"
+                  - listitem [ref=e322]:
+                    - strong [ref=e323]: communication
+                    - text: ": Clear explanation"
+            - generic [ref=e306]:
+              - heading "Answer" [level=3] [ref=e307]
+              - textbox "Write the candidate answer here..." [ref=e308]
+            - generic [ref=e97]:
+              - button "Save answer" [ref=e98] [cursor=pointer]
+              - button "Next question" [ref=e100] [cursor=pointer]
+              - button "Finish session" [ref=e101] [cursor=pointer]
+          - generic [ref=e102]:
+            - generic [ref=e103]:
+              - heading "AI helper" [level=3] [ref=e104]
+              - generic [ref=e105]: logged to backend
+            - paragraph [ref=e107]: Ask for a nudge, test strategy, or structure advice.
+            - generic [ref=e108]:
+              - textbox "Ask the assistant for help..." [ref=e109]
+              - button "Send" [ref=e110] [cursor=pointer]
+  - generic [ref=e111]:
+    - alert
+    - alert

@@ -1,0 +1,118 @@
+services:
+  postgres:
+    image: postgres:16
+    container_name: assessment_postgres
+    restart: unless-stopped
+    environment:
+      POSTGRES_DB: assessment_db
+      POSTGRES_USER: assessment_user
+      POSTGRES_PASSWORD: assessment_pass
+    ports:
+      - "5432:5432"
+    volumes:
+      - postgres_data:/var/lib/postgresql/data
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U assessment_user -d assessment_db"]
+      interval: 10s
+      timeout: 5s
+      retries: 5
+
+  backend:
+    build:
+      context: ./mvp-assessment/backend
+    container_name: assessment_backend
+    restart: unless-stopped
+    depends_on:
+      postgres:
+        condition: service_healthy
+      vllm:
+        condition: service_started
+    environment:
+      APP_NAME: MVP Assessment
+      APP_ENV: docker
+      DATABASE_URL: postgresql+psycopg://assessment_user:assessment_pass@postgres:5432/assessment_db
+      FRONTEND_ORIGIN: http://localhost:5173
+      RUN_MIGRATIONS_ON_STARTUP: "true"
+      SEED_QUESTIONS_ON_STARTUP: "true"
+      OPENAI_API_KEY: ${OPENAI_API_KEY:-local-vllm}
+      OPENAI_API_BASE: http://vllm:8000/v1
+      MODEL_NAME: ${MODEL_NAME:-google/gemma-4-E2B-it}
+      LLM_ENABLED: "true"
+      LLM_TOOL_USE_ENABLED: "true"
+    ports:
+      - "${BACKEND_PORT:-8000}:8000"
+
+  frontend:
+    build:
+      context: ./mvp-assessment/frontend
+    container_name: assessment_frontend
+    restart: unless-stopped
+    depends_on:
+      - backend
+    environment:
+      VITE_API_BASE_URL: http://localhost:${BACKEND_PORT:-8000}
+    ports:
+      - "5173:5173"
+
+  redis:
+    image: redis:7
+    container_name: assessment_redis
+    restart: unless-stopped
+    profiles: ["queue"]
+    ports:
+      - "6379:6379"
+  vllm:
+    image: vllm/vllm-openai:gemma4
+    container_name: assessment_vllm
+    restart: unless-stopped
+    ports:
+      - "8001:8000"
+    ipc: host
+    shm_size: "16gb"
+    gpus: all
+    volumes:
+      - hf_cache:/root/.cache/huggingface
+    environment:
+      HF_TOKEN: ${HF_TOKEN:-}
+    command: >
+      --model google/gemma-4-E2B-it
+      --host 0.0.0.0
+      --port 8000
+      --quantization bitsandbytes
+      --enable-auto-tool-choice
+      --tool-call-parser gemma4
+      --reasoning-parser gemma4
+      --gpu-memory-utilization ${VLLM_GPU_MEMORY_UTILIZATION:-0.83}
+      --max-model-len ${VLLM_MAX_MODEL_LEN:-8000}
+      --language-model-only
+      --skip-mm-profiling
+      --enforce-eager
+      --max-num-seqs 1
+      
+  # vllm:
+  #   image: vllm/vllm-openai:latest
+  #   container_name: mvp_assessment_vllm
+  #   restart: unless-stopped
+  #   ports:
+  #     - "8001:8000"
+  #   volumes:
+  #     - hf_cache:/root/.cache/huggingface
+  #   environment:
+  #     HUGGING_FACE_HUB_TOKEN: ${HUGGING_FACE_HUB_TOKEN:-}
+  #   command: >
+  #     --model Qwen/Qwen3-0.6B
+  #     --host 0.0.0.0
+  #     --port 8000
+  #     --max-model-len 4096
+  #     --gpu-memory-utilization ${VLLM_GPU_MEMORY_UTILIZATION:-0.8}
+  #   deploy:
+  #     resources:
+  #       reservations:
+  #         devices:
+  #           - driver: nvidia
+  #             count: 1
+  #             capabilities: [gpu]
+  
+volumes:
+  postgres_data:
+  hf_cache:

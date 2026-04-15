@@ -1,0 +1,90 @@
+- generic [active] [ref=e1]:
+  - generic [ref=e3]:
+    - banner [ref=e4]:
+      - generic [ref=e5]:
+        - generic [ref=e6]:
+          - paragraph [ref=e7]: Developer Assessment Platform
+          - link "MVP Assessment" [ref=e8] [cursor=pointer]:
+            - /url: /
+        - navigation [ref=e9]:
+          - link "Start" [ref=e10] [cursor=pointer]:
+            - /url: /
+          - link "Dashboard" [ref=e11] [cursor=pointer]:
+            - /url: /dashboard
+    - main [ref=e12]:
+      - generic [ref=e13]:
+        - generic [ref=e15]:
+          - generic [ref=e16]:
+            - paragraph [ref=e17]: Active session
+            - heading "Container E2E Candidate" [level=2] [ref=e27]
+            - paragraph [ref=e19]: Work through the prompt, save often, run code locally when available, and finish to kick off scoring.
+          - generic [ref=e20]:
+            - generic [ref=e21]: "status: in_progress"
+            - generic [ref=e22]: "progress: 10/10"
+        - paragraph [ref=e104]: Answer saved.
+        - generic [ref=e28]:
+          - generic [ref=e29]:
+            - generic [ref=e30]:
+              - generic [ref=e31]:
+                - generic [ref=e32]: coding
+                - generic [ref=e33]: "difficulty: easy"
+                - generic [ref=e34]: 10 / 10
+              - generic [ref=e35]:
+                - heading "First Unique Character" [level=2] [ref=e36]
+                - paragraph [ref=e37]: "Write `first_unique_char(text)` that returns the index of the first non-repeating character, or `-1` if none exists."
+              - generic [ref=e38]:
+                - generic [ref=e39]:
+                  - paragraph [ref=e40]: Rubric focus
+                  - heading "What the evaluator will look for" [level=3] [ref=e41]
+                - list [ref=e42]:
+                  - listitem [ref=e43]:
+                    - strong [ref=e44]: correctness
+                    - text: Returns the right result for expected and edge-case inputs
+                  - listitem [ref=e45]:
+                    - strong [ref=e46]: code_quality
+                    - text: Readable, maintainable, and idiomatic Python
+                  - listitem [ref=e47]:
+                    - strong [ref=e48]: problem_solving
+                    - text: Chooses an approach that fits the problem well
+                  - listitem [ref=e49]:
+                    - strong [ref=e50]: efficiency
+                    - text: Uses time and space proportionally to the input
+                  - listitem [ref=e51]:
+                    - strong [ref=e52]: testing_reasoning
+                    - text: Can explain edge cases and why the tests matter
+                  - listitem [ref=e53]:
+                    - strong [ref=e54]: communication
+                    - text: Explains the approach clearly
+            - generic [ref=e55]:
+              - generic [ref=e56]:
+                - heading "Python editor" [level=3] [ref=e57]
+                - paragraph [ref=e58]: Monaco editor with local test execution.
+              - code [ref=e62]:
+                - generic [ref=e63]:
+                  - textbox "Editor content"
+                  - textbox [ref=e64]
+                  - generic [ref=e66]:
+                    - generic [ref=e67]:
+                      - generic [ref=e69] [cursor=pointer]: 
+                      - generic [ref=e70]: "1"
+                    - generic [ref=e72]: "2"
+                    - generic [ref=e74]: "3"
+                  - generic [ref=e81]:
+                    - generic [ref=e83]: "def first_unique_char(arg1):"
+                    - generic [ref=e85]: pass
+            - generic [ref=e88]:
+              - button "Save answer" [disabled] [ref=e89]
+              - button "Run code" [disabled] [ref=e90]
+              - button "Next question" [disabled] [ref=e91]
+              - button "Finish session" [disabled] [ref=e92]
+          - generic [ref=e93]:
+            - generic [ref=e94]:
+              - heading "AI helper" [level=3] [ref=e95]
+              - generic [ref=e96]: logged to backend
+            - paragraph [ref=e99]: Ask for a nudge, test strategy, or structure advice.
+            - generic [ref=e100]:
+              - textbox "Ask the assistant for help..." [ref=e101]
+              - button "Sending..." [disabled] [ref=e105]
+  - generic [ref=e103]:
+    - alert
+    - alert

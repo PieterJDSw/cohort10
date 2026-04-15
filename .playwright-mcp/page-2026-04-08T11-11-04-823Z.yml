@@ -1,0 +1,62 @@
+- generic [ref=e3]:
+  - banner [ref=e4]:
+    - generic [ref=e5]:
+      - paragraph [ref=e6]: Developer Assessment Platform
+      - link "MVP Assessment" [ref=e7] [cursor=pointer]:
+        - /url: /
+    - navigation [ref=e8]:
+      - link "Start" [ref=e9] [cursor=pointer]:
+        - /url: /
+      - link "Dashboard" [ref=e10] [cursor=pointer]:
+        - /url: /dashboard
+  - main [ref=e11]:
+    - generic [ref=e36]:
+      - generic [ref=e38]:
+        - paragraph [ref=e39]: Active session
+        - heading "demo" [level=2] [ref=e40]
+        - paragraph [ref=e41]: "Status: in_progress | Progress: 1/10"
+      - generic [ref=e42]:
+        - generic [ref=e43]:
+          - generic [ref=e44]:
+            - generic [ref=e45]:
+              - generic [ref=e46]: architecture
+              - generic [ref=e47]: "difficulty: hard"
+              - generic [ref=e48]: 1 / 10
+            - heading "Webhook Ingestion Pipeline" [level=2] [ref=e49]
+            - paragraph [ref=e50]: Design a webhook ingestion system that receives external events, validates them, stores them safely, and processes them downstream.
+            - generic [ref=e51]:
+              - heading "Rubric focus" [level=3] [ref=e52]
+              - list [ref=e53]:
+                - listitem [ref=e54]:
+                  - strong [ref=e55]: decomposition
+                  - text: ": Breaks the system into sensible components and boundaries"
+                - listitem [ref=e56]:
+                  - strong [ref=e57]: tradeoffs
+                  - text: ": Explains why key choices were made"
+                - listitem [ref=e58]:
+                  - strong [ref=e59]: scalability
+                  - text: ": Handles growth in load, data, or team complexity"
+                - listitem [ref=e60]:
+                  - strong [ref=e61]: reliability
+                  - text: ": Considers failure handling and operational safety"
+                - listitem [ref=e62]:
+                  - strong [ref=e63]: maintainability
+                  - text: ": Keeps the system understandable and operable"
+                - listitem [ref=e64]:
+                  - strong [ref=e65]: communication
+                  - text: ": Communicates the design clearly"
+          - generic [ref=e66]:
+            - heading "Answer" [level=3] [ref=e67]
+            - textbox "Write the candidate answer here..." [ref=e68]
+          - generic [ref=e69]:
+            - button "Save answer" [ref=e70] [cursor=pointer]
+            - button "Next question" [ref=e71] [cursor=pointer]
+            - button "Finish session" [ref=e72] [cursor=pointer]
+        - generic [ref=e73]:
+          - generic [ref=e74]:
+            - heading "AI helper" [level=3] [ref=e75]
+            - generic [ref=e76]: logged to backend
+          - paragraph [ref=e78]: Ask for a nudge, test strategy, or structure advice.
+          - generic [ref=e79]:
+            - textbox "Ask the assistant for help..." [ref=e80]
+            - button "Send" [ref=e81] [cursor=pointer]

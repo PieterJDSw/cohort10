@@ -1,0 +1,61 @@
+- generic [active] [ref=e1]:
+  - generic [ref=e3]:
+    - banner [ref=e4]:
+      - generic [ref=e5]:
+        - paragraph [ref=e6]: Developer Assessment Platform
+        - link "MVP Assessment" [ref=e7] [cursor=pointer]:
+          - /url: /
+      - navigation [ref=e8]:
+        - link "Start" [ref=e9] [cursor=pointer]:
+          - /url: /
+        - link "Dashboard" [ref=e10] [cursor=pointer]:
+          - /url: /dashboard
+    - main [ref=e11]:
+      - generic [ref=e206]:
+        - generic [ref=e208]:
+          - paragraph [ref=e209]: Active session
+          - heading "Playwright Answer Path" [level=2] [ref=e210]
+          - paragraph [ref=e211]: "Status: in_progress | Progress: 4/10"
+        - paragraph [ref=e299]: Answer saved.
+        - generic [ref=e212]:
+          - generic [ref=e213]:
+            - generic [ref=e214]:
+              - generic [ref=e215]:
+                - generic [ref=e216]: theory
+                - generic [ref=e217]: "difficulty: medium"
+                - generic [ref=e218]: 4 / 10
+              - heading "Database Indexes" [level=2] [ref=e287]
+              - paragraph [ref=e220]: Explain when you would add an index to a relational database table and what tradeoffs come with it.
+              - generic [ref=e221]:
+                - heading "Rubric focus" [level=3] [ref=e222]
+                - list [ref=e223]:
+                  - listitem [ref=e288]:
+                    - strong [ref=e289]: conceptual_correctness
+                    - text: ": Explains what indexes do"
+                  - listitem [ref=e290]:
+                    - strong [ref=e291]: depth
+                    - text: ": Covers read/write tradeoffs"
+                  - listitem [ref=e292]:
+                    - strong [ref=e293]: tradeoff_reasoning
+                    - text: ": Discusses cost and selectivity"
+                  - listitem [ref=e294]:
+                    - strong [ref=e295]: clarity
+                    - text: ": Organized explanation"
+            - generic [ref=e296]:
+              - heading "Answer" [level=3] [ref=e297]
+              - textbox "Write the candidate answer here..." [ref=e298]: I add an index when a query pattern repeatedly filters, sorts, or joins on a column with enough selectivity to reduce scanned rows. The tradeoff is slower writes, more storage, and extra maintenance, so I would confirm the actual slow query plan before adding one.
+            - generic [ref=e267]:
+              - button "Save answer" [ref=e268] [cursor=pointer]
+              - button "Next question" [ref=e270] [cursor=pointer]
+              - button "Finish session" [ref=e271] [cursor=pointer]
+          - generic [ref=e272]:
+            - generic [ref=e273]:
+              - heading "AI helper" [level=3] [ref=e274]
+              - generic [ref=e275]: logged to backend
+            - paragraph [ref=e277]: Ask for a nudge, test strategy, or structure advice.
+            - generic [ref=e278]:
+              - textbox "Ask the assistant for help..." [ref=e279]
+              - button "Send" [ref=e280] [cursor=pointer]
+  - generic [ref=e111]:
+    - alert
+    - alert

@@ -1,0 +1,120 @@
+- generic [active] [ref=e1]:
+  - generic [ref=e3]:
+    - banner [ref=e4]:
+      - generic [ref=e5]:
+        - generic [ref=e6]:
+          - paragraph [ref=e7]: Developer Assessment Platform
+          - link "MVP Assessment" [ref=e8] [cursor=pointer]:
+            - /url: /
+        - navigation [ref=e9]:
+          - link "Start" [ref=e10] [cursor=pointer]:
+            - /url: /
+          - link "Dashboard" [ref=e11] [cursor=pointer]:
+            - /url: /dashboard
+    - main [ref=e12]:
+      - generic [ref=e65]:
+        - generic [ref=e67]:
+          - generic [ref=e68]:
+            - paragraph [ref=e69]: Active session
+            - heading "Tool Calling E2E Candidate" [level=2] [ref=e70]
+            - paragraph [ref=e71]: Work through the prompt, save often, run code locally when available, and finish to kick off scoring.
+          - generic [ref=e72]:
+            - generic [ref=e73]: "status: in_progress"
+            - generic [ref=e74]: "progress: 7/10"
+        - paragraph [ref=e494]: Moved to the next question.
+        - generic [ref=e75]:
+          - generic [ref=e76]:
+            - generic [ref=e77]:
+              - generic [ref=e78]:
+                - generic [ref=e79]: coding
+                - generic [ref=e80]: "difficulty: hard"
+                - generic [ref=e81]: 7 / 10
+              - generic [ref=e82]:
+                - heading "Grid Shortest Path" [level=2] [ref=e495]
+                - paragraph [ref=e84]: "Write `shortest_path(grid)` that returns the minimum number of moves from the top-left cell to the bottom-right cell in a grid of `0`s and `1`s, where `0` is open and `1` is blocked. Return `-1` if unreachable."
+              - generic [ref=e85]:
+                - generic [ref=e86]:
+                  - paragraph [ref=e87]: Rubric focus
+                  - heading "What the evaluator will look for" [level=3] [ref=e88]
+                - list [ref=e89]:
+                  - listitem [ref=e496]:
+                    - strong [ref=e497]: correctness
+                    - text: Returns the right result for expected and edge-case inputs
+                  - listitem [ref=e498]:
+                    - strong [ref=e499]: code_quality
+                    - text: Readable, maintainable, and idiomatic Python
+                  - listitem [ref=e500]:
+                    - strong [ref=e501]: problem_solving
+                    - text: Chooses an approach that fits the problem well
+                  - listitem [ref=e502]:
+                    - strong [ref=e503]: efficiency
+                    - text: Uses time and space proportionally to the input
+                  - listitem [ref=e504]:
+                    - strong [ref=e505]: testing_reasoning
+                    - text: Can explain edge cases and why the tests matter
+                  - listitem [ref=e486]:
+                    - strong [ref=e487]: communication
+                    - text: Explains the approach clearly
+            - generic [ref=e506]:
+              - generic [ref=e507]:
+                - heading "Python editor" [level=3] [ref=e508]
+                - paragraph [ref=e509]: Monaco editor with local test execution.
+              - code [ref=e513]:
+                - generic [ref=e514]:
+                  - textbox "Editor content"
+                  - textbox [ref=e515]
+                  - generic [ref=e517]:
+                    - generic [ref=e518]:
+                      - generic [ref=e520] [cursor=pointer]: 
+                      - generic [ref=e521]: "1"
+                    - generic [ref=e523]: "2"
+                    - generic [ref=e525]: "3"
+                  - generic [ref=e532]:
+                    - generic [ref=e534]: "def shortest_path(arg1):"
+                    - generic [ref=e536]: pass
+            - generic [ref=e101]:
+              - button "Save answer" [ref=e102]
+              - button "Run code" [ref=e539]
+              - button "Next question" [ref=e103]
+              - button "Finish session" [ref=e104]
+          - generic [ref=e105]:
+            - generic [ref=e106]:
+              - heading "AI helper" [level=3] [ref=e107]
+              - generic [ref=e108]: logged to backend
+            - generic [ref=e109]:
+              - article [ref=e115]:
+                - generic [ref=e116]: user
+                - paragraph [ref=e117]: Give me a concise structure for a strong answer that balances code quality, tests, and teammate collaboration.
+              - article [ref=e118]:
+                - generic [ref=e119]: assistant
+                - paragraph [ref=e120]: "* Suggest refactoring the code into smaller, more cohesive functions or classes. * Request the teammate to write unit tests covering edge cases and boundary conditions. * Propose a specific, small refactoring task to start the conversation. * Frame feedback around maintainability and future-proofing the codebase."
+              - article [ref=e170]:
+                - generic [ref=e171]: user
+                - paragraph [ref=e172]: What edge cases should I handle for rotate_right(nums, k) without overcomplicating the solution?
+              - article [ref=e173]:
+                - generic [ref=e174]: assistant
+                - paragraph [ref=e175]: "* Handle the case where $k$ is larger than the length of `nums` by using $k \\pmod{n}$. * Consider using list slicing or the three-reversal technique for rotation. * Verify the handling of $k=0$ (no rotation) and empty input lists."
+              - article [ref=e256]:
+                - generic [ref=e257]: user
+                - paragraph [ref=e258]: Give me a compact outline for answering a database index tradeoff question well.
+              - article [ref=e259]:
+                - generic [ref=e260]: assistant
+                - paragraph [ref=e261]: "* Index when frequent `WHERE` clause filtering or `ORDER BY` operations are performed on columns. * Tradeoff: Increased storage space and slower write/update operations (due to index maintenance). * Consider the selectivity of the indexed column; indexes are most beneficial on high-cardinality columns. * Evaluate the cost: Indexing speeds up reads but slows down writes/updates, requiring a cost-benefit analysis based on workload."
+              - article [ref=e310]:
+                - generic [ref=e311]: user
+                - paragraph [ref=e312]: For a queue built from two stacks, what invariant should I keep in mind so pop and peek stay correct?
+              - article [ref=e313]:
+                - generic [ref=e314]: assistant
+                - paragraph [ref=e315]: "* Use one stack for pushing (enqueuing) and another for popping/peeking. * Ensure the main stack is used as a LIFO structure for the primary operation (e.g., `pop`). * Implement a mechanism to transfer elements between stacks to maintain FIFO order when needed."
+              - article [ref=e488]:
+                - generic [ref=e489]: user
+                - paragraph [ref=e490]: For a webhook ingestion architecture answer, what are the core components I should cover in order?
+              - article [ref=e491]:
+                - generic [ref=e492]: assistant
+                - paragraph [ref=e493]: "* Define the Ingestion Layer (e.g., an API Gateway/Webhook Receiver). * Specify the Validation Logic (schema checks, signature verification). * Choose a durable Message Queue (e.g., Kafka/SQS) for decoupling and buffering. * Design the Persistence and Processing stages (separate services for storage and downstream consumers)."
+            - generic [ref=e112]:
+              - textbox "Ask the assistant for help..." [ref=e113]
+              - button "Send" [ref=e114]
+  - generic [ref=e169]:
+    - alert
+    - alert
