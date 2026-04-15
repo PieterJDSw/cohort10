@@ -1,12 +1,4 @@
-########################################
-# General
-########################################
-.DS_Store
-Thumbs.db
-*.log
-*.tmp
-*.swp
-*.swo
+
 
 ########################################
 # Environment variables & secrets
@@ -23,47 +15,8 @@ dist/
 build/
 .vite/
 coverage/
-*.tsbuildinfo
-
-# Vite specific
-vite.config.ts.timestamp-*
-
-########################################
-# Python / Backend (uv)
-########################################
-__pycache__/
-*.py[cod]
-*.pyo
-*.pyd
-
-# Virtual environments
-.venv/
-venv/
-env/
 
 
 
-# Python build artifacts
-build/
-dist/
-*.egg-info/
 
-########################################
-# Testing / coverage
-########################################
-.coverage
-coverage.xml
-htmlcov/
-.pytest_cache/
 
-########################################
-# IDE / Editors
-########################################
-.vscode/
-.idea/
-
-########################################
-# OS / Misc
-########################################
-*.bak
-*.cache

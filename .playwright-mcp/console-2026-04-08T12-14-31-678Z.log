@@ -1,0 +1,4 @@
+[      79ms] [INFO] %cDownload the React DevTools for a better development experience: https://react.dev/link/react-devtools font-weight:bold @ http://localhost:5173/node_modules/.vite/deps/react-dom_client.js?v=ed2ec763:14337
+[  187016ms] [LOG] [vite] server connection lost. Polling for restart... @ http://localhost:5173/@vite/client:968
+[  591002ms] [ERROR] Failed to load resource: net::ERR_CONNECTION_REFUSED @ http://localhost:8000/api/sessions/0e5cda3d-22c4-48ec-b855-44dc64bca384/results:0
+[  591271ms] [ERROR] Failed to load resource: net::ERR_CONNECTION_REFUSED @ http://localhost:8000/api/sessions/0e5cda3d-22c4-48ec-b855-44dc64bca384/results:0

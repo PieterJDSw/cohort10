@@ -1,0 +1,8 @@
+[     102ms] [INFO] %cDownload the React DevTools for a better development experience: https://react.dev/link/react-devtools font-weight:bold @ http://localhost:5173/node_modules/.vite/deps/react-dom_client.js?v=ed2ec763:14337
+[   80466ms] [ERROR] Failed to load resource: the server responded with a status of 422 (Unprocessable Entity) @ http://localhost:8000/api/sessions/afc30464-74dd-4f6a-a7ce-0593f670c301/answers/text:0
+[  112185ms] [ERROR] Failed to load resource: the server responded with a status of 422 (Unprocessable Entity) @ http://localhost:8000/api/sessions/afc30464-74dd-4f6a-a7ce-0593f670c301/answers/text:0
+[  138426ms] [ERROR] Failed to load resource: the server responded with a status of 422 (Unprocessable Entity) @ http://localhost:8000/api/sessions/afc30464-74dd-4f6a-a7ce-0593f670c301/answers/text:0
+[  162878ms] [ERROR] Failed to load resource: the server responded with a status of 422 (Unprocessable Entity) @ http://localhost:8000/api/sessions/afc30464-74dd-4f6a-a7ce-0593f670c301/answers/text:0
+[  188360ms] [ERROR] Failed to load resource: the server responded with a status of 422 (Unprocessable Entity) @ http://localhost:8000/api/sessions/afc30464-74dd-4f6a-a7ce-0593f670c301/answers/text:0
+[  218583ms] [ERROR] Failed to load resource: the server responded with a status of 422 (Unprocessable Entity) @ http://localhost:8000/api/sessions/afc30464-74dd-4f6a-a7ce-0593f670c301/answers/text:0
+[  318500ms] [ERROR] Failed to load resource: the server responded with a status of 422 (Unprocessable Entity) @ http://localhost:8000/api/sessions/afc30464-74dd-4f6a-a7ce-0593f670c301/answers/text:0

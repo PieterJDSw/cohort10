@@ -1,0 +1,9 @@
+[      71ms] [INFO] %cDownload the React DevTools for a better development experience: https://react.dev/link/react-devtools font-weight:bold @ http://localhost:5173/node_modules/.vite/deps/react-dom_client.js?v=957d9482:14337
+[  478561ms] [LOG] [vite] server connection lost. Polling for restart... @ http://localhost:5173/@vite/client:968
+[  483432ms] [INFO] %cDownload the React DevTools for a better development experience: https://react.dev/link/react-devtools font-weight:bold @ http://localhost:5173/node_modules/.vite/deps/react-dom_client.js?v=7d54920f:14337
+[  483497ms] [ERROR] Failed to load resource: net::ERR_EMPTY_RESPONSE @ http://localhost:8000/api/sessions/e6d55d46-ef8e-4eb5-8f3c-f0ac1c9919bf/results:0
+[  483500ms] [ERROR] Failed to load resource: net::ERR_EMPTY_RESPONSE @ http://localhost:8000/api/sessions/e6d55d46-ef8e-4eb5-8f3c-f0ac1c9919bf/results:0
+[  589814ms] [LOG] [vite] server connection lost. Polling for restart... @ http://localhost:5173/@vite/client:968
+[  593368ms] [INFO] %cDownload the React DevTools for a better development experience: https://react.dev/link/react-devtools font-weight:bold @ http://localhost:5173/node_modules/.vite/deps/react-dom_client.js?v=434ec56e:14337
+[  593439ms] [ERROR] Failed to load resource: net::ERR_EMPTY_RESPONSE @ http://localhost:8000/api/sessions/e6d55d46-ef8e-4eb5-8f3c-f0ac1c9919bf/results:0
+[  593443ms] [ERROR] Failed to load resource: net::ERR_EMPTY_RESPONSE @ http://localhost:8000/api/sessions/e6d55d46-ef8e-4eb5-8f3c-f0ac1c9919bf/results:0

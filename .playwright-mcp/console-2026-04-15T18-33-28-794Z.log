@@ -1,0 +1,2 @@
+[     130ms] [INFO] %cDownload the React DevTools for a better development experience: https://react.dev/link/react-devtools font-weight:bold @ http://localhost:5173/node_modules/.vite/deps/react-dom_client.js?v=80b76569:14337
+[  580646ms] [ERROR] Failed to load resource: net::ERR_EMPTY_RESPONSE @ http://localhost:8000/api/sessions/fc5c6620-479d-43d9-bcfd-49df547bb7ce/finish:0
