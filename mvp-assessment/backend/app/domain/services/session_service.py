@@ -7,6 +7,9 @@ from app.db import utc_now
 from app.domain.repositories.candidate_repo import CandidateRepository
 from app.domain.repositories.session_repo import SessionRepository
 from app.domain.services.question_service import QuestionService
+from app.logging_config import get_logger
+
+logger = get_logger(__name__)
 
 
 class SessionService:
@@ -21,6 +24,10 @@ class SessionService:
         self.question_service.build_default_question_plan(db, session.id)
         db.commit()
         db.refresh(session)
+        logger.info(
+            "session_created",
+            extra={"candidate_id": candidate.id, "session_id": session.id},
+        )
         return candidate, session
 
     def get_session_summary(self, db: Session, session_id: str) -> dict:
@@ -72,12 +79,20 @@ class SessionService:
         if next_question:
             next_question.status = "active"
         db.commit()
+        logger.info(
+            "session_advanced",
+            extra={
+                "session_id": session_id,
+                "next_session_question_id": next_question.id if next_question else None,
+            },
+        )
         return self.get_current_question(db, session_id)
 
     def finish_session(self, db: Session, session_id: str) -> dict:
         session = self.session_repo.fetch_session(db, session_id)
         if not session:
             raise ValueError("Session not found")
+        logger.info("session_finish_started", extra={"session_id": session_id})
         for item in session.session_questions:
             if item.status in {"active", "answered"}:
                 item.status = "completed"
@@ -87,4 +102,12 @@ class SessionService:
         session.status = "scored"
         session.completed_at = utc_now()
         db.commit()
+        logger.info(
+            "session_finish_completed",
+            extra={
+                "session_id": session_id,
+                "recommendation": report.get("recommendation"),
+                "overall_score": report.get("overall_score"),
+            },
+        )
         return report

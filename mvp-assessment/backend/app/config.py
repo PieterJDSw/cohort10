@@ -40,6 +40,8 @@ class Settings:
         "yes",
         "on",
     }
+    log_level: str = os.getenv("LOG_LEVEL", "INFO").upper()
+    log_format: str = os.getenv("LOG_FORMAT", "json").lower()
 
 
 settings = Settings()

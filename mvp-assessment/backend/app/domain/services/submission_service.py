@@ -9,7 +9,11 @@ from app.config import settings
 from app.crew.flow import evaluate_question
 from app.domain.repositories.submission_repo import SubmissionRepository
 from app.domain.services.question_service import QuestionService
+from app.logging_config import get_logger
+from app.metrics import llm_requests_total
 from app.tools.code_runner_tools import run_python_tests
+
+logger = get_logger(__name__)
 
 
 class SubmissionService:
@@ -29,6 +33,15 @@ class SubmissionService:
         current.status = "answered"
         evaluate_question(db, current.id, force=True)
         db.commit()
+        logger.info(
+            "text_submission_saved",
+            extra={
+                "session_id": session_id,
+                "session_question_id": current.id,
+                "question_type": current.question.type,
+                "submission_id": submission.id,
+            },
+        )
         return submission
 
     def save_code_submission(self, db: Session, session_id: str, code: str, language: str):
@@ -37,6 +50,16 @@ class SubmissionService:
         current.status = "answered"
         evaluate_question(db, current.id, force=True)
         db.commit()
+        logger.info(
+            "code_submission_saved",
+            extra={
+                "session_id": session_id,
+                "session_question_id": current.id,
+                "question_type": current.question.type,
+                "submission_id": submission.id,
+                "language": language,
+            },
+        )
         return submission
 
     def run_code(self, db: Session, session_id: str, code: str, language: str) -> dict:
@@ -45,7 +68,18 @@ class SubmissionService:
             raise ValueError("Current question is not a coding question")
         if language.lower() != "python":
             raise ValueError("Only Python is supported in the MVP code runner")
-        return run_python_tests(code, current.question.metadata_json or {})
+        result = run_python_tests(code, current.question.metadata_json or {})
+        logger.info(
+            "code_run_completed",
+            extra={
+                "session_id": session_id,
+                "session_question_id": current.id,
+                "status": result.get("status"),
+                "passed": result.get("passed"),
+                "total": result.get("total"),
+            },
+        )
+        return result
 
     def _llm_model_name(self) -> str:
         return settings.model_name.removeprefix("openai/")
@@ -127,6 +161,7 @@ class SubmissionService:
         )
 
         try:
+            llm_requests_total.labels(operation="ai_helper_chat", status="started").inc()
             client = OpenAI(base_url=settings.llm_base_url, api_key=settings.llm_api_key)
             response = client.chat.completions.create(
                 model=self._llm_model_name(),
@@ -139,8 +174,15 @@ class SubmissionService:
             )
             content = response.choices[0].message.content or ""
             cleaned = content.replace("<think>", "").replace("</think>", "").strip()
+            logger.info(
+                "ai_hint_generated",
+                extra={"question_type": current.question.type, "used_fallback": not bool(cleaned)},
+            )
+            llm_requests_total.labels(operation="ai_helper_chat", status="success").inc()
             return cleaned or self._fallback_hint(current, message)
         except Exception:
+            llm_requests_total.labels(operation="ai_helper_chat", status="failure").inc()
+            logger.exception("ai_hint_generation_failed", extra={"question_type": current.question.type})
             return self._fallback_hint(current, message)
 
     def run_ai_chat(self, db: Session, session_id: str, message: str) -> dict:
@@ -148,4 +190,12 @@ class SubmissionService:
         response = self._generate_ai_hint(db, current, message)
         self.submission_repo.save_ai_interaction(db, current.id, message, response)
         db.commit()
+        logger.info(
+            "ai_chat_saved",
+            extra={
+                "session_id": session_id,
+                "session_question_id": current.id,
+                "question_type": current.question.type,
+            },
+        )
         return {"response": response}

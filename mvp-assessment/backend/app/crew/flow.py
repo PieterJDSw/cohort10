@@ -6,6 +6,14 @@ from sqlalchemy.orm import Session, joinedload
 from app.crew.crew import run_crewai_evaluation, run_crewai_synthesis
 from app.domain.repositories.result_repo import ResultRepository
 from app.domain.repositories.submission_repo import SubmissionRepository
+from app.logging_config import get_logger
+from app.metrics import (
+    llm_requests_total,
+    measure_question_evaluation,
+    measure_session_finalization,
+    question_evaluation_total,
+    session_finalization_total,
+)
 from app.domain.scoring.engine import (
     aggregate_dimension_scores,
     build_chart_payload,
@@ -16,6 +24,7 @@ from app.models.session import TestSession
 from app.models.session_question import SessionQuestion
 from app.tools.code_runner_tools import run_python_tests
 
+logger = get_logger(__name__)
 
 submission_repo = SubmissionRepository()
 result_repo = ResultRepository()
@@ -186,6 +195,10 @@ def _persist_evaluation_result(
 
 
 def evaluate_question(db: Session, session_question_id: str, *, force: bool = True) -> dict | None:
+    logger.info(
+        "question_evaluation_started",
+        extra={"session_question_id": session_question_id, "force": force},
+    )
     session_question = db.execute(
         select(SessionQuestion)
         .options(
@@ -210,101 +223,134 @@ def evaluate_question(db: Session, session_question_id: str, *, force: bool = Tr
         return _score_saved_evaluation(session_question, latest_saved_run.output_json or {})
 
     context, _ = _build_question_context(session_question, db)
-    if not str(context["submission"]).strip():
-        evaluation_result = {
-            "parsed_output": _build_no_submission_output(context),
-            "source": "no_submission",
-            "raw_output": None,
-            "error_message": None,
-        }
-    else:
-        llm_result = run_crewai_evaluation(session_question.question.type, context)
-        evaluation_result = _merge_evaluation_result(context, llm_result)
-    return _persist_evaluation_result(db, session_question, evaluation_result)
+    with measure_question_evaluation(session_question.question.type):
+        if not str(context["submission"]).strip():
+            evaluation_result = {
+                "parsed_output": _build_no_submission_output(context),
+                "source": "no_submission",
+                "raw_output": None,
+                "error_message": None,
+            }
+        else:
+            llm_requests_total.labels(operation="question_evaluation", status="started").inc()
+            llm_result = run_crewai_evaluation(session_question.question.type, context)
+            evaluation_result = _merge_evaluation_result(context, llm_result)
+            llm_status = "success" if llm_result.get("parsed_output") else "failure"
+            llm_requests_total.labels(operation="question_evaluation", status=llm_status).inc()
+    scored = _persist_evaluation_result(db, session_question, evaluation_result)
+    question_evaluation_total.labels(
+        question_type=session_question.question.type,
+        source=evaluation_result.get("source", "unknown"),
+    ).inc()
+    logger.info(
+        "question_evaluation_completed",
+        extra={
+            "session_question_id": session_question_id,
+            "question_type": session_question.question.type,
+            "source": evaluation_result.get("source"),
+        },
+    )
+    return scored
 
 
 def finalize_session(db: Session, session_id: str) -> dict:
-    session = db.execute(
-        select(TestSession)
-        .options(
-            joinedload(TestSession.session_questions)
-            .joinedload(SessionQuestion.question),
-            joinedload(TestSession.session_questions)
-            .joinedload(SessionQuestion.submissions),
-            joinedload(TestSession.session_questions)
-            .joinedload(SessionQuestion.ai_interactions),
-            joinedload(TestSession.session_questions)
-            .joinedload(SessionQuestion.evaluator_runs),
+    logger.info("session_finalization_started", extra={"session_id": session_id})
+    with measure_session_finalization():
+        session = db.execute(
+            select(TestSession)
+            .options(
+                joinedload(TestSession.session_questions)
+                .joinedload(SessionQuestion.question),
+                joinedload(TestSession.session_questions)
+                .joinedload(SessionQuestion.submissions),
+                joinedload(TestSession.session_questions)
+                .joinedload(SessionQuestion.ai_interactions),
+                joinedload(TestSession.session_questions)
+                .joinedload(SessionQuestion.evaluator_runs),
+            )
+            .where(TestSession.id == session_id)
+        ).unique().scalar_one_or_none()
+        if not session:
+            raise ValueError("Session not found")
+
+        scored_questions: list[dict] = []
+        strengths: list[str] = []
+        weaknesses: list[str] = []
+        for session_question in sorted(session.session_questions, key=lambda item: item.sequence_no):
+            latest_saved_run = _latest_evaluator_run(session_question)
+            if latest_saved_run:
+                scored = _score_saved_evaluation(session_question, latest_saved_run.output_json or {})
+            else:
+                scored = evaluate_question(db, session_question.id, force=True)
+            if not scored:
+                continue
+            strengths.extend(scored["strengths"])
+            weaknesses.extend(scored["weaknesses"])
+            scored_questions.append(scored)
+
+        dimension_scores = aggregate_dimension_scores(scored_questions)
+        overall_score = round(
+            sum(item["score"] for item in dimension_scores) / max(len(dimension_scores), 1), 2
         )
-        .where(TestSession.id == session_id)
-    ).unique().scalar_one_or_none()
-    if not session:
-        raise ValueError("Session not found")
+        recommendation = build_recommendation(overall_score)
 
-    scored_questions: list[dict] = []
-    strengths: list[str] = []
-    weaknesses: list[str] = []
-    for session_question in sorted(session.session_questions, key=lambda item: item.sequence_no):
-        latest_saved_run = _latest_evaluator_run(session_question)
-        if latest_saved_run:
-            scored = _score_saved_evaluation(session_question, latest_saved_run.output_json or {})
-        else:
-            scored = evaluate_question(db, session_question.id, force=True)
-        if not scored:
-            continue
-        strengths.extend(scored["strengths"])
-        weaknesses.extend(scored["weaknesses"])
-        scored_questions.append(scored)
+        llm_requests_total.labels(operation="session_synthesis", status="started").inc()
+        synthesis_result = run_crewai_synthesis(
+            {
+                "session_id": session_id,
+                "scored_questions": scored_questions,
+                "dimension_scores": dimension_scores,
+                "strengths": strengths,
+                "weaknesses": weaknesses,
+            },
+            db=db,
+            session_id=session_id,
+        )
+        llm_status = "success" if synthesis_result.get("parsed_output") else "failure"
+        llm_requests_total.labels(operation="session_synthesis", status=llm_status).inc()
+        synthesis = synthesis_result.get("parsed_output") or {
+            "recommendation": recommendation,
+            "summary": (
+                "Synthesis failed after LLM retry attempts."
+                if not synthesis_result.get("error_message")
+                else f"Synthesis failed after LLM retry attempts: {synthesis_result.get('error_message')}"
+            ),
+            "strengths": list(dict.fromkeys(strengths))[:5],
+            "weaknesses": list(dict.fromkeys(weaknesses))[:5],
+        }
+        synthesis_source = synthesis_result.get("source", "llm_failed_after_retries")
+        synthesis_raw_output = synthesis_result.get("raw_output")
+        synthesis_error_message = synthesis_result.get("error_message")
 
-    dimension_scores = aggregate_dimension_scores(scored_questions)
-    overall_score = round(
-        sum(item["score"] for item in dimension_scores) / max(len(dimension_scores), 1), 2
-    )
-    recommendation = build_recommendation(overall_score)
-
-    synthesis_result = run_crewai_synthesis(
-        {
+        result_repo.save_dimension_scores(db, session_id, dimension_scores)
+        chart_payload = build_chart_payload(
+            dimension_scores, synthesis.get("strengths", []), synthesis.get("weaknesses", [])
+        )
+        chart_payload["overall_score"] = overall_score
+        chart_payload["confidence"] = round(
+            sum(item["confidence"] for item in dimension_scores) / max(len(dimension_scores), 1), 2
+        )
+        result_repo.save_final_report(
+            db,
+            session_id,
+            {
+                "recommendation": synthesis.get("recommendation", recommendation),
+                "summary": synthesis["summary"],
+                "chart_payload": chart_payload,
+                "source": synthesis_source,
+                "raw_output": synthesis_raw_output,
+                "error_message": synthesis_error_message,
+            },
+        )
+    session_finalization_total.labels(
+        recommendation=synthesis.get("recommendation", recommendation),
+    ).inc()
+    logger.info(
+        "session_finalization_completed",
+        extra={
             "session_id": session_id,
-            "scored_questions": scored_questions,
-            "dimension_scores": dimension_scores,
-            "strengths": strengths,
-            "weaknesses": weaknesses,
-        },
-        db=db,
-        session_id=session_id,
-    )
-    synthesis = synthesis_result.get("parsed_output") or {
-        "recommendation": recommendation,
-        "summary": (
-            "Synthesis failed after LLM retry attempts."
-            if not synthesis_result.get("error_message")
-            else f"Synthesis failed after LLM retry attempts: {synthesis_result.get('error_message')}"
-        ),
-        "strengths": list(dict.fromkeys(strengths))[:5],
-        "weaknesses": list(dict.fromkeys(weaknesses))[:5],
-    }
-    synthesis_source = synthesis_result.get("source", "llm_failed_after_retries")
-    synthesis_raw_output = synthesis_result.get("raw_output")
-    synthesis_error_message = synthesis_result.get("error_message")
-
-    result_repo.save_dimension_scores(db, session_id, dimension_scores)
-    chart_payload = build_chart_payload(
-        dimension_scores, synthesis.get("strengths", []), synthesis.get("weaknesses", [])
-    )
-    chart_payload["overall_score"] = overall_score
-    chart_payload["confidence"] = round(
-        sum(item["confidence"] for item in dimension_scores) / max(len(dimension_scores), 1), 2
-    )
-    result_repo.save_final_report(
-        db,
-        session_id,
-        {
+            "overall_score": overall_score,
             "recommendation": synthesis.get("recommendation", recommendation),
-            "summary": synthesis["summary"],
-            "chart_payload": chart_payload,
-            "source": synthesis_source,
-            "raw_output": synthesis_raw_output,
-            "error_message": synthesis_error_message,
         },
     )
     return {

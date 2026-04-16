@@ -39,8 +39,12 @@ services:
       MODEL_NAME: ${MODEL_NAME:-google/gemma-4-E2B-it}
       LLM_ENABLED: "true"
       LLM_TOOL_USE_ENABLED: "true"
+      LOG_LEVEL: INFO
+      LOG_FORMAT: json
     ports:
       - "${BACKEND_PORT:-8000}:8000"
+    labels:
+      com.assessment.service: backend
 
   frontend:
     build:
@@ -53,14 +57,17 @@ services:
       VITE_API_BASE_URL: http://localhost:${BACKEND_PORT:-8000}
     ports:
       - "5173:5173"
+    labels:
+      com.assessment.service: frontend
 
   redis:
     image: redis:7
     container_name: assessment_redis
     restart: unless-stopped
-    profiles: ["queue"]
     ports:
       - "6379:6379"
+    labels:
+      com.assessment.service: redis
   vllm:
     image: vllm/vllm-openai:gemma4
     container_name: assessment_vllm
@@ -88,6 +95,81 @@ services:
       --skip-mm-profiling
       --enforce-eager
       --max-num-seqs 1
+    labels:
+      com.assessment.service: vllm
+
+  prometheus:
+    image: prom/prometheus:v3.5.0
+    container_name: assessment_prometheus
+    restart: unless-stopped
+    depends_on:
+      - backend
+      - loki
+      - alloy
+    command:
+      - --config.file=/etc/prometheus/prometheus.yml
+      - --storage.tsdb.path=/prometheus
+      - --web.enable-lifecycle
+    volumes:
+      - ./observability/prometheus/prometheus.yml:/etc/prometheus/prometheus.yml:ro
+      - prometheus_data:/prometheus
+    ports:
+      - "9090:9090"
+    labels:
+      com.assessment.service: prometheus
+
+  loki:
+    image: grafana/loki:3.4.2
+    container_name: assessment_loki
+    restart: unless-stopped
+    command: -config.file=/etc/loki/loki-config.yml
+    volumes:
+      - ./observability/loki/loki-config.yml:/etc/loki/loki-config.yml:ro
+      - loki_data:/loki
+    ports:
+      - "3100:3100"
+    labels:
+      com.assessment.service: loki
+
+  alloy:
+    image: grafana/alloy:v1.8.3
+    container_name: assessment_alloy
+    restart: unless-stopped
+    command:
+      - run
+      - --server.http.listen-addr=0.0.0.0:12345
+      - /etc/alloy/config.alloy
+    depends_on:
+      - loki
+    volumes:
+      - ./observability/alloy/config.alloy:/etc/alloy/config.alloy:ro
+      - /var/run/docker.sock:/var/run/docker.sock
+    ports:
+      - "12345:12345"
+    labels:
+      com.assessment.service: alloy
+
+  grafana:
+    image: grafana/grafana:11.2.0
+    container_name: assessment_grafana
+    restart: unless-stopped
+    depends_on:
+      - prometheus
+      - loki
+    environment:
+      GF_SECURITY_ADMIN_USER: admin
+      GF_SECURITY_ADMIN_PASSWORD: admin
+      GF_USERS_ALLOW_SIGN_UP: "false"
+      GF_METRICS_ENABLED: "true"
+    volumes:
+      - ./observability/grafana/provisioning/datasources:/etc/grafana/provisioning/datasources:ro
+      - ./observability/grafana/provisioning/dashboards:/etc/grafana/provisioning/dashboards:ro
+      - ./observability/grafana/dashboards:/var/lib/grafana/dashboards:ro
+      - grafana_data:/var/lib/grafana
+    ports:
+      - "3000:3000"
+    labels:
+      com.assessment.service: grafana
       
   # vllm:
   #   image: vllm/vllm-openai:latest
@@ -116,3 +198,6 @@ services:
 volumes:
   postgres_data:
   hf_cache:
+  prometheus_data:
+  loki_data:
+  grafana_data:
