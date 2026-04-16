@@ -1,12 +1,16 @@
 from __future__ import annotations
 
+from datetime import datetime, timezone
+
 from sqlalchemy import select
 from sqlalchemy.orm import Session, joinedload
 
+from app.config import settings
 from app.crew.crew import run_crewai_evaluation, run_crewai_synthesis
 from app.domain.repositories.result_repo import ResultRepository
 from app.domain.repositories.submission_repo import SubmissionRepository
 from app.logging_config import get_logger
+from app.messaging import publish_dead_letter, publish_event
 from app.metrics import (
     llm_requests_total,
     measure_question_evaluation,
@@ -28,6 +32,45 @@ logger = get_logger(__name__)
 
 submission_repo = SubmissionRepository()
 result_repo = ResultRepository()
+
+
+def _evaluation_message(session_question: SessionQuestion, context: dict, *, force: bool) -> dict:
+    return {
+        "event_type": "evaluate_question_requested",
+        "published_at": datetime.now(timezone.utc).isoformat(),
+        "session_id": context["session_id"],
+        "session_question_id": context["session_question_id"],
+        "question_type": context["question_type"],
+        "force": force,
+        "has_submission": bool(str(context["submission"]).strip()),
+        "has_ai_logs": bool(context.get("ai_logs")),
+        "rubric_keys": context["rubric_keys"],
+    }
+
+
+def _synthesis_message(
+    session_id: str,
+    scored_questions: list[dict],
+    dimension_scores: list[dict],
+    strengths: list[str],
+    weaknesses: list[str],
+) -> dict:
+    return {
+        "event_type": "session_synthesis_requested",
+        "published_at": datetime.now(timezone.utc).isoformat(),
+        "session_id": session_id,
+        "question_count": len(scored_questions),
+        "dimension_count": len(dimension_scores),
+        "strength_count": len(strengths),
+        "weakness_count": len(weaknesses),
+        "question_types": sorted(
+            {
+                item.get("question_type", "unknown")
+                for item in scored_questions
+                if isinstance(item, dict)
+            }
+        ),
+    }
 
 
 def _serialize_ai_logs(ai_interactions) -> list[dict]:
@@ -223,6 +266,8 @@ def evaluate_question(db: Session, session_question_id: str, *, force: bool = Tr
         return _score_saved_evaluation(session_question, latest_saved_run.output_json or {})
 
     context, _ = _build_question_context(session_question, db)
+    evaluation_message = _evaluation_message(session_question, context, force=force)
+    publish_event(settings.rabbitmq_evaluate_queue, evaluation_message)
     with measure_question_evaluation(session_question.question.type):
         if not str(context["submission"]).strip():
             evaluation_result = {
@@ -233,10 +278,29 @@ def evaluate_question(db: Session, session_question_id: str, *, force: bool = Tr
             }
         else:
             llm_requests_total.labels(operation="question_evaluation", status="started").inc()
-            llm_result = run_crewai_evaluation(session_question.question.type, context)
+            try:
+                llm_result = run_crewai_evaluation(session_question.question.type, context)
+            except Exception as exc:
+                publish_dead_letter(
+                    "question_evaluation_exception",
+                    {
+                        **evaluation_message,
+                        "error_message": str(exc),
+                    },
+                )
+                raise
             evaluation_result = _merge_evaluation_result(context, llm_result)
             llm_status = "success" if llm_result.get("parsed_output") else "failure"
             llm_requests_total.labels(operation="question_evaluation", status=llm_status).inc()
+            if llm_status == "failure":
+                publish_dead_letter(
+                    "question_evaluation_failed",
+                    {
+                        **evaluation_message,
+                        "source": evaluation_result.get("source"),
+                        "error_message": evaluation_result.get("error_message"),
+                    },
+                )
     scored = _persist_evaluation_result(db, session_question, evaluation_result)
     question_evaluation_total.labels(
         question_type=session_question.question.type,
@@ -294,20 +358,47 @@ def finalize_session(db: Session, session_id: str) -> dict:
         )
         recommendation = build_recommendation(overall_score)
 
-        llm_requests_total.labels(operation="session_synthesis", status="started").inc()
-        synthesis_result = run_crewai_synthesis(
-            {
-                "session_id": session_id,
-                "scored_questions": scored_questions,
-                "dimension_scores": dimension_scores,
-                "strengths": strengths,
-                "weaknesses": weaknesses,
-            },
-            db=db,
-            session_id=session_id,
+        synthesis_message = _synthesis_message(
+            session_id,
+            scored_questions,
+            dimension_scores,
+            strengths,
+            weaknesses,
         )
+        publish_event(settings.rabbitmq_synthesis_queue, synthesis_message)
+        llm_requests_total.labels(operation="session_synthesis", status="started").inc()
+        try:
+            synthesis_result = run_crewai_synthesis(
+                {
+                    "session_id": session_id,
+                    "scored_questions": scored_questions,
+                    "dimension_scores": dimension_scores,
+                    "strengths": strengths,
+                    "weaknesses": weaknesses,
+                },
+                db=db,
+                session_id=session_id,
+            )
+        except Exception as exc:
+            publish_dead_letter(
+                "session_synthesis_exception",
+                {
+                    **synthesis_message,
+                    "error_message": str(exc),
+                },
+            )
+            raise
         llm_status = "success" if synthesis_result.get("parsed_output") else "failure"
         llm_requests_total.labels(operation="session_synthesis", status=llm_status).inc()
+        if llm_status == "failure":
+            publish_dead_letter(
+                "session_synthesis_failed",
+                {
+                    **synthesis_message,
+                    "error_message": synthesis_result.get("error_message"),
+                    "source": synthesis_result.get("source"),
+                },
+            )
         synthesis = synthesis_result.get("parsed_output") or {
             "recommendation": recommendation,
             "summary": (

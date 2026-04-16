@@ -42,6 +42,25 @@ class Settings:
     }
     log_level: str = os.getenv("LOG_LEVEL", "INFO").upper()
     log_format: str = os.getenv("LOG_FORMAT", "json").lower()
+    strands_log_level: str = os.getenv("STRANDS_LOG_LEVEL", "INFO").upper()
+    rabbitmq_enabled: bool = os.getenv("RABBITMQ_ENABLED", "true").lower() in {
+        "1",
+        "true",
+        "yes",
+        "on",
+    }
+    rabbitmq_url: str = os.getenv(
+        "RABBITMQ_URL", "amqp://assessment:assessment@rabbitmq:5672/%2f"
+    )
+    rabbitmq_exchange: str = os.getenv("RABBITMQ_EXCHANGE", "assessment.events")
+    rabbitmq_dead_letter_exchange: str = os.getenv(
+        "RABBITMQ_DEAD_LETTER_EXCHANGE", "assessment.events.dlx"
+    )
+    rabbitmq_evaluate_queue: str = os.getenv("RABBITMQ_EVALUATE_QUEUE", "evaluate")
+    rabbitmq_synthesis_queue: str = os.getenv("RABBITMQ_SYNTHESIS_QUEUE", "synthesis")
+    rabbitmq_dead_letter_queue: str = os.getenv(
+        "RABBITMQ_DEAD_LETTER_QUEUE", "dead_letter"
+    )
 
 
 settings = Settings()

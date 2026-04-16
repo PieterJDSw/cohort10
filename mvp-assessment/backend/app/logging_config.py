@@ -98,6 +98,11 @@ def configure_logging() -> None:
                 "uvicorn": {"level": settings.log_level, "handlers": ["default"], "propagate": False},
                 "uvicorn.error": {"level": settings.log_level, "handlers": ["default"], "propagate": False},
                 "uvicorn.access": {"level": settings.log_level, "handlers": ["default"], "propagate": False},
+                "strands": {
+                    "level": settings.strands_log_level,
+                    "handlers": ["default"],
+                    "propagate": False,
+                },
             },
         }
     )

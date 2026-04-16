@@ -25,6 +25,8 @@ services:
     depends_on:
       postgres:
         condition: service_healthy
+      rabbitmq:
+        condition: service_started
       vllm:
         condition: service_started
     environment:
@@ -41,6 +43,14 @@ services:
       LLM_TOOL_USE_ENABLED: "true"
       LOG_LEVEL: INFO
       LOG_FORMAT: json
+      STRANDS_LOG_LEVEL: DEBUG
+      RABBITMQ_ENABLED: "true"
+      RABBITMQ_URL: amqp://assessment:assessment@rabbitmq:5672/%2f
+      RABBITMQ_EXCHANGE: assessment.events
+      RABBITMQ_DEAD_LETTER_EXCHANGE: assessment.events.dlx
+      RABBITMQ_EVALUATE_QUEUE: evaluate
+      RABBITMQ_SYNTHESIS_QUEUE: synthesis
+      RABBITMQ_DEAD_LETTER_QUEUE: dead_letter
     ports:
       - "${BACKEND_PORT:-8000}:8000"
     labels:
@@ -60,14 +70,18 @@ services:
     labels:
       com.assessment.service: frontend
 
-  redis:
-    image: redis:7
-    container_name: assessment_redis
+  rabbitmq:
+    image: rabbitmq:3.13-management
+    container_name: assessment_rabbitmq
     restart: unless-stopped
+    environment:
+      RABBITMQ_DEFAULT_USER: assessment
+      RABBITMQ_DEFAULT_PASS: assessment
     ports:
-      - "6379:6379"
+      - "5672:5672"
+      - "15672:15672"
     labels:
-      com.assessment.service: redis
+      com.assessment.service: rabbitmq
   vllm:
     image: vllm/vllm-openai:gemma4
     container_name: assessment_vllm
