@@ -65,6 +65,21 @@ llm_requests_total = Counter(
     registry=registry,
 )
 
+strands_tokens_total = Counter(
+    "assessment_strands_tokens_total",
+    "Total Strands tokens consumed by agent executions.",
+    labelnames=("agent_name",),
+    registry=registry,
+)
+
+strands_duration_seconds = Histogram(
+    "assessment_strands_duration_seconds",
+    "Total Strands agent execution duration in seconds.",
+    labelnames=("agent_name",),
+    registry=registry,
+    buckets=(0.5, 1.0, 2.5, 5.0, 10.0, 30.0, 60.0, 120.0),
+)
+
 
 def metrics_payload() -> tuple[bytes, str]:
     return generate_latest(registry), CONTENT_TYPE_LATEST

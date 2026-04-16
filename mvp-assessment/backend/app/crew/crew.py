@@ -11,6 +11,7 @@ from sqlalchemy.orm import Session
 from app.config import settings
 from app.crew.agents import build_evaluator_agents, build_llm_model
 from app.crew.tasks import build_evaluation_prompt, build_review_prompt, build_synthesis_prompt
+from app.metrics import strands_duration_seconds, strands_tokens_total
 
 MAX_LLM_ATTEMPTS = 3
 MAX_RETRY_FIELD_CHARS = 600
@@ -235,6 +236,59 @@ def _extract_graph_node_output(graph_result: Any, node_id: str) -> str | None:
     return None
 
 
+def _extract_graph_node_result(graph_result: Any, node_id: str) -> Any:
+    if graph_result is None:
+        return None
+
+    results = getattr(graph_result, "results", None)
+    if isinstance(results, dict) and node_id in results:
+        return results[node_id]
+    return graph_result
+
+
+def _extract_metric_value(container: Any, key: str) -> float | None:
+    if container is None:
+        return None
+
+    if isinstance(container, dict):
+        value = container.get(key)
+    else:
+        value = getattr(container, key, None)
+
+    if isinstance(value, (int, float)):
+        return float(value)
+    return None
+
+
+def _record_strands_metrics(agent_name: str, graph_result: Any, node_id: str) -> None:
+    candidate = _extract_graph_node_result(graph_result, node_id)
+    accumulated_usage = getattr(candidate, "accumulated_usage", None)
+    cycle_durations = None
+    result = getattr(candidate, "result", None)
+
+    if accumulated_usage is None or cycle_durations is None:
+        metrics = getattr(result, "metrics", None)
+        if metrics is None:
+            return
+
+        if accumulated_usage is None:
+            accumulated_usage = getattr(metrics, "accumulated_usage", None)
+            if accumulated_usage is None:
+                accumulated_usage = getattr(metrics, "accumulatedUsage", None)
+
+        cycle_durations = getattr(metrics, "cycle_durations", None)
+
+    total_tokens = _extract_metric_value(accumulated_usage, "totalTokens")
+    duration_seconds = None
+    if isinstance(cycle_durations, list) and cycle_durations:
+        duration_seconds = float(sum(cycle_durations))
+
+    if total_tokens is not None:
+        strands_tokens_total.labels(agent_name=agent_name).inc(total_tokens)
+    if duration_seconds is not None:
+        strands_duration_seconds.labels(agent_name=agent_name).observe(duration_seconds)
+
+
 def _build_retry_note(
     *,
     attempt: int,
@@ -276,6 +330,8 @@ def _run_task_with_retries(
                 raw_output=last_raw_output,
             )
             continue
+
+        _record_strands_metrics(target_node_id, result, target_node_id)
 
         raw_output = _extract_graph_node_output(result, target_node_id)
         cleaned_raw_output = _clean_raw_output(raw_output)
