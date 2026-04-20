@@ -8,6 +8,8 @@ Right now the app is simple:
 - the backend is a FastAPI app
 - Postgres stores sessions, questions, submissions, AI interactions, evaluator runs, scores, and final reports
 - vLLM is used for AI assistance and evaluation
+- RabbitMQ is present for event publication and DLQ routing
+- Prometheus, Loki, Alloy, and Grafana provide the current observability stack
 - Python code is executed directly inside the backend process
 
 That last part is the biggest weakness. At the moment, the backend is acting as:
@@ -24,7 +26,7 @@ That is acceptable for an MVP, but it is not how I would run this at scale.
 The biggest issues in the current design are:
 
 - code execution happens inside the API backend, which is both a security risk and a scaling problem
-- `finish_session()` runs scoring and synthesis inline, so a user request can block on long evaluation work
+- `evaluate_question()` and `finalize_session()` still run the actual LLM work inline, so a user request can block on long evaluation work
 - the backend is doing too many different jobs at once
 - model latency and code execution latency can directly hurt API responsiveness
 - adding more languages would make the backend image and execution path much more complex
@@ -47,15 +49,21 @@ I would stop doing heavy evaluation work inside the HTTP request cycle. In parti
 
 A worker can then run the evaluation flow, persist dimension scores and the final report, and update the session to `scored`.
 
-### 3. Introduce a queue and workers
+### 3. Introduce real workers behind the queue
 
-I would add a job queue for:
+RabbitMQ is already wired into the current build, but only as a publisher. The backend publishes:
+
+- `assessment.evaluate`
+- `assessment.synthesis`
+- `assessment.dead_letter`
+
+What is still missing is worker-side consumption. The next stage would be to add workers for:
 
 - session scoring
 - code execution
 - possibly AI helper generation later if needed
 
-Redis is already present in `docker-compose.yml`, so it is a natural next step. The important part is not the exact queue product, but separating API traffic from background work.
+The important part is not the exact queue product anymore, because the project has already standardized on RabbitMQ for this path. The important part now is separating API traffic from background work.
 
 ### 4. Split responsibilities into clearer services
 
@@ -79,8 +87,8 @@ Even with restricted builtins, in-process `compile` and `exec` is not a strong i
 Instead, I would move to this model:
 
 1. the backend receives a code run request
-2. the backend creates an execution job
-3. an execution worker picks up the job
+2. the backend writes the attempt and publishes an execution job
+3. a sandbox worker picks up the job
 4. the worker runs the code in an isolated sandbox
 5. the worker stores structured test results
 6. the API returns or fetches those results
@@ -116,9 +124,9 @@ Initially I would support:
 - `LocalPythonExecutionService` for compatibility
 - `RemoteSandboxExecutionService` for the real isolated path
 
-### Step 2: Make scoring asynchronous
+### Step 2: Make scoring and synthesis asynchronous
 
-I would move `finalize_session()` out of the request cycle and into a worker. That would let the UI poll for session completion instead of waiting for scoring inline.
+I would move `evaluate_question()` and `finalize_session()` out of the request cycle and into workers. That would let the UI poll for evaluation and session completion instead of waiting for LLM work inline.
 
 ### Step 3: Externalize Python execution first
 
@@ -196,4 +204,4 @@ If I wanted this app to handle more users and more load safely, I would make two
 1. move code execution out of the API process and into isolated sandboxes
 2. move scoring and synthesis onto background workers
 
-After that, I would scale the API horizontally, keep Postgres as the source of truth, introduce a queue, and gradually move toward a worker-based architecture with Firecracker for secure multi-language execution.
+After that, I would scale the API horizontally, keep Postgres as the source of truth, keep RabbitMQ as the async boundary, and gradually move toward a worker-based architecture with Firecracker for secure multi-language execution.

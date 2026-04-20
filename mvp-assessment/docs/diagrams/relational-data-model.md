@@ -7,7 +7,6 @@ erDiagram
     CANDIDATES {
         string id PK
         string full_name
-        datetime created_at
     }
 
     TEST_SESSIONS {
@@ -16,7 +15,6 @@ erDiagram
         string status
         datetime started_at
         datetime completed_at
-        datetime created_at
     }
 
     QUESTIONS {
@@ -28,7 +26,6 @@ erDiagram
         json rubric_json
         json metadata_json
         boolean is_active
-        datetime created_at
     }
 
     SESSION_QUESTIONS {
@@ -37,7 +34,6 @@ erDiagram
         string question_id FK
         int sequence_no
         string status
-        datetime created_at
     }
 
     SUBMISSIONS {
@@ -47,7 +43,6 @@ erDiagram
         text text_answer
         text code_answer
         string language
-        datetime created_at
     }
 
     AI_INTERACTIONS {
@@ -55,7 +50,6 @@ erDiagram
         string session_question_id FK
         text user_message
         text ai_response
-        datetime created_at
     }
 
     EVALUATOR_RUNS {
@@ -67,7 +61,6 @@ erDiagram
         text raw_output
         text error_message
         float confidence
-        datetime created_at
     }
 
     DIMENSION_SCORES {
@@ -77,7 +70,6 @@ erDiagram
         float score
         float confidence
         json evidence_json
-        datetime created_at
     }
 
     FINAL_REPORTS {
@@ -89,7 +81,6 @@ erDiagram
         string source
         text raw_output
         text error_message
-        datetime created_at
     }
 
     CANDIDATES ||--o{ TEST_SESSIONS : has
@@ -106,6 +97,5 @@ Key constraints and behavior:
 
 - `session_questions` enforces one ordered row per `(session_id, sequence_no)`.
 - `final_reports.session_id` is unique, so there is only one final report per session.
-- `submissions`, `ai_interactions`, and `evaluator_runs` are append-only history tables for each session question.
+- `submissions`, `ai_interactions`, and `evaluator_runs` are used as append-style history tables for each session question by the current service layer.
 - `dimension_scores` is rebuilt from the final session scoring pass.
-

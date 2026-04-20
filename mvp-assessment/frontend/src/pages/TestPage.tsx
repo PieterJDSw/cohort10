@@ -100,7 +100,7 @@ export function TestPage() {
       } else {
         await saveTextAnswer(sessionId, textAnswer)
       }
-      setStatus('Answer saved.')
+      setStatus('Answer saved and queued for evaluation.')
       setSummary(await getSession(sessionId))
     } catch {
       setError('Unable to save the answer.')

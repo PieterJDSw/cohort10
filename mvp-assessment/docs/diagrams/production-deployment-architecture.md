@@ -1,6 +1,6 @@
 # Production Deployment Architecture
 
-This diagram focuses on how the system should be deployed for real-world traffic, resilience, scaling, and operational visibility.
+This diagram focuses on the target production deployment for real-world traffic, resilience, scaling, and operational visibility. It is intentionally more ambitious than the current local stack.
 
 ```mermaid
 flowchart LR
@@ -27,7 +27,7 @@ flowchart LR
         AGENTS["Strands agent runtime"]
         MODELGW["Model gateway"]
         LLM["LLM endpoint(s)"]
-        CACHE["Redis cache"]
+        CACHE["Redis cache<br/>target state"]
     end
 
     subgraph DATA["Data layer"]
@@ -87,7 +87,7 @@ What this deployment view is making explicit:
 - API and worker compute scale independently.
 - Queues isolate burst traffic from slow downstream processing.
 - DLQs and replay jobs are part of the default failure path.
-- Redis sits near the agent runtime for hot reusable data and coordination.
+- Redis is shown as a target-state cache near the agent runtime for hot reusable data and coordination. It is not deployed in the current Compose setup.
 - Read-heavy result and audit traffic should lean on replicas, not the primary database.
 - Observability, backups, and secrets management are core platform pieces.
 

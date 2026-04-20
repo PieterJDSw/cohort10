@@ -64,7 +64,9 @@ export async function nextQuestion(sessionId: string) {
 }
 
 export async function finishSession(sessionId: string) {
-  const { data } = await api.post<ResultPayload>(`/api/sessions/${sessionId}/finish`)
+  const { data } = await api.post<{ session_id: string; status: string; queued: boolean }>(
+    `/api/sessions/${sessionId}/finish`,
+  )
   return data
 }
 

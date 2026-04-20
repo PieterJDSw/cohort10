@@ -1,7 +1,7 @@
 import { useEffect, useState } from 'react'
 import { Link } from 'react-router-dom'
 import { useParams } from 'react-router-dom'
-import { getResults } from '../api/sessionsApi'
+import { getResults, getSession } from '../api/sessionsApi'
 import { RadarChartCard } from '../components/results/RadarChartCard'
 import { ScoreBreakdownCard } from '../components/results/ScoreBreakdownCard'
 import {
@@ -22,17 +22,49 @@ export function ResultPage() {
   const { sessionId = '' } = useParams()
   const [result, setResult] = useState<ResultPayload | null>(null)
   const [error, setError] = useState('')
+  const [pendingStatus, setPendingStatus] = useState('Loading result...')
 
   useEffect(() => {
+    let cancelled = false
+
     async function load() {
-      try {
-        setResult(await getResults(sessionId))
-      } catch {
-        setError('Unable to load the result payload.')
+      while (!cancelled) {
+        try {
+          const summary = await getSession(sessionId)
+          if (summary.status === 'scored') {
+            const payload = await getResults(sessionId)
+            if (!cancelled) {
+              setResult(payload)
+            }
+            return
+          }
+
+          if (summary.status === 'synthesis_failed') {
+            if (!cancelled) {
+              setError('Session synthesis failed. Open the audit page for details.')
+            }
+            return
+          }
+
+          if (!cancelled) {
+            setPendingStatus(`Result pending: ${summary.status}`)
+          }
+        } catch {
+          if (!cancelled) {
+            setError('Unable to load the result payload.')
+          }
+          return
+        }
+
+        await new Promise((resolve) => setTimeout(resolve, 2000))
       }
     }
 
     void load()
+
+    return () => {
+      cancelled = true
+    }
   }, [sessionId])
 
   if (error) {
@@ -40,7 +72,7 @@ export function ResultPage() {
   }
 
   if (!result) {
-    return <p className={statusClasses.neutral}>Loading result...</p>
+    return <p className={statusClasses.neutral}>{pendingStatus}</p>
   }
 
   return (

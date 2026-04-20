@@ -9,6 +9,7 @@ flowchart LR
         SYNRUN["run_crewai_synthesis(context)"]
         RETRY["Retry wrapper<br/>max 3 attempts"]
         PARSE["Clean output<br/>JSON parse / repair / normalize / validate"]
+        METRICS["Prometheus hooks<br/>Strands tokens + duration"]
     end
 
     subgraph LLM["Strands / OpenAI Model"]
@@ -69,6 +70,7 @@ flowchart LR
     AI --> PARSE
     REVIEWER --> PARSE
     SYNTH --> PARSE
+    PARSE --> METRICS
 
     style REVIEWER fill:#fff3cd,stroke:#d39e00,color:#333
     style SYNTH fill:#d1ecf1,stroke:#0c5460,color:#333
@@ -87,3 +89,4 @@ What this shows:
 - Each invocation is a single-node `GraphBuilder` execution today, not a multi-step in-process agent mesh.
 - The reviewer is a second-pass gate on evaluator output, not a separate human step in the current code.
 - Outputs are cleaned, JSON-repaired, normalized, and validated before they are accepted.
+- The runtime also records Strands token usage and Strands execution duration into Prometheus after each agent node completes.

@@ -1,18 +1,23 @@
 from __future__ import annotations
 
+from datetime import datetime, timezone
+
 from sqlalchemy.orm import Session
 
-from app.crew.flow import finalize_session
 from app.db import utc_now
 from app.domain.repositories.candidate_repo import CandidateRepository
 from app.domain.repositories.session_repo import SessionRepository
 from app.domain.services.question_service import QuestionService
 from app.logging_config import get_logger
+from app.messaging import publish_event
+from app.config import settings
 
 logger = get_logger(__name__)
 
 
 class SessionService:
+    IN_FLIGHT_EVALUATION_STATUSES = {"evaluation_queued", "evaluating"}
+
     def __init__(self) -> None:
         self.candidate_repo = CandidateRepository()
         self.session_repo = SessionRepository()
@@ -36,7 +41,12 @@ class SessionService:
             raise ValueError("Session not found")
         ordered = sorted(session.session_questions, key=lambda item: item.sequence_no)
         current = next(
-            (item for item in ordered if item.status in {"active", "answered"}),
+            (
+                item
+                for item in ordered
+                if item.status
+                in {"active", "answered", "evaluation_queued", "evaluating", "evaluated"}
+            ),
             None,
         )
         return {
@@ -72,7 +82,14 @@ class SessionService:
         if not session:
             raise ValueError("Session not found")
         ordered = sorted(session.session_questions, key=lambda item: item.sequence_no)
-        current = next((item for item in ordered if item.status in {"active", "answered"}), None)
+        current = next(
+            (
+                item
+                for item in ordered
+                if item.status in {"active", "answered", "evaluation_queued", "evaluating", "evaluated"}
+            ),
+            None,
+        )
         if current:
             current.status = "completed"
         next_question = next((item for item in ordered if item.status == "pending"), None)
@@ -94,20 +111,34 @@ class SessionService:
             raise ValueError("Session not found")
         logger.info("session_finish_started", extra={"session_id": session_id})
         for item in session.session_questions:
-            if item.status in {"active", "answered"}:
+            if item.status in {"active", "answered", "evaluated"}:
                 item.status = "completed"
-        session.status = "submitted"
+        session.status = "synthesis_requested"
+
+        should_queue_synthesis = not any(
+            item.status in self.IN_FLIGHT_EVALUATION_STATUSES for item in session.session_questions
+        )
+        if should_queue_synthesis:
+            session.status = "synthesis_queued"
+
         db.flush()
-        report = finalize_session(db, session_id)
-        session.status = "scored"
-        session.completed_at = utc_now()
+        if should_queue_synthesis:
+            published = publish_event(
+                settings.rabbitmq_synthesis_queue,
+                {
+                    "event_type": "session_synthesis_requested",
+                    "published_at": datetime.now(timezone.utc).isoformat(),
+                    "session_id": session_id,
+                },
+            )
+            if not published:
+                raise ValueError("Unable to publish synthesis request")
         db.commit()
         logger.info(
-            "session_finish_completed",
+            "session_finish_queued",
             extra={
                 "session_id": session_id,
-                "recommendation": report.get("recommendation"),
-                "overall_score": report.get("overall_score"),
+                "status": session.status,
             },
         )
-        return report
+        return {"session_id": session_id, "status": session.status, "queued": True}

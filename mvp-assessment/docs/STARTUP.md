@@ -28,6 +28,9 @@ docker compose up --build
 - backend: `http://localhost:8000` by default
 - backend health: `http://localhost:8000/health`
 - backend metrics: `http://localhost:8000/metrics`
+- agent backend: `http://localhost:8002`
+- agent backend health: `http://localhost:8002/health`
+- agent backend metrics: `http://localhost:8002/metrics`
 - postgres: `localhost:5432`
 - RabbitMQ AMQP: `localhost:5672`
 - RabbitMQ management UI: `http://localhost:15672`
@@ -56,13 +59,15 @@ RabbitMQ credentials:
 - the default question bank is inserted if the database is empty
 - Strands agents are configured to use the local `vllm` OpenAI-compatible model endpoint
 - structured JSON logging is enabled by default
-- Prometheus metrics are exposed on `/metrics`
-- RabbitMQ publish hooks are enabled for evaluation and synthesis events
+- Prometheus metrics are exposed on `/metrics` from both backends
+- the candidate backend publishes evaluation and synthesis work to RabbitMQ
+- the agent backend consumes RabbitMQ evaluation and synthesis jobs and writes results back to Postgres
 
 ### Current Docker Compose Stack
 
 - `postgres`
 - `backend`
+- `agent-backend`
 - `frontend`
 - `rabbitmq`
 - `vllm`
@@ -143,17 +148,20 @@ VITE_API_BASE_URL=http://localhost:8000
 1. Start the Docker Compose stack from the repo root.
 2. Wait for Postgres and RabbitMQ to come up.
 3. Wait for the backend to finish migrations and question seeding.
-4. Open `http://localhost:5173`.
-5. Open Grafana or RabbitMQ UI if you want to inspect logs, metrics, or queue traffic.
+4. Wait for the agent backend health endpoint to come up.
+5. Open `http://localhost:5173`.
+6. Open Grafana or RabbitMQ UI if you want to inspect logs, metrics, or queue traffic.
 
 ## Observability Notes
 
-- backend logs are written to stdout as structured JSON
+- backend and agent-backend logs are written to stdout as structured JSON
 - Alloy tails container logs and ships them to Loki
-- Prometheus scrapes backend, Alloy, Loki, Grafana, and Prometheus itself
+- Prometheus scrapes backend, agent-backend, Alloy, Loki, Grafana, and Prometheus itself
 - Grafana is provisioned with Prometheus and Loki datasources on startup
+- there is no Tempo or OpenTelemetry tracing stack in the current build
 - the starter Grafana dashboard is `Assessment Observability`
-- Strands logs are routed through the same backend logging pipeline and can be queried in Grafana via Loki
+- the current Strands panels are `Strands Tokens (30m)` and `Strands Avg Duration By Agent`
+- Strands logs are routed through the agent-backend logging pipeline and can be queried in Grafana via Loki
 
 Example Loki query for backend logs:
 
@@ -161,10 +169,16 @@ Example Loki query for backend logs:
 {stack="assessment", service_name="backend"}
 ```
 
+Example Loki query for agent-backend logs:
+
+```logql
+{stack="assessment", service_name="agent-backend"}
+```
+
 Example Loki query for Strands logs:
 
 ```logql
-{stack="assessment", service_name="backend"} | json | logger=~"strands.*"
+{stack="assessment", service_name="agent-backend"} | json | logger=~"strands.*"
 ```
 
 ## Notes
@@ -172,5 +186,6 @@ Example Loki query for Strands logs:
 - the MVP code runner supports Python only
 - the default LLM path is the local `vllm` container serving `google/gemma-4-E2B-it`
 - Strands tool calling is enabled by default via `LLM_TOOL_USE_ENABLED=true`
-- RabbitMQ is currently used for event publication only; evaluation and synthesis still execute inline in the backend
-- the dead letter queue is in place now so future worker separation can reject or reroute failures cleanly
+- RabbitMQ now mediates evaluation and synthesis between the candidate backend and the agent backend
+- the candidate backend returns quickly after publish; the agent backend performs the long-running Strands work asynchronously
+- the dead letter queue is in place for worker failures

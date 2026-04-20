@@ -1,0 +1,95 @@
+- generic [ref=e3]:
+  - banner [ref=e4]:
+    - generic [ref=e5]:
+      - generic [ref=e6]:
+        - paragraph [ref=e7]: Developer Assessment Platform
+        - link "MVP Assessment" [ref=e8] [cursor=pointer]:
+          - /url: /
+      - navigation [ref=e9]:
+        - link "Start" [ref=e10] [cursor=pointer]:
+          - /url: /
+        - link "Dashboard" [ref=e11] [cursor=pointer]:
+          - /url: /dashboard
+  - main [ref=e12]:
+    - generic [ref=e117]:
+      - generic [ref=e118]:
+        - generic [ref=e119]:
+          - paragraph [ref=e120]: Final recommendation
+          - generic [ref=e121]:
+            - generic [ref=e122]: hire
+            - heading "hire" [level=1] [ref=e123]
+            - paragraph [ref=e124]: The candidate demonstrated strong cultural alignment by providing a mature, structured, and actionable response to a complex conflict, effectively managing expectations through a cost-benefit trade-off, sound prioritization, and risk assessment. While the response is strong, a minor area for refinement is explicitly detailing the negotiation phase with the Product Manager.
+          - link "Open audit" [ref=e126] [cursor=pointer]:
+            - /url: /audit/bbca596b-fb56-44fc-b1c3-0551c63866fb
+        - generic [ref=e127]:
+          - generic [ref=e128]:
+            - paragraph [ref=e129]: Score snapshot
+            - paragraph [ref=e130]: "10.3"
+            - paragraph [ref=e131]: Overall score
+          - generic [ref=e132]:
+            - paragraph [ref=e133]: Confidence
+            - paragraph [ref=e134]: "0.07"
+      - generic [ref=e135]:
+        - generic [ref=e136]:
+          - generic [ref=e137]:
+            - heading "Dimension radar" [level=3] [ref=e138]
+            - paragraph [ref=e139]: A quick view of strengths across the scoring model.
+          - img [ref=e141]
+        - generic [ref=e142]:
+          - generic [ref=e143]:
+            - paragraph [ref=e144]: Scoring view
+            - heading "Breakdown" [level=3] [ref=e145]
+          - generic [ref=e146]:
+            - article [ref=e147]:
+              - paragraph [ref=e148]: AI Fluency
+              - strong [ref=e149]: "0.0"
+              - generic [ref=e150]: confidence 0.00
+            - article [ref=e151]:
+              - paragraph [ref=e152]: Architecture
+              - strong [ref=e153]: "0.0"
+              - generic [ref=e154]: confidence 0.00
+            - article [ref=e155]:
+              - paragraph [ref=e156]: Coding Skill
+              - strong [ref=e157]: "0.0"
+              - generic [ref=e158]: confidence 0.00
+            - article [ref=e159]:
+              - paragraph [ref=e160]: Communication
+              - strong [ref=e161]: "20.6"
+              - generic [ref=e162]: confidence 0.11
+            - article [ref=e163]:
+              - paragraph [ref=e164]: Core Understanding
+              - strong [ref=e165]: "0.0"
+              - generic [ref=e166]: confidence 0.00
+            - article [ref=e167]:
+              - paragraph [ref=e168]: Ownership Judgment
+              - strong [ref=e169]: "41.1"
+              - generic [ref=e170]: confidence 0.32
+          - generic [ref=e171]:
+            - article [ref=e172]:
+              - generic [ref=e173]:
+                - paragraph [ref=e174]: Positive signal
+                - heading "Strengths" [level=4] [ref=e175]
+              - list [ref=e176]:
+                - listitem [ref=e177]:
+                  - generic [ref=e179]: The response immediately addresses the core conflict by framing it as a cost-benefit trade-off, which is excellent for managing expectations.
+                - listitem [ref=e180]:
+                  - generic [ref=e182]: It demonstrates a strong understanding of prioritization (separating must-haves from nice-haves) and risk management (bringing in estimates), which directly addresses the 'prioritization' criterion.
+                - listitem [ref=e183]:
+                  - generic [ref=e185]: The proposed solution of offering concrete options (launch now vs. move date) shows strong action-orientation and ownership.
+            - article [ref=e186]:
+              - generic [ref=e187]:
+                - paragraph [ref=e188]: Open risk
+                - heading "Weaknesses" [level=4] [ref=e189]
+              - list [ref=e190]:
+                - listitem [ref=e191]:
+                  - generic [ref=e193]: Minor area for refinement is explicitly detailing the negotiation phase with the PM, although the current structure implies it.
+                - listitem [ref=e194]:
+                  - generic [ref=e196]: prompt_quality
+                - listitem [ref=e197]:
+                  - generic [ref=e199]: context_provided
+                - listitem [ref=e200]:
+                  - generic [ref=e202]: decomposition
+                - listitem [ref=e203]:
+                  - generic [ref=e205]: tradeoffs
+                - listitem [ref=e206]:
+                  - generic [ref=e208]: conceptual_correctness

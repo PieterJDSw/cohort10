@@ -11,6 +11,14 @@ from app.models.session_question import SessionQuestion
 
 
 class QuestionService:
+    CURRENT_QUESTION_STATUSES = {
+        "active",
+        "answered",
+        "evaluation_queued",
+        "evaluating",
+        "evaluated",
+    }
+
     QUESTION_DISTRIBUTION = {
         "coding": 3,
         "theory": 2,
@@ -81,7 +89,7 @@ class QuestionService:
 
         ordered = sorted(session.session_questions, key=lambda item: item.sequence_no)
         current = next(
-            (item for item in ordered if item.status in {"active", "answered"}),
+            (item for item in ordered if item.status in self.CURRENT_QUESTION_STATUSES),
             None,
         )
         if current is None:

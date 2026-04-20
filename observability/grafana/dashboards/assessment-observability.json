@@ -73,7 +73,7 @@
       "targets": [
         {
           "editorMode": "code",
-          "expr": "sum(rate(assessment_http_requests_total[5m]))",
+          "expr": "sum(rate(assessment_http_requests_total{job=\"backend\"}[5m]))",
           "legendFormat": "",
           "range": true,
           "refId": "A"
@@ -138,7 +138,7 @@
       "targets": [
         {
           "editorMode": "code",
-          "expr": "histogram_quantile(0.95, sum(rate(assessment_http_request_duration_seconds_bucket[5m])) by (le))",
+          "expr": "histogram_quantile(0.95, sum(rate(assessment_http_request_duration_seconds_bucket{job=\"backend\"}[5m])) by (le))",
           "legendFormat": "",
           "range": true,
           "refId": "A"
@@ -198,7 +198,7 @@
       "targets": [
         {
           "editorMode": "code",
-          "expr": "sum(assessment_http_requests_in_progress)",
+          "expr": "sum(assessment_http_requests_in_progress{job=\"backend\"})",
           "legendFormat": "",
           "range": true,
           "refId": "A"
@@ -258,7 +258,7 @@
       "targets": [
         {
           "editorMode": "code",
-          "expr": "sum(rate(assessment_llm_requests_total{status=\"failure\"}[5m]))",
+          "expr": "sum(rate(assessment_llm_requests_total{job=~\"backend|agent-backend\",status=\"failure\"}[5m]))",
           "legendFormat": "",
           "range": true,
           "refId": "A"
@@ -334,7 +334,7 @@
       "targets": [
         {
           "editorMode": "code",
-          "expr": "sum by (path, status_code) (rate(assessment_http_requests_total[5m]))",
+          "expr": "sum by (path, status_code) (rate(assessment_http_requests_total{job=\"backend\"}[5m]))",
           "legendFormat": "{{path}} {{status_code}}",
           "range": true,
           "refId": "A"
@@ -411,7 +411,7 @@
       "targets": [
         {
           "editorMode": "code",
-          "expr": "sum by (question_type) (rate(assessment_question_evaluations_total[5m]))",
+          "expr": "sum by (question_type) (rate(assessment_question_evaluations_total{job=\"agent-backend\"}[5m]))",
           "legendFormat": "{{question_type}}",
           "range": true,
           "refId": "A"
@@ -476,7 +476,7 @@
       "targets": [
         {
           "editorMode": "code",
-          "expr": "sum(increase(assessment_strands_tokens_total[30m]))",
+          "expr": "sum(increase(assessment_strands_tokens_total{job=\"agent-backend\"}[30m]))",
           "legendFormat": "",
           "range": true,
           "refId": "A"
@@ -553,7 +553,7 @@
       "targets": [
         {
           "editorMode": "code",
-          "expr": "sum by (agent_name) (rate(assessment_strands_duration_seconds_sum[30m])) / sum by (agent_name) (rate(assessment_strands_duration_seconds_count[30m]))",
+          "expr": "sum by (agent_name) (rate(assessment_strands_duration_seconds_sum{job=\"agent-backend\"}[30m])) / sum by (agent_name) (rate(assessment_strands_duration_seconds_count{job=\"agent-backend\"}[30m]))",
           "legendFormat": "{{agent_name}}",
           "range": true,
           "refId": "A"
@@ -569,7 +569,7 @@
       },
       "gridPos": {
         "h": 10,
-        "w": 24,
+        "w": 12,
         "x": 0,
         "y": 24
       },
@@ -592,7 +592,40 @@
           "refId": "A"
         }
       ],
-      "title": "Backend Logs",
+      "title": "Candidate Backend Logs",
+      "type": "logs"
+    },
+    {
+      "datasource": {
+        "type": "loki",
+        "uid": "loki"
+      },
+      "gridPos": {
+        "h": 10,
+        "w": 12,
+        "x": 12,
+        "y": 24
+      },
+      "id": 10,
+      "options": {
+        "dedupStrategy": "none",
+        "enableInfiniteScrolling": false,
+        "prettifyLogMessage": false,
+        "showCommonLabels": false,
+        "showLabels": true,
+        "showTime": true,
+        "sortOrder": "Descending",
+        "wrapLogMessage": false
+      },
+      "targets": [
+        {
+          "editorMode": "code",
+          "expr": "{stack=\"assessment\", service_name=\"agent-backend\"}",
+          "queryType": "range",
+          "refId": "A"
+        }
+      ],
+      "title": "Agent Backend Logs",
       "type": "logs"
     }
   ],

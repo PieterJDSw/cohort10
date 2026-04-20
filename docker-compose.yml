@@ -56,6 +56,45 @@ services:
     labels:
       com.assessment.service: backend
 
+  agent-backend:
+    build:
+      context: ./mvp-assessment/agent-backend
+    container_name: assessment_agent_backend
+    restart: unless-stopped
+    depends_on:
+      postgres:
+        condition: service_healthy
+      rabbitmq:
+        condition: service_started
+      vllm:
+        condition: service_started
+    environment:
+      APP_NAME: MVP Assessment Agent Backend
+      APP_ENV: docker
+      DATABASE_URL: postgresql+psycopg://assessment_user:assessment_pass@postgres:5432/assessment_db
+      FRONTEND_ORIGIN: http://localhost:5173
+      RUN_MIGRATIONS_ON_STARTUP: "false"
+      SEED_QUESTIONS_ON_STARTUP: "false"
+      OPENAI_API_KEY: ${OPENAI_API_KEY:-local-vllm}
+      OPENAI_API_BASE: http://vllm:8000/v1
+      MODEL_NAME: ${MODEL_NAME:-google/gemma-4-E2B-it}
+      LLM_ENABLED: "true"
+      LLM_TOOL_USE_ENABLED: "true"
+      LOG_LEVEL: INFO
+      LOG_FORMAT: json
+      STRANDS_LOG_LEVEL: DEBUG
+      RABBITMQ_ENABLED: "true"
+      RABBITMQ_URL: amqp://assessment:assessment@rabbitmq:5672/%2f
+      RABBITMQ_EXCHANGE: assessment.events
+      RABBITMQ_DEAD_LETTER_EXCHANGE: assessment.events.dlx
+      RABBITMQ_EVALUATE_QUEUE: evaluate
+      RABBITMQ_SYNTHESIS_QUEUE: synthesis
+      RABBITMQ_DEAD_LETTER_QUEUE: dead_letter
+    ports:
+      - "8002:8000"
+    labels:
+      com.assessment.service: agent-backend
+
   frontend:
     build:
       context: ./mvp-assessment/frontend
@@ -118,6 +157,7 @@ services:
     restart: unless-stopped
     depends_on:
       - backend
+      - agent-backend
       - loki
       - alloy
     command:

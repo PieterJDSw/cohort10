@@ -1,6 +1,6 @@
 # Scalable Architecture Overview
 
-This diagram is the high-level conceptual view. It shows the major runtime layers and how work moves through the system without getting into deployment mechanics.
+This diagram is the high-level target architecture. It is not the current Docker Compose deployment. It shows the intended major runtime layers once the system is split into real async workers and supporting platform services.
 
 ```mermaid
 flowchart LR
@@ -27,7 +27,7 @@ flowchart LR
 
     subgraph STATE["State and storage tier"]
         POSTGRES["PostgreSQL"]
-        REDIS["Redis cache"]
+        REDIS["Redis cache<br/>target state"]
         OBJECTS["Object storage"]
     end
 
@@ -71,7 +71,7 @@ Conceptually, the system should work like this:
 - The API tier stays thin. It accepts traffic, writes core state, and publishes async work.
 - The worker tier does the expensive parts: evaluation, review, synthesis, and AI-helper processing.
 - Queues absorb spikes in traffic, and dead letter queues catch messages that repeatedly fail.
-- Redis is used for hot reusable data such as question/rubric lookups, prompt fragments, idempotency keys, and short-lived worker coordination.
+- Redis is shown here as a target-state cache for hot reusable data such as question/rubric lookups, prompt fragments, idempotency keys, and short-lived worker coordination. It is not part of the current Compose stack.
 - Postgres remains the system of record, while object storage keeps larger raw agent payloads and audit artifacts.
 - Observability and recovery are first-class parts of the system, not add-ons.
 

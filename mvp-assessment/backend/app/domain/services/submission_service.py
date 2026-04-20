@@ -1,15 +1,16 @@
 from __future__ import annotations
 
 import json
+from datetime import datetime, timezone
 
 from openai import OpenAI
 from sqlalchemy.orm import Session
 
 from app.config import settings
-from app.crew.flow import evaluate_question
 from app.domain.repositories.submission_repo import SubmissionRepository
 from app.domain.services.question_service import QuestionService
 from app.logging_config import get_logger
+from app.messaging import publish_event
 from app.metrics import llm_requests_total
 from app.tools.code_runner_tools import run_python_tests
 
@@ -27,11 +28,29 @@ class SubmissionService:
             raise ValueError("No active question")
         return current
 
+    def _evaluation_message(self, session_id: str, current) -> dict:
+        return {
+            "event_type": "evaluate_question_requested",
+            "published_at": datetime.now(timezone.utc).isoformat(),
+            "session_id": session_id,
+            "session_question_id": current.id,
+            "question_type": current.question.type,
+            "force": True,
+        }
+
+    def _publish_evaluation_request(self, session_id: str, current) -> None:
+        published = publish_event(
+            settings.rabbitmq_evaluate_queue,
+            self._evaluation_message(session_id, current),
+        )
+        if not published:
+            raise ValueError("Unable to publish evaluation request")
+
     def save_text_submission(self, db: Session, session_id: str, answer: str):
         current = self._current_session_question(db, session_id)
         submission = self.submission_repo.save_text_answer(db, current.id, answer)
-        current.status = "answered"
-        evaluate_question(db, current.id, force=True)
+        current.status = "evaluation_queued"
+        self._publish_evaluation_request(session_id, current)
         db.commit()
         logger.info(
             "text_submission_saved",
@@ -47,8 +66,8 @@ class SubmissionService:
     def save_code_submission(self, db: Session, session_id: str, code: str, language: str):
         current = self._current_session_question(db, session_id)
         submission = self.submission_repo.save_code_answer(db, current.id, code, language)
-        current.status = "answered"
-        evaluate_question(db, current.id, force=True)
+        current.status = "evaluation_queued"
+        self._publish_evaluation_request(session_id, current)
         db.commit()
         logger.info(
             "code_submission_saved",

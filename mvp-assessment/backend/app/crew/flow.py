@@ -412,6 +412,7 @@ def finalize_session(db: Session, session_id: str) -> dict:
         synthesis_source = synthesis_result.get("source", "llm_failed_after_retries")
         synthesis_raw_output = synthesis_result.get("raw_output")
         synthesis_error_message = synthesis_result.get("error_message")
+        final_recommendation = recommendation
 
         result_repo.save_dimension_scores(db, session_id, dimension_scores)
         chart_payload = build_chart_payload(
@@ -425,7 +426,7 @@ def finalize_session(db: Session, session_id: str) -> dict:
             db,
             session_id,
             {
-                "recommendation": synthesis.get("recommendation", recommendation),
+                "recommendation": final_recommendation,
                 "summary": synthesis["summary"],
                 "chart_payload": chart_payload,
                 "source": synthesis_source,
@@ -434,20 +435,20 @@ def finalize_session(db: Session, session_id: str) -> dict:
             },
         )
     session_finalization_total.labels(
-        recommendation=synthesis.get("recommendation", recommendation),
+        recommendation=final_recommendation,
     ).inc()
     logger.info(
         "session_finalization_completed",
         extra={
             "session_id": session_id,
             "overall_score": overall_score,
-            "recommendation": synthesis.get("recommendation", recommendation),
+            "recommendation": final_recommendation,
         },
     )
     return {
         "overall_score": overall_score,
         "confidence": chart_payload["confidence"],
-        "recommendation": synthesis.get("recommendation", recommendation),
+        "recommendation": final_recommendation,
         "summary": synthesis["summary"],
         "dimension_scores": dimension_scores,
         "strengths": synthesis.get("strengths", []),
